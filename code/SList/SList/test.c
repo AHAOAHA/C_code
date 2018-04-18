@@ -1,7 +1,7 @@
 #include"SList.h"
 int main()
 {
-	PNode SList;
+	/*PNode SList;
 	PNode SList2;
 	PNode NewList;
 	int count = 0;
@@ -27,7 +27,7 @@ int main()
 		pCur2 = pCur2->_pNext;
 	}
 	pCur2->_pNext = pCur;
-	PNode pMeet = GetEnterNode(SList);
+	PNode pMeet = GetEnterNode(SList);*/
 	/*while (SList->_pNext)
 		SList = SList->_pNext;
 	SList->_pNext = SList;

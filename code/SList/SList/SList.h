@@ -15,7 +15,7 @@ typedef struct CNode
 	DataType _data;
 	struct CNode* _pNext;
 	struct CNode* _random;
-}CNode,*PCListNode;
+}CListNode,*PCListNode;
 void SListInit(PNode* pHead);
 void SListPushBack(PNode* pHead, DataType data);
 void SListPopBack(PNode* pHead);
@@ -45,5 +45,6 @@ PNode GetCrossNode(PNode pHead1, PNode pHead2);
 PNode IsCircle(PNode pHead);
 int GetCircleLen(PNode pHead);
 PNode GetEnterNode(PNode pHead);
+void TestCopyCNode();
 
 #endif //__SLIST__

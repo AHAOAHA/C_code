@@ -677,28 +677,48 @@ int IsCrossWithCross(PNode pHead1, PNode pHead2)
 //复杂链表的复制(未测试)
 PCListNode CopyComplexList(PCListNode pHead)
 {
-	PCListNode pfirst = pHead;
-	PCListNode plist = NULL;
+	PCListNode pOldList = pHead;
+	PCListNode pNewList = NULL;
 	PCListNode pCur = NULL;
 	if (NULL == pHead)
-		return NULL;
-	pCur = (PCListNode)malloc(sizeof(CNode));
-	plist = pCur;
-	while (pfirst)
+		return 0;
+	//在原链表每个节点后面插入之前的节点
+	while (pOldList)
 	{
-		pCur->_pNext = pfirst->_pNext;
-		pCur->_data = pfirst->_data;
-		pCur->_pNext = (PCListNode)malloc(sizeof(CNode));
-		pCur = pCur->_pNext;
-		pfirst = pfirst->_pNext;
+		pNewList = (PCListNode)malloc(sizeof(CListNode));
+		pNewList->_data = pOldList->_pNext;
+
+		pNewList->_pNext = pOldList->_pNext;
+		pOldList->_pNext = pNewList;
+		pOldList = pOldList->_pNext;
 	}
-	pCur = plist;
-	pfirst = pHead;
-	while (pfirst)
+	//复制随机指向域
+	pOldList = pHead;
+	while (pOldList)
 	{
-		pCur->_random = pfirst->_random;
-		pCur = pCur->_pNext;
-		pfirst = pfirst->_pNext;
+		pNewList = pOldList->_pNext;
+		
+		if (NULL == pOldList->_random)
+			pNewList->_random = NULL;
+		else
+			pNewList->_random = pOldList->_random->_pNext;
+
+		pOldList = pNewList->_pNext;
+		pNewList = pOldList->_pNext;
 	}
-	return plist;
+	//将新链表和旧链表拆开
+	pOldList = pHead;
+	pNewList = pOldList->_pNext;
+	pCur = pNewList;
+	while (pOldList)
+	{
+		pOldList->_pNext = pCur->_pNext;
+		pOldList = pOldList->_pNext;
+		if (NULL != pOldList)
+		{
+			pCur->_pNext = pOldList->_pNext;
+			pCur = pCur->_pNext;
+		}
+	}
+	return pNewList;
 }
