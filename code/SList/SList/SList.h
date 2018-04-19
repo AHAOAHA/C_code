@@ -45,6 +45,6 @@ PNode GetCrossNode(PNode pHead1, PNode pHead2);
 PNode IsCircle(PNode pHead);
 int GetCircleLen(PNode pHead);
 PNode GetEnterNode(PNode pHead);
-void TestCopyCNode();
+void TestSList();
 
 #endif //__SLIST__

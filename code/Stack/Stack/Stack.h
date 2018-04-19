@@ -19,3 +19,4 @@ int StackEmpty(Stack* s);
 void StackDestroy(Stack* s);
 int MatchBrackets(Stack* s, char* str);
 int RPN(Stack* s, char* str);
+void TestStack();

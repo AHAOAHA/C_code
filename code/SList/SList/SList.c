@@ -337,7 +337,6 @@ void SlistRever_PushFront(PNode pHead)
 	PNode pCur = pHead->_pNext;
 	while (pCur != NULL)
 	{
-		//SListPushFront(&pHead, pCur->_data);
 		SListNodeInsertFront(pfirst, pCur->_data);
 		pdel = pCur;
 		pCur = pCur->_pNext;
@@ -721,4 +720,15 @@ PCListNode CopyComplexList(PCListNode pHead)
 		}
 	}
 	return pNewList;
+}
+/////////////////////////////////////////////////
+void TestSList()
+{
+	PNode SList;
+	SListInit(&SList);
+	SListPushBack(&SList, 1);
+	SListPushBack(&SList, 2);
+	SListPushBack(&SList, 3);
+	SListPushBack(&SList, 4);
+	SlistRever_PushFront(SList);
 }

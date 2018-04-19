@@ -1,6 +1,7 @@
 #include"SList.h"
 int main()
 {
+	TestSList();
 	/*PNode SList;
 	PNode SList2;
 	PNode NewList;
