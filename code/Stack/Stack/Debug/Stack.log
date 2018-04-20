@@ -1,11 +1,8 @@
-﻿生成启动时间为 2018/4/19 8:48:11。
+﻿生成启动时间为 2018/4/20 22:32:57。
      1>项目“D:\bit\github\code\Stack\Stack\Stack.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt Maze.c Stack.c test.c
-         test.c
-         Stack.c
+         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt Maze.c
          Maze.c
-         正在生成代码...
        Link:
          D:\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\bit\github\code\Stack\Debug\Stack.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\bit\github\code\Stack\Debug\Stack.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\bit\github\code\Stack\Debug\Stack.lib" /MACHINE:X86 Debug\Maze.obj
          Debug\Stack.obj
@@ -15,4 +12,4 @@
 
 生成成功。
 
-已用时间 00:00:01.10
+已用时间 00:00:00.54

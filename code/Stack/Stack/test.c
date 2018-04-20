@@ -1,7 +1,7 @@
 #include"Stack.h"
 int main()
 {
-	TestStack();
+	TestMaze();
 	system("pause");
 	return 0;
 }
