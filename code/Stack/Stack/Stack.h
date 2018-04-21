@@ -3,7 +3,12 @@
 #include<stdlib.h>
 #include<assert.h>
 #define MAXSIZE 50
-typedef int DataType;
+typedef struct Position
+{
+	int _x;
+	int _y;
+}Position;
+typedef Position DataType;
 typedef struct Stack
 {
 	DataType * _array;

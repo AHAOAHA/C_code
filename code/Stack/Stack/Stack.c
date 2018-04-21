@@ -56,95 +56,95 @@ void StackDestroy(Stack* s)
 }
 
 //用栈解决括号匹配问题
-int MatchBrackets(Stack* s, char* str)
-{
-	int i = 0;
-	assert(s);
-	while (*str != '\0')
-	{
-		if (*str == '{' || *str == '[' || *str == '(' || *str == ')' || *str == ']' || *str == '}')
-		{
-			if (*str == '{' || *str == '(' || *str == '[')
-			{
-				StackPush(s, *str);
-				str++;
-			}
-			else
-			{
-				if (0 == StackEmpty(s))
-					return 0;
-				else
-				{
-					if ((*str == 41 && 40 == StackTop(s)) || (*str == 93 && 91 == StackTop(s)) || (*str == 125 && StackTop(s) == 123))
-					{
-						StackPop(s);
-						str++;
-					}
-					else
-						return 0;
-				}
-			}
-		}
-		else
-			str++;
-	}
-	if (0 == StackEmpty(s))
-		return 1;
-	return 0;
-}
-//逆波兰表达式（后缀表达式）
-int RPN(Stack* s, char* str)
-{
-	int left = 0;
-	int right = 0;
-	int ret = 0;
-	int num = 0;
-	assert(s);
-	while (*str != '\0')
-	{
-		if (*str == '+' || *str == '-' || *str == '*' || *str == '/')
-		{
-			right = StackTop(s);
-			StackPop(s);
-			left = StackTop(s);
-			StackPop(s);
-			switch (*str)
-			{
-			case '+':
-				ret = left + right;
-				StackPush(s, ret);
-				break;
-			case '-':
-				ret = left - right;
-				StackPush(s, ret);
-				break;
-			case '*':
-				ret = left*right;
-				StackPush(s, ret);
-				break;
-			case '/':
-				ret = left / right;
-				StackPush(s, ret);
-				break;
-			}
-			str++;
-		}
-		else if (*str == ' ')
-			str++;
-		else
-		{
-			StackPush(s, atoi(str));
-			str++;
-		}
-	}
-	return StackTop(s);
-}
-/////////////////////////////////////////////////////
-void TestStack()
-{
-	Stack stack;
-	StackInit(&stack);
-	int ret = 0;
-	char arr[23] = "2 3 4 + * 6 - 8 2 / +";
-	printf("%d\n", RPN(&stack, arr));
-}
+//int MatchBrackets(Stack* s, char* str)
+//{
+//	int i = 0;
+//	assert(s);
+//	while (*str != '\0')
+//	{
+//		if (*str == '{' || *str == '[' || *str == '(' || *str == ')' || *str == ']' || *str == '}')
+//		{
+//			if (*str == '{' || *str == '(' || *str == '[')
+//			{
+//				StackPush(s, *str);
+//				str++;
+//			}
+//			else
+//			{
+//				if (0 == StackEmpty(s))
+//					return 0;
+//				else
+//				{
+//					if ((*str == 41 && 40 == StackTop(s)) || (*str == 93 && 91 == StackTop(s)) || (*str == 125 && StackTop(s) == 123))
+//					{
+//						StackPop(s);
+//						str++;
+//					}
+//					else
+//						return 0;
+//				}
+//			}
+//		}
+//		else
+//			str++;
+//	}
+//	if (0 == StackEmpty(s))
+//		return 1;
+//	return 0;
+//}
+////逆波兰表达式（后缀表达式）
+//int RPN(Stack* s, char* str)
+//{
+//	int left = 0;
+//	int right = 0;
+//	int ret = 0;
+//	int num = 0;
+//	assert(s);
+//	while (*str != '\0')
+//	{
+//		if (*str == '+' || *str == '-' || *str == '*' || *str == '/')
+//		{
+//			right = StackTop(s);
+//			StackPop(s);
+//			left = StackTop(s);
+//			StackPop(s);
+//			switch (*str)
+//			{
+//			case '+':
+//				ret = left + right;
+//				StackPush(s, ret);
+//				break;
+//			case '-':
+//				ret = left - right;
+//				StackPush(s, ret);
+//				break;
+//			case '*':
+//				ret = left*right;
+//				StackPush(s, ret);
+//				break;
+//			case '/':
+//				ret = left / right;
+//				StackPush(s, ret);
+//				break;
+//			}
+//			str++;
+//		}
+//		else if (*str == ' ')
+//			str++;
+//		else
+//		{
+//			StackPush(s, atoi(str));
+//			str++;
+//		}
+//	}
+//	return StackTop(s);
+//}
+///////////////////////////////////////////////////////
+//void TestStack()
+//{
+//	Stack stack;
+//	StackInit(&stack);
+//	int ret = 0;
+//	char arr[23] = "2 3 4 + * 6 - 8 2 / +";
+//	printf("%d\n", RPN(&stack, arr));
+//}
