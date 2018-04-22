@@ -17,7 +17,7 @@ int IsMazeExit(Maze* m, Position cur, Position enter);
 int IsPass(Maze* m, Position cur);
 void PassMazeNor(Maze* m, Position enter, Stack* s);
 void PrintPath(Stack* s);
-void PassMaze(Maze* m, Position enter, Stack* s);
-void _PassMaze(Maze* m, Position enter);
+int _PassMaze(Maze* m, Position enter, Position cur);
+void PassMaze(Maze* m, Position cur);
 void TestMaze();
 

@@ -69,9 +69,9 @@ void PassMazeNor(Maze* m, Position enter, Stack* s)
 	assert(m);
 	if (0 == IsValidEnter(m, enter))
 	{
-		return 0;
+		return;
 	}
-	m->_map[enter._x][enter._y] = 2;
+	//m->_map[enter._x][enter._y] = 2;
 	StackPush(s, enter);
 	
 	while (0 == IsMazeExit(m, cur, enter))
@@ -135,19 +135,55 @@ void PrintPath(Stack* s)
 	printf("\n");
 }
 //走迷宫---递归方法
-void _PassMaze(Maze* m, Position enter)
+void PassMaze(Maze* m, Position enter)
 {
 	assert(m);
+	_PassMaze(m, enter, enter);
 }
-void PassMaze(Maze* m, Position enter, Stack* s)
+int Flag = 0;
+int _PassMaze(Maze* m, Position enter,Position cur)
 {
 	Position next;
-	Position cur;
 	assert(m);
-	cur = enter;
-	if (0 == IsValidEnter(m, enter))
+	if (IsMazeExit(m, cur, enter))
+	{
+		Flag = 1;
+	}
+	m->_map[cur._x][cur._y] = 2;
+	//上
+	next._x = cur._x - 1;
+	next._y = cur._y;
+	if (IsPass(m, next))
+	{
+		_PassMaze(m, enter, next);
+	}
+	//左
+	next._x = cur._x;
+	next._y = cur._y - 1;
+	if (IsPass(m, next))
+	{
+		_PassMaze(m, enter, next);
+	}
+	//右
+	next._x = cur._x;
+	next._y = cur._y + 1;
+	if (IsPass(m, next))
+	{
+		_PassMaze(m, enter, next);
+	}
+	//下
+	next._x = cur._x + 1;
+	next._y = cur._y;
+	if (IsPass(m, next))
+	{
+		_PassMaze(m, enter, next);
+	}
+	if (0 == Flag)
+	{
+		m->_map[cur._x][cur._y] = 3;
 		return 0;
-
+	}
+	return 1;
 }
 /////////////////////////////////////
 void TestMaze()
@@ -155,11 +191,9 @@ void TestMaze()
 	Maze m;
 	Stack s;
 	Position enter;
-	Position exit;
+	//Position exit;
 	enter._x = 5;
 	enter._y = 2;
-	exit._x = 4;
-	exit._y = 3;
 	int map[MAX_ROW][MAX_COL] = { { 0, 0, 0, 0, 0, 0 },
 							   { 0, 0, 1, 0, 0, 0 },
 							   { 0, 0, 1, 0, 0, 0 },
@@ -168,7 +202,9 @@ void TestMaze()
 							   { 0, 0, 1, 0, 0, 0 } };
 	InitMap(&m, map);
 	StackInit(&s);
-	PassMazeNor(&m, enter, &s);
 	PrintMap(&m);
-	PrintPath(&s);
+	PassMaze(&m, enter);
+	//PassMazeNor(&m, enter, &s);
+	PrintMap(&m);
+	//PrintPath(&s);
 }
