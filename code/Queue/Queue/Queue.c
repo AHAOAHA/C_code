@@ -7,49 +7,65 @@ void QueueInit(Queue* q)
 	q->_pTail = NULL;
 }
 //入队列
-void QueuePush(Queue* q, DataType data)
+void QueuePush(Queue* q, QDataType data)
 {
-	PNode PNewNode = NULL;
+	PQueueNode PNewQueueNode = NULL;
 	assert(q);
 	if (QueueEmpty(q))
 	{
-		q->_pTail = q->_pHead = BuyNode(data);
+		q->_pTail = q->_pHead = BuyQueueNode(data);
 		return;
 	}
-	PNewNode = BuyNode(data);
-	PNewNode->_pNext = q->_pHead;
-	q->_pHead = PNewNode;
+	PNewQueueNode = BuyQueueNode(data);
+	q->_pTail->_pNext = PNewQueueNode;
+	q->_pTail = q->_pTail->_pNext;
+	PNewQueueNode->_pNext = NULL;
+
 }
-PNode BuyNode(DataType data)
+PQueueNode BuyQueueNode(QDataType data)
 {
-	PNode PNewNode = NULL;
-	PNewNode = (PNode)malloc(sizeof(Node));
-	PNewNode->_data = data;
-	PNewNode->_pNext = NULL;
-	return PNewNode;
+	PQueueNode PNewQueueNode = NULL;
+	PNewQueueNode = (PQueueNode)malloc(sizeof(QueueNode));
+	if (NULL == PNewQueueNode)
+	{
+		printf("开辟空间失败\n");
+		return NULL;
+	}
+	PNewQueueNode->_data = data;
+	PNewQueueNode->_pNext = NULL;
+	return PNewQueueNode;
 }
 //出队列
 void QueuePop(Queue* q)
 {
-	PNode pCur = NULL;
+	PQueueNode pCur = NULL;
 	assert(q);
+	if (QueueEmpty(q))
+		return;
 	pCur = q->_pHead;
-	while (pCur->_pNext != q->_pTail)
+	if (pCur->_pNext == NULL)
 	{
-		pCur = pCur->_pNext;
+		free(pCur);
+		pCur = NULL;
+		q->_pTail = NULL;
+		q->_pHead = NULL;
+		return;
 	}
-	pCur->_pNext = NULL;
-	free(q->_pTail);
-	q->_pTail = pCur;
+	pCur = q->_pHead;
+	q->_pHead = q->_pHead->_pNext;
+	free(pCur);
+	pCur = NULL;
 }
 //取队头元素
-DataType QueueFront(Queue* q)
+QDataType QueueFront(Queue* q)
 {
 	assert(q);
+	if (QueueEmpty(q))
+		return NULL;
 	return q->_pHead->_data;
 }
 //取队尾元素
-DataType QueueBack(Queue* q)
+QDataType QueueBack(Queue* q)
 {
 	assert(q);
 	return q->_pTail->_data;
@@ -58,7 +74,7 @@ DataType QueueBack(Queue* q)
 int QueueSize(Queue* q)
 {
 	int count = 0;
-	PNode pCur = NULL;
+	PQueueNode pCur = NULL;
 	assert(q);
 	pCur = q->_pHead;
 	while (pCur)
@@ -75,16 +91,16 @@ int QueueEmpty(Queue* q)
 	return NULL == q->_pHead;
 }
 ////////////////////////
-void TestQueue()
-{
-	DataType num = 0;
-	Queue q;
-	QueueInit(&q);
-
-	QueuePush(&q, 1);
-	QueuePush(&q, 2);
-	QueuePush(&q, 3);
-	QueuePop(&q);
-	num = QueueBack(&q);
-	num = QueueFront(&q);
-}
+//void TestQueue()
+//{
+//	DataType num = 0;
+//	Queue q;
+//	QueueInit(&q);
+//
+//	QueuePush(&q, 1);
+//	QueuePush(&q, 2);
+//	QueuePush(&q, 3);
+//	QueuePop(&q);
+//	num = QueueBack(&q);
+//	num = QueueFront(&q);
+//}

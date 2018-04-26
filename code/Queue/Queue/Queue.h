@@ -1,25 +1,26 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-typedef int DataType;
+extern struct BinTreeNode;
+typedef struct BinTreeNode* QDataType;
 #include<stdio.h>
 #include<stdlib.h>
 #include<assert.h>
-typedef struct Node
+typedef struct QueueNode
 {
-	DataType _data;
-	struct Node* _pNext;
-}Node,*PNode;
+	QDataType _data;
+	struct QueueNode* _pNext;
+}QueueNode,*PQueueNode;
 typedef struct Queue
 {
-	PNode _pHead;
-	PNode _pTail;
+	PQueueNode _pHead;
+	PQueueNode _pTail;
 }Queue;
 /////////////////////////////
 void TestQueue();
 void QueueInit(Queue* q);
-void QueuePush(Queue* q, DataType data);
-PNode BuyNode(DataType data);
+void QueuePush(Queue* q, QDataType data);
+PQueueNode BuyQueueNode(QDataType data);
 void QueuePop(Queue* q);
-DataType QueueFront(Queue* q);
-DataType QueueBack(Queue* q);
+QDataType QueueFront(Queue* q);
+QDataType QueueBack(Queue* q);
 int QueueSize(Queue* q);
 int QueueEmpty(Queue* q);

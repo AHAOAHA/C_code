@@ -4,6 +4,7 @@
 #include<assert.h>
 #include<stdio.h>
 #include<string.h>
+#include"Queue.h"
 typedef char DataType;
 typedef struct BinTreeNode
 {
@@ -18,5 +19,6 @@ PNode BuyBinTreeNode(DataType data);
 void PerOrder(PNode pRoot);
 void PostOrder(PNode pRoot);
 void InFixOrder(PNode pRoot);
+void LevelOrder(PNode pRoot);
 void TestBinTree();
 //////////////////////////////////////
