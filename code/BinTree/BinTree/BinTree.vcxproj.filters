@@ -24,12 +24,18 @@
     <ClCompile Include="..\..\Queue\Queue\Queue.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Stack\Stack\Stack.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Queue\Queue\Queue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Stack\Stack\Stack.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

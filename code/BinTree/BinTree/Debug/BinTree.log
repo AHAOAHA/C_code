@@ -1,10 +1,11 @@
-﻿生成启动时间为 2018/4/26 22:17:11。
+﻿生成启动时间为 2018/5/6 19:00:17。
      1>项目“D:\bit\github\code\BinTree\BinTree\BinTree.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ID:\bit\github\code\Queue\Queue /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\Queue\Queue\Queue.c
-         Queue.c
+         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ID:\bit\github\code\Stack\Stack /ID:\bit\github\code\Queue\Queue /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt BinTree.c
+         BinTree.c
        Link:
          D:\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\bit\github\code\BinTree\Debug\BinTree.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\bit\github\code\BinTree\Debug\BinTree.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\bit\github\code\BinTree\Debug\BinTree.lib" /MACHINE:X86 Debug\Queue.obj
+         Debug\Stack.obj
          Debug\BinTree.obj
          Debug\test.obj
          BinTree.vcxproj -> D:\bit\github\code\BinTree\Debug\BinTree.exe
@@ -12,4 +13,4 @@
 
 生成成功。
 
-已用时间 00:00:00.41
+已用时间 00:00:00.50

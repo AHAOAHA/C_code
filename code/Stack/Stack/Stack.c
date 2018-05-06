@@ -2,12 +2,12 @@
 void StackInit(Stack* s)
 {
 	assert(s);
-	s->_array = (DataType*)malloc(MAXSIZE * sizeof(DataType));
+	s->_array = (StackDataType*)malloc(MAXSIZE * sizeof(StackDataType));
 	s->_capacity = MAXSIZE;
 	s->_top = 0;
 }
 //入栈
-void StackPush(Stack* s, DataType data)
+void StackPush(Stack* s, StackDataType data)
 {
 	assert(s);
 	*((s->_array) + (s->_top)) = data;
@@ -20,7 +20,7 @@ void StackPop(Stack* s)
 	s->_top--;
 }
 //获取栈顶元素
-DataType StackTop(Stack* s)
+StackDataType StackTop(Stack* s)
 {
 	assert(s);
 	if (StackEmpty(s))
