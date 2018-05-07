@@ -1,4 +1,4 @@
-﻿生成启动时间为 2018/5/6 19:00:17。
+﻿生成启动时间为 2018/5/7 16:13:52。
      1>项目“D:\bit\github\code\BinTree\BinTree\BinTree.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ID:\bit\github\code\Stack\Stack /ID:\bit\github\code\Queue\Queue /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt BinTree.c
@@ -13,4 +13,4 @@
 
 生成成功。
 
-已用时间 00:00:00.50
+已用时间 00:00:00.99

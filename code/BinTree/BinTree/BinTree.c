@@ -127,31 +127,30 @@ void PostOrder(PNode pRoot)
 //后序打印二叉树节点---非递归
 void PostOrderNor(PNode pRoot)
 {
-	PNode pPre = NULL;
 	PNode pCur = NULL;
-	Stack s;
+	Stack s1;
+	Stack s2;
 	if (NULL == pRoot)
 		return;
-	StackInit(&s);
+	StackInit(&s1);
+	StackInit(&s2);
 	pCur = pRoot;
-	StackPush(&s, pCur);
-	while (StackEmpty(&s))
+	StackPush(&s1, pCur);
+	while (StackEmpty(&s1))
 	{
-		while (pCur)
-		{
-			StackPush(&s, pCur->_pLeft);
-			pCur = pCur->_pLeft;
-		}
-		if (!StackTop(&s))
-			StackPop(&s);
-		pCur = StackTop(&s);
-		printf("%c   ", pCur->_data);
-		StackPop(&s);
-		pCur = StackTop(&s);
-		pCur = pCur->_pRight;
-		if (pCur)
-			StackPush(&s, pCur);
-
+		pCur = StackTop(&s1);
+		StackPop(&s1);
+		StackPush(&s2, pCur);
+		if (pCur->_pLeft)
+			StackPush(&s1, pCur->_pLeft);
+		if (pCur->_pRight)
+			StackPush(&s1, pCur->_pRight);
+		pCur = StackTop(&s1);
+	}
+	while (StackEmpty(&s2))
+	{
+		printf("%c   ", StackTop(&s2)->_data);
+		StackPop(&s2);
 	}
 }
 //层序遍历打印二叉树节点---需要使用队列
