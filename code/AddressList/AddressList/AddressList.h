@@ -31,6 +31,8 @@ void PrintLinkManByOrder(PLinkManNode PAddressList, int order);
 void FindLinkManByOrder(PLinkManNode PAddressList, int order);
 void AmendLinkManByName(PLinkManNode PAddressList, char name[20]);
 void AmendLinkManByOrder(PLinkManNode PAddressList, int order);
+void SwapLinkMan(PLinkManNode pLinkMan_1, PLinkManNode pLinkMan_2);
+void SortByName(PLinkManNode *PAddressList);
 void Menu();
 void TestAddressList();
 #endif//__ADDRESS_LIST__

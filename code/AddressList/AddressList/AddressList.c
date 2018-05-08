@@ -63,13 +63,17 @@ void DeleteLinkMan(PLinkManNode* PAddressList,int order)
 		return;
 	}
 	if (order > (MAXSIZE - Size))
+	{
+		printf("HAVE NO THIS LINKMAN!\n");
 		return;
+	}
 	CoverLinkMan(*PAddressList, order);
 	Size++;
 }
 //通过序号打印联系人信息
 void PrintLinkManByOrder(PLinkManNode PAddressList, int order)
 {
+	printf("%d.\n", order);
 	printf("NAME:%s", (PAddressList + order - 1)->_name);
 	printf("\n");
 	printf("AGE:%d", (PAddressList + order - 1)->_age);
@@ -91,7 +95,7 @@ void PrintLinkManByOrder(PLinkManNode PAddressList, int order)
 void FindLinkManByName(PLinkManNode PAddressList, char name[20])
 {
 	int i = 1;
-	for (i = 1; i < MAXSIZE - Size; i++)
+	for (i = 1; i <= MAXSIZE - Size; i++)
 	{
 		if (0 == strcmp(name, (PAddressList + i - 1)->_name))
 		{
@@ -105,12 +109,22 @@ void FindLinkManByName(PLinkManNode PAddressList, char name[20])
 //序号查找
 void FindLinkManByOrder(PLinkManNode PAddressList, int order)
 {
+	if (order > MAXSIZE - Size)
+	{
+		printf("HAVE NO THIS LINKMAN!\n");
+		return;
+	}
 	PrintLinkManByOrder(PAddressList, order);
 }
 //修改指定联系人信息
 //通过序号修改
 void AmendLinkManByOrder(PLinkManNode PAddressList, int order)
 {
+	if (1000 == Size)
+	{
+		printf("LinkMan enmty!\n");
+		return;
+	}
 	printf("Old value:\n");
 	PrintLinkManByOrder(PAddressList, order);
 	printf("amend:\n");
@@ -129,7 +143,7 @@ void AmendLinkManByOrder(PLinkManNode PAddressList, int order)
 void AmendLinkManByName(PLinkManNode PAddressList, char name[20])
 {
 	int i = 1;
-	for (i = 1; i < MAXSIZE - Size; i++)
+	for (i = 1; i <= MAXSIZE - Size; i++)
 	{
 		if (0 == strcmp(name, (PAddressList + i - 1)->_name))
 		{
@@ -148,10 +162,66 @@ void ClearLinkMan()
 void PrintAllLinkMan(PLinkManNode PAddressList)
 {
 	int i = 1;
+	if (1000 == Size)
+	{
+		printf("LINKMAN EMPTY!\n");
+		return;
+	}
 	for (i = 1; i <= MAXSIZE - Size; i++)
 	{
 		PrintLinkManByOrder(PAddressList, i);
 	}
+}
+//以名字排序
+void SwapLinkMan(PLinkManNode pLinkMan_1, PLinkManNode pLinkMan_2)
+{
+	long long int tel_tmp = 0;
+	int Sex_tmp = 0;
+	int age_tmp = 0;
+	char name_tmp[20] = { '0' };
+	char address_tmp[50] = { '0' };
+	strcpy(name_tmp, pLinkMan_1->_name);
+	strcpy(pLinkMan_1->_name, pLinkMan_2->_name);
+	strcpy(pLinkMan_2->_name, name_tmp);
+	strcpy(address_tmp, pLinkMan_1->_address);
+	strcpy(pLinkMan_1->_address, pLinkMan_2->_address);
+	strcpy(pLinkMan_2->_address, address_tmp);
+	age_tmp = pLinkMan_1->_age;
+	pLinkMan_1->_age = pLinkMan_2->_age;
+	pLinkMan_2->_age = age_tmp;
+	Sex_tmp = pLinkMan_1->Sex;
+	pLinkMan_1->Sex = pLinkMan_2->Sex;
+	pLinkMan_2->Sex = Sex_tmp;
+	tel_tmp = pLinkMan_1->_Tel;
+	pLinkMan_1->_Tel = pLinkMan_2->_Tel;
+	pLinkMan_2->_Tel = tel_tmp;
+}
+void SortByName(PLinkManNode *PAddressList)
+{
+	int i = 1;
+	int j = 1;
+	assert(PAddressList);
+	if (NULL == *PAddressList)
+	{
+		printf("LinkMan is gone!\n");
+		return;
+	}
+	if (1000 == Size)
+	{
+		printf("LINKMAN ENPTY!\n");
+		return;
+	}
+	for (i = MAXSIZE-Size; i > 1; i--)
+	{
+		for (j = 1; j < i; j++)
+		{
+			if (strcmp(((*PAddressList) + j - 1)->_name, ((*PAddressList) + j)->_name)>0)
+			{
+				SwapLinkMan((*PAddressList) + j - 1, (*PAddressList) + j);
+			}
+		}
+	}
+	printf("DONE!\n");
 }
 //菜单
 void Menu()
@@ -163,6 +233,9 @@ void Menu()
 	printf("++++++++++++4.FindLinkMan+++++++++++\n");
 	printf("++++++++++++5.PrintAllLinkMan+++++++\n");
 	printf("++++++++++++6.ClearAllLinkMan+++++++\n");
+	printf("++++++++++++7.SortLinkManByName+++++\n");
+	printf("++++++++++++8,Exit++++++++++++++++++\n");
+	printf("++++++++++++++++++++++++++++++++++++\n");
 	printf("++++++++++++++++++++++++++++++++++++\n");
 }
 //////////////////////////////////////测试函数
@@ -197,8 +270,9 @@ void TestAddressList()
 				AmendLinkManByOrder(AddressList, amendorder);
 				break;
 			case 2:printf("show your name:");
-				scanf("&s", amendname);
+				scanf("%s", amendname);
 				AmendLinkManByName(AddressList, amendname);
+				break;
 			default:
 				printf("error\n");
 				break;
@@ -209,7 +283,7 @@ void TestAddressList()
 			switch (num)
 			{
 			case 1:printf("please show your order:");
-				scanf("%d", amend);
+				scanf("%d", &amend);
 				FindLinkManByOrder(AddressList, amend);
 				break;
 			case 2:printf("please show your name:");
@@ -224,7 +298,12 @@ void TestAddressList()
 			break;
 		case 6:ClearLinkMan();
 			break;
+		case 7:SortByName(&AddressList);
+			break;
+		case 8:exit(1);
+			break;
 		default:printf("error\n");
+			break;
 		}
 	}
 }
