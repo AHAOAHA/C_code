@@ -34,6 +34,20 @@ void PerOrder(PNode pRoot)
 	PerOrder(pRoot->_pLeft);
 	PerOrder(pRoot->_pRight);
 }
+//拷贝二叉树   根+左子树+右子树
+PNode CopyBinTree(PNode pRoot)
+{
+	PNode pNewRoot = NULL;
+	if (pRoot)
+	{
+		pNewRoot = BuyBinTreeNode(pRoot->_data);
+		//拷贝左子树
+		pNewRoot->_pLeft = CopyBinTree(pRoot->_pLeft);
+		//拷贝右子树
+		pNewRoot->_pRight = CopyBinTree(pRoot->_pRight);
+	}
+	return pNewRoot;
+}
 //前序打印二叉树节点---非递归
 void PerOrderNor(PNode pRoot)
 {
@@ -63,6 +77,7 @@ void InFixOrder(PNode pRoot)
 	InFixOrder(pRoot->_pRight);
 }
 //方法一---中序打印二叉树节点---非递归
+//找当前树最左边的节点，并保存所经过路径中的所有节点
 void InFixOrderNor_1(PNode pRoot)
 {
 	PNode pCur = NULL;
@@ -128,29 +143,31 @@ void PostOrder(PNode pRoot)
 void PostOrderNor(PNode pRoot)
 {
 	PNode pCur = NULL;
-	Stack s1;
-	Stack s2;
+	PNode pTop = NULL;
+	PNode pPrev = NULL;//标记最近访问过的节点
+	Stack s;
 	if (NULL == pRoot)
 		return;
-	StackInit(&s1);
-	StackInit(&s2);
+	StackInit(&s);
 	pCur = pRoot;
-	StackPush(&s1, pCur);
-	while (StackEmpty(&s1))
+	while (pCur || StackEmpty(&s))
 	{
-		pCur = StackTop(&s1);
-		StackPop(&s1);
-		StackPush(&s2, pCur);
-		if (pCur->_pLeft)
-			StackPush(&s1, pCur->_pLeft);
-		if (pCur->_pRight)
-			StackPush(&s1, pCur->_pRight);
-		pCur = StackTop(&s1);
-	}
-	while (StackEmpty(&s2))
-	{
-		printf("%c   ", StackTop(&s2)->_data);
-		StackPop(&s2);
+		while (pCur)
+		{
+			StackPush(&s, pCur);
+			pCur = pCur->_pLeft;
+		}
+		pTop = StackTop(&s);
+		if (NULL == pTop->_pRight || pTop->_pRight == pPrev)//如果发现栈顶节点的右孩子已经被访问过时，直接遍历栈顶节点
+		{
+			printf("%c   ", pTop->_data);
+			pPrev = pTop;
+			StackPop(&s);
+		}
+		else
+		{
+			pCur = pTop->_pRight;
+		}
 	}
 }
 //层序遍历打印二叉树节点---需要使用队列
@@ -171,12 +188,43 @@ void LevelOrder(PNode pRoot)
 		QueuePop(&q);
 		pRoot = QueueFront(&q);
 	}
-
+}
+//二叉树的销毁
+//后序遍历的应用
+void DetoryBinTree(PNode* pRoot)
+{
+	PNode pCur = NULL;
+	assert(pRoot);
+	if (*pRoot)
+	{
+		DetoryBinTree(&(*pRoot)->_pLeft);
+		DetoryBinTree(&(*pRoot)->_pRight);
+		free(*pRoot);
+		*pRoot = NULL;
+	}
+}
+//二叉树的镜像---递归
+void SwapBinTreeData(PNode pRoot)
+{
+	PNode tmp = NULL;
+	tmp = pRoot->_pLeft;
+	pRoot->_pLeft = pRoot->_pRight;
+	pRoot->_pRight = tmp;
+}
+void MirrorBinTree(PNode pRoot)
+{
+	if (pRoot)
+	{
+		SwapBinTreeData(pRoot);
+		MirrorBinTree(pRoot->_pLeft);
+		MirrorBinTree(pRoot->_pRight);
+	}
 }
 ///////////////////////////////////////////////////////测试函数
 void TestBinTree()
 {
 	PNode pRoot;
+	PNode pNewRoot_TestCopyBinTree;
 	int index = 0;
 	DataType unindex = '#';
 	DataType array[] = "ABD###CE##F";
@@ -204,5 +252,13 @@ void TestBinTree()
 	printf("\n");
 	printf("层序打印：");
 	LevelOrder(pRoot);
+	printf("\n");
+	pNewRoot_TestCopyBinTree = CopyBinTree(pRoot);
+	printf("前序遍历（TEST COPY BINTREE）:");
+	PerOrder(pNewRoot_TestCopyBinTree);
+	printf("\n");
+	MirrorBinTree(pRoot);
+	printf("前序打印（镜像pRoot递归）：");
+	PerOrder(pRoot);
 	printf("\n");
 }

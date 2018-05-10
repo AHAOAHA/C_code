@@ -25,5 +25,9 @@ void LevelOrder(PNode pRoot);
 void InFixOrderNor_1(PNode pRoot);
 void InFixOrderNor_2(PNode pRoot);
 void PostOrderNor(PNode pRoot);
+PNode CopyBinTree(PNode pRoot);
+void DetoryBinTree(PNode* pRoot);
+void MirrorBinTree(PNode pRoot);
+void SwapBinTreeData(PNode pRoot);
 void TestBinTree();
 //////////////////////////////////////

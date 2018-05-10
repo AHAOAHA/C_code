@@ -300,7 +300,8 @@ void TestAddressList()
 			break;
 		case 7:SortByName(&AddressList);
 			break;
-		case 8:exit(1);
+		case 8:free(AddressList);
+			exit(1);
 			break;
 		default:printf("error\n");
 			break;
