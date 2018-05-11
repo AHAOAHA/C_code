@@ -5,11 +5,11 @@ typedef struct Maze
 {
 	int _map[MAX_ROW][MAX_COL];
 }Maze;
-//typedef struct Position
-//{
-//	int _x;
-//	int _y;
-//}Position;
+typedef struct Position
+{
+	int _x;
+	int _y;
+}Position;
 //ºÚµ•√‘π¨
 void InitMap(Maze* m, int map[MAX_ROW][MAX_COL]);
 void PrintMap(Maze* m);

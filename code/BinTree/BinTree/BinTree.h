@@ -28,6 +28,8 @@ void PostOrderNor(PNode pRoot);
 PNode CopyBinTree(PNode pRoot);
 void DetoryBinTree(PNode* pRoot);
 void MirrorBinTree(PNode pRoot);
-void SwapBinTreeData(PNode pRoot);
+void SwapBinTreeNode(PNode pRoot);
+void MirrorBinTreeNor(PNode pRoot);
+int BinTreeSize(PNode pRoot);
 void TestBinTree();
 //////////////////////////////////////

@@ -204,7 +204,7 @@ void DetoryBinTree(PNode* pRoot)
 	}
 }
 //二叉树的镜像---递归
-void SwapBinTreeData(PNode pRoot)
+void SwapBinTreeNode(PNode pRoot)
 {
 	PNode tmp = NULL;
 	tmp = pRoot->_pLeft;
@@ -215,10 +215,61 @@ void MirrorBinTree(PNode pRoot)
 {
 	if (pRoot)
 	{
-		SwapBinTreeData(pRoot);
+		SwapBinTreeNode(pRoot);
 		MirrorBinTree(pRoot->_pLeft);
 		MirrorBinTree(pRoot->_pRight);
 	}
+}
+//二叉树的镜像---非递归
+//后序遍历 从后向前镜像
+void MirrorBinTreeNor(PNode pRoot)
+{
+	Stack s;
+	PNode pCur = NULL;
+	PNode pTop = NULL;
+	PNode pPrev = NULL;
+	if (NULL == pRoot)
+		return;
+	StackInit(&s);
+	pCur = pRoot;
+	while (pCur || StackEmpty(&s))
+	{
+		while (pCur)
+		{
+			StackPush(&s, pCur);
+			pCur = pCur->_pLeft;
+		}
+		pTop = StackTop(&s);
+		if (NULL == pTop->_pRight || pTop->_pRight == pPrev)
+		{
+			SwapBinTreeNode(pTop);
+			pPrev = pTop;
+			StackPop(&s);
+		}
+		else
+		{
+			pCur = pTop->_pRight;
+		}
+	}
+}
+//求二叉树中节点的个数
+int BinTreeSize(PNode pRoot)
+{
+	static int count = 0;
+	if (NULL == pRoot)
+		return 0;
+	if (pRoot)
+	{
+		count++;
+		BinTreeSize(pRoot->_pLeft);
+		BinTreeSize(pRoot->_pRight);
+	}
+	return count;
+}
+//求二叉树中叶子节点的个数
+int BinTreeKLevelNode(PNode pRoot, int K)
+{
+
 }
 ///////////////////////////////////////////////////////测试函数
 void TestBinTree()
@@ -261,4 +312,9 @@ void TestBinTree()
 	printf("前序打印（镜像pRoot递归）：");
 	PerOrder(pRoot);
 	printf("\n");
+	MirrorBinTreeNor(pRoot);
+	printf("前序打印（镜像pRoot非递归）：");
+	PerOrder(pRoot);
+	printf("\n");	
+	printf("二叉树的节点个数：%d个.\n", BinTreeSize(pRoot));
 }
