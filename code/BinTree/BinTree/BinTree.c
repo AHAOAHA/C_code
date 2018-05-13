@@ -193,7 +193,6 @@ void LevelOrder(PNode pRoot)
 //后序遍历的应用
 void DetoryBinTree(PNode* pRoot)
 {
-	PNode pCur = NULL;
 	assert(pRoot);
 	if (*pRoot)
 	{
@@ -255,31 +254,81 @@ void MirrorBinTreeNor(PNode pRoot)
 //求二叉树中节点的个数
 int BinTreeSize(PNode pRoot)
 {
-	static int count = 0;
 	if (NULL == pRoot)
 		return 0;
-	if (pRoot)
-	{
-		count++;
-		BinTreeSize(pRoot->_pLeft);
-		BinTreeSize(pRoot->_pRight);
-	}
-	return count;
+	return 1 + BinTreeSize(pRoot->_pLeft) + BinTreeSize(pRoot->_pRight);//1表示根节点
 }
 //求二叉树中叶子节点的个数
+int BinTreeLeaf(PNode pRoot)
+{
+	if (pRoot)
+	{
+		if (NULL == pRoot->_pLeft && NULL == pRoot->_pRight)
+			return 1;
+		return BinTreeLeaf(pRoot->_pLeft) + BinTreeLeaf(pRoot->_pRight);
+	}
+	return 0;
+}
+//求二叉树中第K层节点的个数
 int BinTreeKLevelNode(PNode pRoot, int K)
 {
+	if (K > (BinTreeHight(pRoot) - 1) || NULL == pRoot)
+		return 0;
+	if (K == 0)
+		return 1;
+	return BinTreeKLevelNode(pRoot->_pLeft, K - 1) + BinTreeKLevelNode(pRoot->_pRight, K - 1);
 
+}
+//求二叉树的高度
+int BinTreeHight(PNode pRoot)
+{
+	if (NULL == pRoot)
+		return 0;
+	return (1 + BinTreeHight(pRoot->_pLeft)) >= (1 + BinTreeHight(pRoot->_pRight)) ? (1 + BinTreeHight(pRoot->_pLeft)) : (1 + BinTreeHight(pRoot->_pRight));
+}
+//二叉树中寻找值为DATA的节点，找不到返回NULL
+PNode FindNode(PNode pRoot, DataType data)
+{
+	if (pRoot)
+	{
+		if (pRoot->_data == data)
+			return pRoot;
+		return FindNode(pRoot->_pLeft, data) ? FindNode(pRoot->_pLeft, data) : FindNode(pRoot->_pRight, data);
+	}
+	return NULL;
+}
+//检测一个节点是否在二叉树中
+int IsNodeInBinTree(PNode pRoot, PNode pNode)
+{
+	if (pRoot)
+	{
+		if (pRoot == pNode)
+			return 1;
+		return IsNodeInBinTree(pRoot->_pLeft, pNode) ? IsNodeInBinTree(pRoot->_pLeft, pNode) : IsNodeInBinTree(pRoot->_pRight, pNode);
+	}
+	return 0;
+}
+//检测二叉树是否为完全二叉树
+int IsCompeteBinTree(PNode pRoot)
+{
+	PNode pCur = NULL;
+	if (NULL == pRoot)
+		return 0;
+	pCur = pRoot;
+	
 }
 ///////////////////////////////////////////////////////测试函数
 void TestBinTree()
 {
+	PNode pFindNode = NULL;
+	int K = 0;
 	PNode pRoot;
 	PNode pNewRoot_TestCopyBinTree;
 	int index = 0;
 	DataType unindex = '#';
 	DataType array[] = "ABD###CE##F";
 	CreateBinTree(&pRoot, array, &index, strlen(array), unindex);
+	//DetoryBinTree(&pRoot);
 	printf("前序打印：");
 	PerOrder(pRoot);
 	printf("\n");
@@ -317,4 +366,12 @@ void TestBinTree()
 	PerOrder(pRoot);
 	printf("\n");	
 	printf("二叉树的节点个数：%d个.\n", BinTreeSize(pRoot));
+	printf("二叉树叶子节点个数：%d个.\n", BinTreeLeaf(pRoot));
+	printf("二叉树的高度：%d.\n", BinTreeHight(pRoot));
+	printf("二叉树第%d层的节点个数为%d.\n", 2, BinTreeKLevelNode(pRoot, 2));
+	pFindNode = FindNode(pRoot, 'F');
+	if (IsNodeInBinTree(pRoot, FindNode(pRoot, 'F')))
+		printf("yes\n");
+	else
+		printf("NO\n");
 }

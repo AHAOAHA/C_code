@@ -31,5 +31,10 @@ void MirrorBinTree(PNode pRoot);
 void SwapBinTreeNode(PNode pRoot);
 void MirrorBinTreeNor(PNode pRoot);
 int BinTreeSize(PNode pRoot);
+int BinTreeLeaf(PNode pRoot);
+int BinTreeKLevelNode(PNode pRoot, int K);
+int BinTreeHight(PNode pRoot);
+int IsNodeInBinTree(PNode pRoot, PNode pNode);
+PNode FindNode(PNode pRoot, DataType data);
 void TestBinTree();
 //////////////////////////////////////
