@@ -6,7 +6,7 @@
 #include<string.h>
 #include"Queue.h"
 #include"Stack.h"
-typedef char DataType;
+typedef int DataType;
 typedef struct BinTreeNode
 {
 	struct BinTreeNode* _pLeft;

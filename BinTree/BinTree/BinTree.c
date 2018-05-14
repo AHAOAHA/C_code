@@ -364,60 +364,60 @@ int IsCompeteBinTree(PNode pRoot)
 	return 1;
 }
 ///////////////////////////////////////////////////////测试函数
-void TestBinTree()
-{
-	PNode pFindNode = NULL;
-	int K = 0;
-	PNode pRoot;
-	PNode pNewRoot_TestCopyBinTree;
-	int index = 0;
-	DataType unindex = '#';
-	DataType array[] = "ABD###CE##F";
-	CreateBinTree(&pRoot, array, &index, strlen(array), unindex);
-	//DetoryBinTree(&pRoot);
-	printf("前序打印：");
-	PerOrder(pRoot);
-	printf("\n");
-	printf("前序打印（非递归）：");
-	PerOrderNor(pRoot);
-	printf("\n");
-	printf("中序打印：");
-	InFixOrder(pRoot);
-	printf("\n");
-	printf("中序打印（方法一非递归）：");
-	InFixOrderNor_1(pRoot);
-	printf("\n");
-	printf("中序打印（方法二非递归）：");
-	InFixOrderNor_2(pRoot);
-	printf("\n");
-	printf("后序打印：");
-	PostOrder(pRoot);
-	printf("\n");
-	printf("后序打印（非递归）：");
-	PostOrderNor(pRoot);
-	printf("\n");
-	printf("层序打印：");
-	LevelOrder(pRoot);
-	printf("\n");
-	pNewRoot_TestCopyBinTree = CopyBinTree(pRoot);
-	printf("前序遍历（TEST COPY BINTREE）:");
-	PerOrder(pNewRoot_TestCopyBinTree);
-	printf("\n");
-	MirrorBinTree(pRoot);
-	printf("前序打印（镜像pRoot递归）：");
-	PerOrder(pRoot);
-	printf("\n");
-	MirrorBinTreeNor(pRoot);
-	printf("前序打印（镜像pRoot非递归）：");
-	PerOrder(pRoot);
-	printf("\n");	
-	printf("二叉树的节点个数：%d个.\n", BinTreeSize(pRoot));
-	printf("二叉树叶子节点个数：%d个.\n", BinTreeLeaf(pRoot));
-	printf("二叉树的高度：%d.\n", BinTreeHight(pRoot));
-	printf("二叉树第%d层的节点个数为%d.\n", 2, BinTreeKLevelNode(pRoot, 2));
-	pFindNode = FindNode(pRoot, 'F');
-	if (IsNodeInBinTree(pRoot, FindNode(pRoot, 'F')))
-		printf("yes\n");
-	else
-		printf("NO\n");
-}
+//void TestBinTree()
+//{
+//	PNode pFindNode = NULL;
+//	int K = 0;
+//	PNode pRoot;
+//	PNode pNewRoot_TestCopyBinTree;
+//	int index = 0;
+//	DataType unindex = '#';
+//	DataType array[] = "ABD###CE##F";
+//	CreateBinTree(&pRoot, array, &index, strlen(array), unindex);
+//	//DetoryBinTree(&pRoot);
+//	printf("前序打印：");
+//	PerOrder(pRoot);
+//	printf("\n");
+//	printf("前序打印（非递归）：");
+//	PerOrderNor(pRoot);
+//	printf("\n");
+//	printf("中序打印：");
+//	InFixOrder(pRoot);
+//	printf("\n");
+//	printf("中序打印（方法一非递归）：");
+//	InFixOrderNor_1(pRoot);
+//	printf("\n");
+//	printf("中序打印（方法二非递归）：");
+//	InFixOrderNor_2(pRoot);
+//	printf("\n");
+//	printf("后序打印：");
+//	PostOrder(pRoot);
+//	printf("\n");
+//	printf("后序打印（非递归）：");
+//	PostOrderNor(pRoot);
+//	printf("\n");
+//	printf("层序打印：");
+//	LevelOrder(pRoot);
+//	printf("\n");
+//	pNewRoot_TestCopyBinTree = CopyBinTree(pRoot);
+//	printf("前序遍历（TEST COPY BINTREE）:");
+//	PerOrder(pNewRoot_TestCopyBinTree);
+//	printf("\n");
+//	MirrorBinTree(pRoot);
+//	printf("前序打印（镜像pRoot递归）：");
+//	PerOrder(pRoot);
+//	printf("\n");
+//	MirrorBinTreeNor(pRoot);
+//	printf("前序打印（镜像pRoot非递归）：");
+//	PerOrder(pRoot);
+//	printf("\n");	
+//	printf("二叉树的节点个数：%d个.\n", BinTreeSize(pRoot));
+//	printf("二叉树叶子节点个数：%d个.\n", BinTreeLeaf(pRoot));
+//	printf("二叉树的高度：%d.\n", BinTreeHight(pRoot));
+//	printf("二叉树第%d层的节点个数为%d.\n", 2, BinTreeKLevelNode(pRoot, 2));
+//	pFindNode = FindNode(pRoot, 'F');
+//	if (IsNodeInBinTree(pRoot, FindNode(pRoot, 'F')))
+//		printf("yes\n");
+//	else
+//		printf("NO\n");
+//}

@@ -44,7 +44,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\bit\github\code\Stack\Stack;D:\bit\github\code\Queue\Queue;D:\bit\github\code\BinTree\BinTree;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\bit\github_code\Stack\Stack;D:\bit\github_code\Queue\Queue;D:\bit\github_code\BinTree\BinTree;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
