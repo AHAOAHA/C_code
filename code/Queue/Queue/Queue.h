@@ -24,3 +24,4 @@ QDataType QueueFront(Queue* q);
 QDataType QueueBack(Queue* q);
 int QueueSize(Queue* q);
 int QueueEmpty(Queue* q);
+void ClearQueue(Queue* q);

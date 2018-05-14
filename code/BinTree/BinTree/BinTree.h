@@ -36,5 +36,6 @@ int BinTreeKLevelNode(PNode pRoot, int K);
 int BinTreeHight(PNode pRoot);
 int IsNodeInBinTree(PNode pRoot, PNode pNode);
 PNode FindNode(PNode pRoot, DataType data);
+int IsCompeteBinTree(PNode pRoot);
 void TestBinTree();
 //////////////////////////////////////

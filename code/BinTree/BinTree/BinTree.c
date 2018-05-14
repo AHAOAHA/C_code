@@ -312,10 +312,56 @@ int IsNodeInBinTree(PNode pRoot, PNode pNode)
 int IsCompeteBinTree(PNode pRoot)
 {
 	PNode pCur = NULL;
+	PNode pPre = NULL;
+	int flag = 0;
+	Queue q;
 	if (NULL == pRoot)
 		return 0;
+	QueueInit(&q);
 	pCur = pRoot;
-	
+	QueuePush(&q, pCur);
+	while (!QueueEmpty(&q))//第一遍层序遍历找出界限节点
+	{
+		if (NULL == pCur->_pLeft || NULL == pCur->_pRight)
+		{
+			pPre = pCur;
+			break;
+		}
+		if (pCur->_pLeft)
+			QueuePush(&q, pCur->_pLeft);
+		if (pCur->_pRight)
+			QueuePush(&q, pCur->_pRight);
+		QueuePop(&q);
+		pCur = QueueFront(&q);
+	}
+	//将队列清空
+	ClearQueue(&q);
+	pCur = pRoot;
+	QueuePush(&q, pCur);
+	//第二遍层序遍历判断二叉树是否满足完全二叉树条件
+	while (!QueueEmpty(&q))
+	{
+		if (pCur == pPre)
+			flag = 1;
+		if (1 == flag)//判断界限节点是否满足完全二叉树条件
+		{
+			if (NULL == pCur->_pLeft && pCur->_pRight)
+				return 0;
+			flag++;
+		}
+		if (2 == flag)//判断界限节点之后的节点是否满足完全二叉树条件
+		{
+			if (pCur->_pLeft || pCur->_pRight)
+				return 0;
+		}
+		if (pCur->_pLeft)
+			QueuePush(&q, pCur->_pLeft);
+		if (pCur->_pRight)
+			QueuePush(&q, pCur->_pRight);
+		QueuePop(&q);
+		pCur = QueueFront(&q);
+	}
+	return 1;
 }
 ///////////////////////////////////////////////////////测试函数
 void TestBinTree()

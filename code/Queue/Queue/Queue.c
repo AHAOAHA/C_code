@@ -90,6 +90,15 @@ int QueueEmpty(Queue* q)
 	assert(q);
 	return NULL == q->_pHead;
 }
+//Çå¿Õ¶ÓÁÐ
+void ClearQueue(Queue* q)
+{
+	while (q->_pHead != q->_pTail)
+		QueuePop(q);
+	free(q->_pHead);
+	q->_pHead = NULL;
+	q->_pTail = NULL;
+}
 ////////////////////////
 //void TestQueue()
 //{
