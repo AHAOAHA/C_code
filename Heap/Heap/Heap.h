@@ -1,6 +1,5 @@
-#ifndef __HEAP__
-#define __HEAP__
 #define _CRT_SECURE_NO_WARNINGS 1
+#define MAXSIZE 50
 typedef int HDataType;
 typedef struct Heap
 {
@@ -15,6 +14,8 @@ typedef struct Heap
 void CreateHeap_Personal(Heap* hp, HDataType* array, int size);
 void CreateHeap(Heap* hp, HDataType* array, int size);
 void _AdjustDown(Heap* hp, int Root);
+void InsertHeap(Heap* hp, HDataType data);
+int SizeHeap(Heap* hp);
+int EmptyHeap(Heap* hp);
 void PrintHeap(Heap hp);
 void TestHeap();
-#endif//__HEAP__
