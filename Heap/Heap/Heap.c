@@ -1,4 +1,14 @@
 #include"Heap.h"
+//堆的初始化
+void InitHeap(Heap* hp/*, Compare com*/)
+{
+	assert(hp);
+	hp->_array = NULL;
+	hp->_size = 0;
+	hp->_capacity = 0;
+	//hp->_com = com;
+}
+
 //交换节点所存储的值
 void Swap(HDataType* first, HDataType* second)
 {
@@ -93,7 +103,7 @@ void PrintHeap(Heap hp)
 	}
 	printf("\n");
 }
-void CreateHeap(Heap* hp, HDataType* array, int size)
+void CreateHeap(Heap* hp, HDataType* array, int size/*, Compare com*/)
 {
 	int i = 0;
 	int Root = 0;
@@ -116,7 +126,7 @@ void CreateHeap(Heap* hp, HDataType* array, int size)
 	{
 		hp->_array[i] = array[i];
 	}
-	
+	//com指明要创建一个小堆
 	//整理堆
 	Root = (size - 2) / 2;
 	for (; Root >= 0; --Root)
@@ -185,6 +195,7 @@ int SizeHeap(Heap* hp)
 	return hp->_size;
 }
 //删除堆顶元素
+//直接删除堆顶的元素，然后把堆中最末尾的元素放在堆顶，再进行堆调整
 void DeleteHeapTop(Heap* hp)
 {
 	assert(hp);
@@ -193,7 +204,20 @@ void DeleteHeapTop(Heap* hp)
 		assert(0);
 		return;
 	}
+	//用堆末尾的元素覆盖堆顶的元素
+	hp->_array[0] = hp->_array[hp->_size - 1];
+	hp->_size--;
 
+	//进行堆调整
+	_AdjustDown(hp, 0);
+}
+void DestoryHeap(Heap* hp)
+{
+	assert(hp);
+	free(hp->_array);
+	hp->_array = NULL;
+	hp->_capacity = 0;
+	hp->_size = 0;
 }
 ///////////////////////////////////////////////////////////////测试函数
 void TestHeap()
@@ -203,6 +227,8 @@ void TestHeap()
 	//CreateHeap_Personal(&hp, array, sizeof(array)/sizeof(array[0]));
 	CreateHeap(&hp, array, sizeof(array) / sizeof(array[0]));
 	InsertHeap(&hp, 1);
+	PrintHeap(hp);
+	DeleteHeapTop(&hp);
 	PrintHeap(hp);
 }
 
