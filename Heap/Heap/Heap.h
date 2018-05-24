@@ -22,4 +22,5 @@ int SizeHeap(Heap* hp);
 int EmptyHeap(Heap* hp);
 void DeleteHeapTop(Heap* hp);
 void PrintHeap(Heap hp);
+void _CheckCapacity(Heap* hp);
 void TestHeap();

@@ -134,6 +134,10 @@ void CreateHeap(Heap* hp, HDataType* array, int size/*, Compare com*/)
 		_AdjustDown(hp, Root);
 	}
 }
+
+//大堆的调整函数
+
+//小堆的调整函数
 void _AdjustDown(Heap* hp, int Root)
 {
 	int Parent = 0;
@@ -160,6 +164,20 @@ void _AdjustDown(Heap* hp, int Root)
 		Child = Parent * 2 + 1;
 	}
 }
+//检测堆中是否还有可用空间
+void _CheckCapacity(Heap* hp)
+{
+	assert(hp);
+	if (hp->_capacity == hp->_size)
+	{
+		realloc(hp->_array, sizeof(HDataType)*(hp->_capacity * 2));
+		if (NULL == hp->_array)
+		{
+			assert(0);
+			return;
+		}
+	}
+}
 //在堆中插入一个元素
 void InsertHeap(Heap* hp, HDataType data)
 {
@@ -168,6 +186,9 @@ void InsertHeap(Heap* hp, HDataType data)
 	assert(hp);
 	if (hp->_size >= hp->_capacity)
 		return;
+
+	//插入时，首先要检测堆中是否还有可用空间
+	_CheckCapacity(hp);
 
 	//将要插入的数据连接在堆的末尾
 	hp->_array[hp->_size] = data;
@@ -194,7 +215,7 @@ int SizeHeap(Heap* hp)
 	assert(hp);
 	return hp->_size;
 }
-//删除堆顶元素
+//删除堆顶元素 
 //直接删除堆顶的元素，然后把堆中最末尾的元素放在堆顶，再进行堆调整
 void DeleteHeapTop(Heap* hp)
 {
