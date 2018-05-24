@@ -1,6 +1,6 @@
 #include"Heap.h"
 //堆的初始化
-void InitHeap(Heap* hp/*, Compare com*/)
+void InitHeap(Heap* hp, Compare com)
 {
 	assert(hp);
 	hp->_array = NULL;
@@ -103,7 +103,7 @@ void PrintHeap(Heap hp)
 	}
 	printf("\n");
 }
-void CreateHeap(Heap* hp, HDataType* array, int size/*, Compare com*/)
+void CreateHeap(Heap* hp, HDataType* array, int size, Compare com)
 {
 	int i = 0;
 	int Root = 0;
@@ -112,6 +112,9 @@ void CreateHeap(Heap* hp, HDataType* array, int size/*, Compare com*/)
 		assert(0);
 		return;
 	}
+	//指明堆的调整方式
+	hp->_com = com;
+
 	//给堆开辟空间
 	hp->_capacity = MAXSIZE;
 	hp->_array = (HDataType*)malloc(sizeof(HDataType)*hp->_capacity);
@@ -134,10 +137,15 @@ void CreateHeap(Heap* hp, HDataType* array, int size/*, Compare com*/)
 		_AdjustDown(hp, Root);
 	}
 }
-
-//大堆的调整函数
-
-//小堆的调整函数
+int Less(HDataType Left, HDataType Right)
+{
+	return Left < Right;
+}
+int Greater(HDataType Left, HDataType Right)
+{
+	return Left>Right;
+}
+//小/大堆的向下调整函数（向下调整法）
 void _AdjustDown(Heap* hp, int Root)
 {
 	int Parent = 0;
@@ -151,17 +159,38 @@ void _AdjustDown(Heap* hp, int Root)
 		if (Child + 1 <= hp->_size - 1)
 		{
 			//找出两个孩子中较小的一个
-			if (hp->_array[Child] > hp->_array[Child + 1])
+			if (Child+1<hp->_size && hp->_com(hp->_array[Child + 1] , hp->_array[Child]))
 				Child += 1;
 		}
 
 		//较小的孩子与双亲节点比较，如果双亲节点较大就交换
-		if (hp->_array[Parent] > hp->_array[Child])
+		if (hp->_com(hp->_array[Child], hp->_array[Parent]))
 		{
 			Swap(&hp->_array[Parent], &hp->_array[Child]);
 		}
 		Parent = Child;
 		Child = Parent * 2 + 1;
+	}
+}
+
+//向上调整法
+void _AdjustUp(Heap* hp, int Root)
+{
+	int Parent = 0;
+	int Child = 0;
+	//让child指向新插入的指针
+	Child = Root;
+	Parent = ((Child - 1) >> 1);
+
+	//调整堆
+	while (0 <= Parent)
+	{
+		if (hp->_com(hp->_array[Child], hp->_array[Parent]))
+		{
+			Swap(&hp->_array[Child], &hp->_array[Parent]);
+		}
+		Child = Parent;
+		Parent = ((Parent - 2) >> 1);
 	}
 }
 //检测堆中是否还有可用空间
@@ -195,12 +224,20 @@ void InsertHeap(Heap* hp, HDataType data)
 	hp->_size++;
 
 	//调整堆
-	Parent = (hp->_size - 2) / 2;
+	/*Parent = (hp->_size - 2) / 2;
 	Child = Parent * 2 + 1;
 	while (0 <= Parent)
 	{
 		_AdjustDown(hp, Parent);
 		Parent = ((Parent - 1) >> 1);
+	}*/
+	
+	//使用向上调整法调整堆
+	Child = hp->_size - 1;
+	while (Child > 0)
+	{
+		_AdjustUp(hp, Child);
+		Child = ((Child - 1) >> 1);
 	}
 }
 //检测一个堆是否为空堆
@@ -246,10 +283,10 @@ void TestHeap()
 	Heap hp;
 	HDataType array[] = {53,17,78,9,45,65,87,23,31};
 	//CreateHeap_Personal(&hp, array, sizeof(array)/sizeof(array[0]));
-	CreateHeap(&hp, array, sizeof(array) / sizeof(array[0]));
-	InsertHeap(&hp, 1);
+	CreateHeap(&hp, array, sizeof(array) / sizeof(array[0]),Less);
+	InsertHeap(&hp, 5);
 	PrintHeap(hp);
-	DeleteHeapTop(&hp);
-	PrintHeap(hp);
+	////DeleteHeapTop(&hp);
+	//PrintHeap(hp);
 }
 
