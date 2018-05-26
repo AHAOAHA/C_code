@@ -5,8 +5,9 @@ void InitHeap(Heap* hp, Compare com)
 	assert(hp);
 	hp->_array = NULL;
 	hp->_size = 0;
-	hp->_capacity = 0;
-	//hp->_com = com;
+	hp->_capacity = MAXSIZE;
+	hp->_array = (HDataType*)malloc(sizeof(HDataType)*hp->_capacity);
+	hp->_com = com;
 }
 
 //交换节点所存储的值
@@ -134,7 +135,7 @@ void CreateHeap(Heap* hp, HDataType* array, int size, Compare com)
 	Root = (size - 2) / 2;
 	for (; Root >= 0; --Root)
 	{
-		_AdjustDown(hp, Root);
+		_AdjustDown(hp, Root, hp->_size);
 	}
 }
 int Less(HDataType Left, HDataType Right)
@@ -146,20 +147,20 @@ int Greater(HDataType Left, HDataType Right)
 	return Left>Right;
 }
 //小/大堆的向下调整函数（向下调整法）
-void _AdjustDown(Heap* hp, int Root)
+void _AdjustDown(Heap* hp, int Root,int size)
 {
 	int Parent = 0;
 	int Child = 0;
 	Parent = Root;
 	Child = Parent * 2 + 1;
 	
-	while (Child < hp->_size)
+	while (Child < size)
 	{
 		//判断他的右孩子是否存在
-		if (Child + 1 <= hp->_size - 1)
+		if (Child + 1 <= size - 1)
 		{
 			//找出两个孩子中较小的一个
-			if (Child+1<hp->_size && hp->_com(hp->_array[Child + 1] , hp->_array[Child]))
+			if (Child+1<size && hp->_com(hp->_array[Child + 1] , hp->_array[Child]))
 				Child += 1;
 		}
 
@@ -267,7 +268,7 @@ void DeleteHeapTop(Heap* hp)
 	hp->_size--;
 
 	//进行堆调整
-	_AdjustDown(hp, 0);
+	_AdjustDown(hp, 0, hp->_size);
 }
 void DestoryHeap(Heap* hp)
 {
@@ -277,14 +278,57 @@ void DestoryHeap(Heap* hp)
 	hp->_capacity = 0;
 	hp->_size = 0;
 }
+
+//销毁堆
+void DestroyHeap(Heap* hp)
+{
+	assert(hp);
+	free(hp->_array);
+	hp->_capacity = 0;
+	hp->_size = 0;
+	hp->_com = NULL;
+}
+
+//堆排序
+//1.先交换堆顶元素与末尾元素（即已经把最大的元素放在末尾）
+//2.下次调整就不包括堆中的最后一个元素
+void SortHeap(Heap* hp)
+{
+	int Parent = 0;
+	int Child = 0;
+	int size = 0;
+	assert(hp);
+	size = hp->_size;
+
+	while (size > 0)
+	{
+		//调整堆
+		Parent = (size - 2) / 2;
+		Child = Parent * 2 + 1;
+		while (0 <= Parent)
+		{
+		_AdjustDown(hp, Parent, size);
+		Parent = ((Parent - 1) >> 1);
+		}
+		PrintHeap(*hp);
+		//交换堆顶元素和末尾元素
+		Swap(&hp->_array[0], &hp->_array[size - 1]);
+
+		//吐出最后一个元素
+		--size;
+	}
+}
+
 ///////////////////////////////////////////////////////////////测试函数
 void TestHeap()
 {
 	Heap hp;
 	HDataType array[] = {53,17,78,9,45,65,87,23,31};
 	//CreateHeap_Personal(&hp, array, sizeof(array)/sizeof(array[0]));
-	CreateHeap(&hp, array, sizeof(array) / sizeof(array[0]),Less);
+	CreateHeap(&hp, array, sizeof(array) / sizeof(array[0]),Greater);
 	InsertHeap(&hp, 5);
+	PrintHeap(hp);
+	SortHeap(&hp);
 	PrintHeap(hp);
 	////DeleteHeapTop(&hp);
 	//PrintHeap(hp);

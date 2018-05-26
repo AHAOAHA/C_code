@@ -16,14 +16,16 @@ typedef struct Heap
 void InitHeap(Heap* hp, Compare com);
 void CreateHeap_Personal(Heap* hp, HDataType* array, int size, Compare com);
 void CreateHeap(Heap* hp, HDataType* array, int size,Compare com);
-void _AdjustDown(Heap* hp, int Root);
+void _AdjustDown(Heap* hp, int Root, int size);
 void _AdjustUp(Heap* hp, int Root);
 void InsertHeap(Heap* hp, HDataType data);
 int SizeHeap(Heap* hp);
 int EmptyHeap(Heap* hp);
 void DeleteHeapTop(Heap* hp);
+void DestroyHeap(Heap* hp);
 void PrintHeap(Heap hp);
 void _CheckCapacity(Heap* hp);
 int Less(HDataType Left, HDataType Right);
 int Greater(HDataType Left, HDataType Right);
+void SortHeap(Heap* hp);
 void TestHeap();
