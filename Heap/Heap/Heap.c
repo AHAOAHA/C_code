@@ -135,7 +135,7 @@ void CreateHeap(Heap* hp, HDataType* array, int size, Compare com)
 	Root = (size - 2) / 2;
 	for (; Root >= 0; --Root)
 	{
-		_AdjustDown(hp, Root, hp->_size);
+		_AdjustDown(hp, Root);
 	}
 }
 int Less(HDataType Left, HDataType Right)
@@ -147,20 +147,20 @@ int Greater(HDataType Left, HDataType Right)
 	return Left>Right;
 }
 //小/大堆的向下调整函数（向下调整法）
-void _AdjustDown(Heap* hp, int Root,int size)
+void _AdjustDown(Heap* hp, int Root)
 {
 	int Parent = 0;
 	int Child = 0;
 	Parent = Root;
 	Child = Parent * 2 + 1;
 	
-	while (Child < size)
+	while (Child < hp->_size)
 	{
 		//判断他的右孩子是否存在
-		if (Child + 1 <= size - 1)
+		if (Child + 1 <= hp->_size - 1)
 		{
 			//找出两个孩子中较小的一个
-			if (Child+1<size && hp->_com(hp->_array[Child + 1] , hp->_array[Child]))
+			if (Child+1<hp->_size && hp->_com(hp->_array[Child + 1] , hp->_array[Child]))
 				Child += 1;
 		}
 
@@ -268,7 +268,7 @@ void DeleteHeapTop(Heap* hp)
 	hp->_size--;
 
 	//进行堆调整
-	_AdjustDown(hp, 0, hp->_size);
+	_AdjustDown(hp, 0);
 }
 void DestoryHeap(Heap* hp)
 {
@@ -300,37 +300,78 @@ void SortHeap(Heap* hp)
 	assert(hp);
 	size = hp->_size;
 
-	while (size > 0)
+	while (hp->_size > 0)
 	{
 		//调整堆
-		Parent = (size - 2) / 2;
+		Parent = (hp->_size - 2) / 2;
 		Child = Parent * 2 + 1;
 		while (0 <= Parent)
 		{
-		_AdjustDown(hp, Parent, size);
+		_AdjustDown(hp, Parent);
 		Parent = ((Parent - 1) >> 1);
 		}
-		PrintHeap(*hp);
+		//PrintHeap(*hp);
 		//交换堆顶元素和末尾元素
-		Swap(&hp->_array[0], &hp->_array[size - 1]);
+		Swap(&hp->_array[0], &hp->_array[hp->_size - 1]);
 
 		//吐出最后一个元素
-		--size;
+		--(hp->_size);
 	}
+	hp->_size = size;
 }
 
+//用堆解决Top_k问题
+//先用数据的前K个元素建立一个小堆
+//剩余的数据与堆顶元素比较  
+//如果大于堆顶元素就覆盖堆顶元素然后重新调整堆
+//如果小于就继续查看下一个元素
+//循环此过程直至数据遍历完成
+void TopKByHeap(HDataType* array, int K, int size)
+{
+	int i = 0;
+	//初始化堆
+	Heap hp;
+	InitHeap(&hp, Less);
+
+	//建立有K个节点的小堆
+	while (hp._size < K)
+	{
+		InsertHeap(&hp, array[i]);
+		i++;
+	}
+
+	//调整后续元素
+	while (i < size)
+	{
+		//如果后续元素大于堆顶元素
+		if (array[i]>hp._array[0])
+		{
+			//覆盖堆顶元素
+			hp._array[0] = array[i];
+
+			//调整堆
+			_AdjustDown(&hp, 0);
+		}
+		i++;
+	}
+	printf("Top-K:");
+	PrintHeap(hp);
+}
 ///////////////////////////////////////////////////////////////测试函数
 void TestHeap()
 {
-	Heap hp;
-	HDataType array[] = {53,17,78,9,45,65,87,23,31};
-	//CreateHeap_Personal(&hp, array, sizeof(array)/sizeof(array[0]));
-	CreateHeap(&hp, array, sizeof(array) / sizeof(array[0]),Greater);
-	InsertHeap(&hp, 5);
-	PrintHeap(hp);
-	SortHeap(&hp);
-	PrintHeap(hp);
+	HDataType array[20] = { 1,2,3,4,5,6,7,8,9,10,99,88,77,66,55,44,33,22,11,34 };
+	TopKByHeap(array, 10, sizeof(array) / sizeof(array[0]));
+	//Heap hp;
+	//HDataType array[] = {53,17,78,9,45,65,87,23,31};
+	////CreateHeap_Personal(&hp, array, sizeof(array)/sizeof(array[0]));
+	//CreateHeap(&hp, array, sizeof(array) / sizeof(array[0]),Greater);
+	//InsertHeap(&hp, 5);
+	//PrintHeap(hp);
+	//SortHeap(&hp);
+	//PrintHeap(hp);
 	////DeleteHeapTop(&hp);
 	//PrintHeap(hp);
+	
 }
 
