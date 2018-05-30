@@ -13,5 +13,10 @@ typedef struct BSTreeNode
 void InitBSTree(BSTNode** pRoot);
 void InsertBSTree(BSTNode** pRoot, BSTDataType data);
 BSTNode* BuyBSTNode(BSTDataType data);
-
+BSTNode* FindBSTree(BSTNode** pRoot, BSTDataType data);
+void Swap(BSTDataType* Left, BSTDataType* Right);
+void DeleteBSTree(BSTNode** pRoot, BSTDataType data);
+void PreOrder(BSTNode* pRoot);
+void DestroyBSTree(BSTNode** pRoot);
+BSTNode* FindBSTreeR(BSTNode** pRoot, BSTDataType data);
 void TestBSTree();

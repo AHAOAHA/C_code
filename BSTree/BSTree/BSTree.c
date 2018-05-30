@@ -1,5 +1,5 @@
-#include"BSTree.h"
-//³õÊ¼»¯
+ï»¿#include"BSTree.h"
+//åˆå§‹åŒ–
 void InitBSTree(BSTNode** pRoot)
 {
 	assert(pRoot);
@@ -9,7 +9,7 @@ void InitBSTree(BSTNode** pRoot)
 BSTNode* BuyBSTNode(BSTDataType data)
 {
 	BSTNode* pNewNode = NULL;
-	//ÎªĞÂ½ÚµãÉêÇë¿Õ¼ä
+	//ä¸ºæ–°èŠ‚ç‚¹ç”³è¯·ç©ºé—´
 	pNewNode = (BSTNode*)malloc(sizeof(BSTNode));
 	if (NULL == pNewNode)
 	{
@@ -17,27 +17,27 @@ BSTNode* BuyBSTNode(BSTDataType data)
 		return NULL;
 	}
 
-	//¸øĞÂ½Úµã¸³Öµ
+	//ç»™æ–°èŠ‚ç‚¹èµ‹å€¼
 	pNewNode->_data = data;
 	pNewNode->_pLeft = NULL;
 	pNewNode->_pRight = NULL;
 
 	return pNewNode;
 }
-//²åÈëÖµÎªdataµÄÔªËØ
+//æ’å…¥å€¼ä¸ºdataçš„å…ƒç´ 
 void InsertBSTree(BSTNode** pRoot, BSTDataType data)
 {
 	BSTNode* pCur = NULL;
 	BSTNode* pParent = NULL;
 	assert(pRoot);
-	//µ±¶ş²æËÑË÷Ê÷Îª¿ÕÊ±
+	//å½“äºŒå‰æœç´¢æ ‘ä¸ºç©ºæ—¶
 	if (NULL == *pRoot)
 	{
 		*pRoot = BuyBSTNode(data);
 		return;
 	}
-	//µ±¶ş²æËÑË÷Ê÷²»¿ÕÊ±
-	//²éÕÒ´ø²åÈë½ÚµãµÄÎ»ÖÃ
+	//å½“äºŒå‰æœç´¢æ ‘ä¸ç©ºæ—¶
+	//æŸ¥æ‰¾å¸¦æ’å…¥èŠ‚ç‚¹çš„ä½ç½®
 	pCur = *pRoot;
 	pParent = pCur;
 	while (pCur)
@@ -55,7 +55,7 @@ void InsertBSTree(BSTNode** pRoot, BSTDataType data)
 			return;
 	}
 
-	//²åÈëĞÂ½Úµã
+	//æ’å…¥æ–°èŠ‚ç‚¹
 	if (data < pParent->_data)
 	{
 		pParent->_pLeft = BuyBSTNode(data);
@@ -66,7 +66,7 @@ void InsertBSTree(BSTNode** pRoot, BSTDataType data)
 	}
 }
 
-//ÔÚ¶ş²æËÑË÷Ê÷ÖĞ²éÕÒÖµÎªdataµÄ½Úµã
+//åœ¨äºŒå‰æœç´¢æ ‘ä¸­æŸ¥æ‰¾å€¼ä¸ºdataçš„èŠ‚ç‚¹
 BSTNode* FindBSTree(BSTNode** pRoot, BSTDataType data)
 {
 	BSTNode* pFind = NULL;
@@ -87,14 +87,14 @@ BSTNode* FindBSTree(BSTNode** pRoot, BSTDataType data)
 	}
 	return NULL;
 }
-//½»»»ÊıÖµ
+//äº¤æ¢æ•°å€¼
 void Swap(BSTDataType* Left, BSTDataType* Right)
 {
 	BSTDataType tmp = *Left;
 	*Left = *Right;
 	*Right = tmp;
 }
-//É¾³ıÖµÎªdataµÄ½Úµã
+//åˆ é™¤å€¼ä¸ºdataçš„èŠ‚ç‚¹
 void DeleteBSTree(BSTNode** pRoot, BSTDataType data)
 {
 	BSTNode* pCur = NULL;
@@ -102,115 +102,167 @@ void DeleteBSTree(BSTNode** pRoot, BSTDataType data)
 	BSTNode* MaxInLeft = NULL;
 	BSTNode* pDel = NULL;
 	assert(pRoot);
+	
+	pCur = *pRoot;
 
-	//²éÕÒÖµÎªdataµÄ½Úµã
-	pDel = FindBSTree(pRoot, data);
-
-	//µ±ÒªÉ¾³ıµÄ½ÚµãÊÇ¸ù½Úµã
-	if (pDel == *pRoot)
+	//å¯»æ‰¾è¦åˆ é™¤çš„èŠ‚ç‚¹
+	while (pCur &&  data != pCur->_data)
 	{
-		//¸ù½ÚµãµÄ×óº¢×Ó¼´¾ÍÊÇ×ó×ÓÊ÷ÖĞ×î´óµÄ½Úµã
-		if (NULL == (*pRoot)->_pLeft)
-		{
-			//¼´ËµÃ÷¸ù½ÚµãµÄ×óº¢×Ó½ÚµãÃ»ÓĞÓÒº¢×Ó
-			//ÈÃ¸ù½ÚµãµÄ×óº¢×ÓÁ¬½Ó¸ù½ÚµãµÄÓÒº¢×Ó
-			(*pRoot)->_pLeft->_pRight = (*pRoot)->_pRight;
-			//ÊÍ·Å¸ù½Úµã
-			free(*pRoot);
-			//ÈÃMAXINLEFT³ÉÎªĞÂµÄ¸ù½Úµã
-			pRoot = &(*pRoot)->_pLeft;
-		}
+		if (data < pCur->_data)
+			pCur = pCur->_pLeft;
 		else
-		{
-			//ÕÒµ½pRoot×ó×ÓÊ÷Àï×îÓÒ±ß£¨×î´ó£©µÄ½Úµã
-			MaxInLeft = (*pRoot)->_pLeft;
-			while (MaxInLeft->_pRight)
-			{
-				pParent = MaxInLeft;
-				MaxInLeft = MaxInLeft->_pRight;
-			}
-			//½«ÕÒµ½µÄ½ÚµãµÄË«Ç×½ÚµãµÄÓÒº¢×ÓÖÃ¿Õ
-			pParent->_pRight = NULL;
-			//½»»»ÕÒµ½µÄ½ÚµãÓë¸ù½ÚµãµÄÊı¾İ
-			Swap(&MaxInLeft->_data, &(*pRoot)->_data);
-			//ÊÍ·ÅÕÒµ½µÄ½Úµã
-			free(MaxInLeft);
-			MaxInLeft = NULL;
-		}
+			pCur = pCur->_pRight;
 	}
+	//å¦‚æœè¦åˆ é™¤çš„æ•°å­—ä¸åœ¨äºŒå‰æ ‘ä¸­å°±é€€å‡º
+	if (NULL == pCur)
+		return;
 
-	//µ±ÒªÉ¾³ıµÄ½ÚµãÔÚ¸ù½ÚµãµÄ×óÓÒ×ÓÊ÷ÖĞ
-	else
+	//ç”¨pDelæ ‡è®°è¦åˆ é™¤çš„èŠ‚ç‚¹
+	pDel = pCur;
+		//a.è¦åˆ é™¤çš„ç»“ç‚¹æ— å­©å­ç»“ç‚¹Â Â 
+		//b.è¦åˆ é™¤çš„ç»“ç‚¹åªæœ‰å·¦å­©å­ç»“ç‚¹Â 
+	if ((pDel->_pLeft && NULL == pDel->_pRight)||(NULL == pDel->_pLeft&&NULL ==pDel->_pRight))
 	{
-		pCur = (*pRoot);
+		//è®©è¦åˆ é™¤èŠ‚ç‚¹çš„åŒäº²èŠ‚ç‚¹æŒ‡å‘è¦åˆ é™¤èŠ‚ç‚¹çš„å·¦å­©å­
+		pCur = *pRoot;
+		pParent = *pRoot;
 
-		//ÒªÉ¾³ıµÄ½ÚµãÊÇº¢×Ó½Úµã||ÒªÉ¾³ıµÄ½ÚµãÖ»ÓĞÒ»¿Å×ÓÊ÷
-		if (NULL == pDel->_pLeft || NULL==pDel->_pRight)
+		//æ‰¾è¦åˆ é™¤èŠ‚ç‚¹çš„åŒäº²èŠ‚ç‚¹
+		while (pCur != pDel)
 		{
-			while (pCur == pDel && pCur)
+			pParent = pCur;
+			if (data < pCur->_data)
 			{
-				pParent = pCur;
-				if (pDel->_data < pCur->_data)
-				{
-					pCur = pCur->_pLeft;
-				}
-				else if (pDel->_data>pCur->_data)
-				{
-					pCur = pCur->_pRight;
-				}
+				pCur = pCur->_pLeft;
 			}
-			//PdeLÊÇË«Ç×µÄ×óº¢×Ó
-			if (pDel = pParent->_pLeft)
+			else
 			{
-				if (NULL != pDel->_pLeft)
-					pParent->_pLeft = pDel->_pLeft;
-				else if (NULL != pDel->_pRight)
-					pParent->_pLeft = pDel->_pRight;
-				else
-					pParent->_pLeft = pDel->_pLeft;
+				pCur = pCur->_pRight;
 			}
-			//PdeLÊÇË«Ç×µÄÓÒº¢×Ó
-			else if (pDel = pParent->_pRight)
-			{
-				if (NULL != pDel->_pRight)
-					pParent->_pRight = pDel->_pRight;
-				else if (NULL != pDel->_pLeft)
-					pParent->_pRight = pDel->_pLeft;
-				else
-					pParent->_pRight = pDel->_pLeft;
-			}
+		}
+
+		if (pParent == pDel)//è¦åˆ é™¤çš„èŠ‚ç‚¹æ˜¯æ ¹èŠ‚ç‚¹
+		{
+			pRoot = &(*pRoot)->_pLeft;
 			free(pDel);
 			pDel = NULL;
 			return;
 		}
 
-		//ÒªÉ¾³ıµÄ½ÚµãÓĞÁ½¿Å×ÓÊ÷
-		else if (NULL != pDel->_pLeft&&NULL != pDel->_pRight)
+		//åˆ¤æ–­è¦åˆ é™¤çš„èŠ‚ç‚¹æ˜¯åŒäº²ç»“ç‚¹çš„å·¦å­©å­è¿˜æ˜¯å³å­©å­
+		if (pParent->_pLeft == pDel)
 		{
-			//ÒªÉ¾³ıµÄ½ÚµãÔÚ¸ù½ÚµãµÄ×ó×ÓÊ÷
-			if (pDel->_data < (*pRoot)->_data)
-			{
-				pCur = (*pRoot);
-				while (pCur == pDel && pCur)
-				{
-					pParent = pCur;
-					if (pDel->_data < pCur->_data)
-					{
-						pCur = pCur->_pLeft;
-					}
-					else if (pDel->_data>pCur->_data)
-					{
-						pCur = pCur->_pRight;
-					}
-				}
-				pParent->_pLeft = pDel->_pRight;
-
-			}
+			//è¦åˆ é™¤çš„èŠ‚ç‚¹ä¸æ˜¯æ ¹èŠ‚ç‚¹
+			pParent->_pLeft = pDel->_pLeft;
+			free(pDel);
+			pDel = NULL;
+			return;
+		}
+		else
+		{
+			pParent->_pRight = pDel->_pLeft;
+			free(pDel);
+			pDel = NULL;
+			return;
 		}
 	}
- }
+		//c.è¦åˆ é™¤çš„ç»“ç‚¹åªæœ‰å³å­©å­ç»“ç‚¹Â Â 
+	else if (pDel->_pRight && NULL == pDel->_pLeft)
+	{
+		pCur = *pRoot;
+		pParent = pCur;
 
-//ÖĞĞò±éÀú¶ş²æËÑË÷Ê÷
+		//æ‰¾è¦åˆ é™¤èŠ‚ç‚¹çš„åŒäº²ç»“ç‚¹
+		while (pCur != pDel)
+		{
+			pParent = pCur;
+			if (data < pCur->_data)
+			{
+				pCur = pCur->_pLeft;
+			}
+			else
+			{
+				pCur = pCur->_pRight;
+			}
+		}
+
+		if (pParent == pDel)//è¦åˆ é™¤çš„èŠ‚ç‚¹æ˜¯æ ¹èŠ‚ç‚¹
+		{
+			pRoot = &(*pRoot)->_pRight;
+			free(pDel);
+			pDel = NULL;
+			return;
+		}
+
+		//è¦åˆ é™¤çš„èŠ‚ç‚¹ä¸æ˜¯æ ¹èŠ‚ç‚¹
+
+		//åˆ¤æ–­è¦åˆ é™¤çš„èŠ‚ç‚¹æ˜¯åŒäº²èŠ‚ç‚¹çš„å·¦å­©å­è¿˜æ˜¯å³å­©å­
+		if (pParent->_pRight == pDel)
+		{
+			pParent->_pRight = pDel->_pRight;
+			free(pDel);
+			pDel = NULL;
+			return;
+		}
+		else
+		{
+			pParent->_pLeft = pDel->_pRight;
+			free(pDel);
+			pDel = NULL;
+			return;
+		}
+	}
+		//d.è¦åˆ é™¤çš„ç»“ç‚¹æœ‰å·¦ã€å³å­©å­ç»“ç‚¹Â 
+	if (pDel->_pLeft&&pDel->_pRight)
+	{
+		pCur = *pRoot;
+		pParent = pCur;
+
+		//æ‰¾è¦åˆ é™¤èŠ‚ç‚¹çš„åŒäº²ç»“ç‚¹
+		while (pCur != pDel)
+		{
+			pParent = pCur;
+			if (data < pCur->_data)
+			{
+				pCur = pCur->_pLeft;
+			}
+			else
+			{
+				pCur = pCur->_pRight;
+			}
+		}
+		
+		if (pParent == pDel)//è¦åˆ é™¤èŠ‚ç‚¹æ˜¯æ ¹èŠ‚ç‚¹
+		{
+			//æ‰¾åˆ°æ ¹èŠ‚ç‚¹å·¦å­æ ‘ä¸­æœ€å³è¾¹çš„èŠ‚ç‚¹ä¸ä»–çš„åŒäº²èŠ‚ç‚¹
+			pCur = (*pRoot)->_pLeft;
+			pParent = *pRoot;
+			while (pCur->_pRight)
+			{
+				pParent = pCur;
+				pCur = pCur->_pRight;
+			}
+			//äº¤æ¢èŠ‚ç‚¹çš„æ•°å€¼
+			Swap(&pCur->_data, &pDel->_data);
+			//æ ¹èŠ‚ç‚¹çš„å·¦å­æ ‘å°±æ˜¯æœ€å¤§çš„èŠ‚ç‚¹
+			if (pParent == *pRoot)
+			{
+				pParent->_pLeft = pCur->_pLeft;
+				free(pCur);
+				pCur = NULL;
+				return;
+			}
+			pParent->_pRight = pCur->_pRight;
+			return;
+		}
+
+		//è¦åˆ é™¤çš„èŠ‚ç‚¹ä¸æ˜¯æ ¹èŠ‚ç‚¹
+		//å°†è¦è¦åˆ é™¤çš„èŠ‚ç‚¹ä½œä¸ºæ ¹èŠ‚ç‚¹
+		DeleteBSTree(&pDel, data);
+	}
+}
+
+//ä¸­åºéå†äºŒå‰æœç´¢æ ‘
 void PreOrder(BSTNode* pRoot)
 {
 	if (NULL == pRoot)
@@ -219,7 +271,7 @@ void PreOrder(BSTNode* pRoot)
 	printf("%d   ", pRoot->_data);
 	PreOrder(pRoot->_pRight);
 }
-//Ïú»Ù¶ş²æËÑË÷Ê÷
+//é”€æ¯äºŒå‰æœç´¢æ ‘
 void DestroyBSTree(BSTNode** pRoot)
 {
 	assert(*pRoot);
@@ -229,7 +281,37 @@ void DestroyBSTree(BSTNode** pRoot)
 	*pRoot = NULL;
 }
 
-/////////////////////////////////////²âÊÔº¯Êı
+//é€’å½’å®ç°æœç´¢äºŒå‰æ ‘æŸ¥æ‰¾
+BSTNode* FindBSTreeR(BSTNode** pRoot, BSTDataType data)
+{
+	assert(pRoot);
+	if (NULL == *pRoot)
+		return NULL;
+	if (data == (*pRoot)->_data)
+		return *pRoot;
+	else if (data < (*pRoot)->_data)
+		return FindBSTreeR(&(*pRoot)->_pLeft, data);
+	else if (data > (*pRoot)->_data)
+		return FindBSTreeR(&(*pRoot)->_pRight, data);
+	return NULL;
+}
+
+//é€’å½’å®ç°æœç´¢äºŒå‰æ ‘æ’å…¥
+int InsertBSTreeR(BSTNode** pRoot, BSTDataType data)
+{
+	assert(pRoot);
+	if (NULL == *pRoot)
+	{
+		*pRoot = BuyBSTNode(data);
+		return 1;
+	}
+	else if (data < (*pRoot)->_data)
+		InsertBSTreeR(&(*pRoot)->_pLeft, data);
+	else if (data > (*pRoot)->_data)
+		InsertBSTreeR(&(*pRoot)->_pRight, data);
+	return 0;
+}
+/////////////////////////////////////æµ‹è¯•å‡½æ•°
 void TestBSTree()
 {
 	BSTNode* pRoot;
@@ -240,6 +322,13 @@ void TestBSTree()
 	{
 		InsertBSTree(&pRoot, array[i]);
 	}
+	PreOrder(pRoot);
+	printf("\n");
+	printf("%x\n", FindBSTreeR(&pRoot, 5));
+	InsertBSTreeR(&pRoot, 10);
+	InsertBSTreeR(&pRoot, 12);
+	InsertBSTreeR(&pRoot, 11);
+	DeleteBSTree(&pRoot, 10);
 	PreOrder(pRoot);
 	printf("\n");
 }
