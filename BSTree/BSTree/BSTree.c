@@ -311,6 +311,68 @@ int InsertBSTreeR(BSTNode** pRoot, BSTDataType data)
 		InsertBSTreeR(&(*pRoot)->_pRight, data);
 	return 0;
 }
+
+//递归实现二叉树删除
+int DeleteBSTreeR(BSTNode** pRoot, BSTDataType data)
+{
+	BSTNode* pCur = NULL;
+	BSTNode* pParent = NULL;
+	assert(pRoot);
+	if (NULL == *pRoot)
+		return 0;
+	if (data < (*pRoot)->_data)
+		return DeleteBSTreeR(&(*pRoot)->_pLeft, data);
+	else if (data>(*pRoot)->_data)
+		return DeleteBSTreeR(&(*pRoot)->_pRight, data);
+	else
+	{
+		BSTNode* pDel = (*pRoot);
+
+		//如果要删除的节点只有右子树或没有子树
+		if (NULL == pDel->_pLeft)
+		{
+			*pRoot = pDel->_pRight;
+			free(pDel);
+		}
+		//要删除的节点只有右子树
+		else if (NULL == pDel->_pRight)
+		{
+			*pRoot = pDel->_pLeft;
+			free(pDel);
+		}
+		//要删除的节点既有左子树也有右子树
+		else
+		{
+			//在左子树中找最右边的子树
+			BSTNode* pSwap = pDel->_pLeft;
+			BSTNode* pParent = pSwap;
+			while (pSwap && pSwap->_pRight)
+			{
+				pParent = pSwap;
+				pSwap = pSwap->_pRight;
+			}
+
+			//交换找到的节点与要删除节点的数值
+			Swap(&pDel->_data, &pSwap->_data);
+
+			//找到的节点是根节点的左子树，pSwap和pparent指向同一个节点，删除交换的节点pSwap
+			if (pParent == pSwap)
+			{
+				*pRoot = pSwap->_pLeft;
+				free(pSwap);
+				pSwap = NULL;
+			}
+			//pSwap是pParent的右孩子
+			else
+			{
+				pParent->_pRight = pSwap->_pRight;
+				free(pSwap);
+				pSwap = NULL;
+			}
+		}
+	}
+	return 1;
+}
 /////////////////////////////////////测试函数
 void TestBSTree()
 {
@@ -328,7 +390,10 @@ void TestBSTree()
 	InsertBSTreeR(&pRoot, 10);
 	InsertBSTreeR(&pRoot, 12);
 	InsertBSTreeR(&pRoot, 11);
-	DeleteBSTree(&pRoot, 10);
+	printf("\n");
+	PreOrder(pRoot);
+	DeleteBSTreeR(&pRoot, 0);
+	printf("\n");
 	PreOrder(pRoot);
 	printf("\n");
 }

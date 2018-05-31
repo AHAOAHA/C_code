@@ -19,4 +19,5 @@ void DeleteBSTree(BSTNode** pRoot, BSTDataType data);
 void PreOrder(BSTNode* pRoot);
 void DestroyBSTree(BSTNode** pRoot);
 BSTNode* FindBSTreeR(BSTNode** pRoot, BSTDataType data);
+int DeleteBSTreeR(BSTNode** pRoot, BSTDataType data);
 void TestBSTree();
