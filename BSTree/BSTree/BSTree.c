@@ -373,6 +373,7 @@ int DeleteBSTreeR(BSTNode** pRoot, BSTDataType data)
 	}
 	return 1;
 }
+
 /////////////////////////////////////测试函数
 void TestBSTree()
 {

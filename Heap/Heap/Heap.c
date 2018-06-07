@@ -284,6 +284,7 @@ void DestroyHeap(Heap* hp)
 {
 	assert(hp);
 	free(hp->_array);
+	hp->_array = NULL;
 	hp->_capacity = 0;
 	hp->_size = 0;
 	hp->_com = NULL;
