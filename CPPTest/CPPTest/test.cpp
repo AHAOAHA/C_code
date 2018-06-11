@@ -76,6 +76,7 @@ int main()
 	return 0;
 }
 */
+#if 0
 #include<iostream>
 #include<stdlib.h>
 #include<iomanip>
@@ -93,6 +94,86 @@ int main()
 	double a = 123.012345678912345678;
 	cout << a << endl;
 	cout << setprecision(9) << a << endl;
+	system("pause");
+	return 0;
+}
+#endif
+#pragma pack(16)
+#include<stdlib.h>
+/*
+class Student
+{
+public:
+	Student(char* name, char* gender, int age)
+		:_name("ÕÅê»"),
+		_gender("ÄĞ"),
+		_age(age)
+	{}
+
+private:
+	char _name[20];
+		char _gender[3];
+		int _age;
+
+};
+*/
+#include<iostream>
+using namespace std;
+
+
+class Date
+{
+public:
+	Date(int year, int month, int day)
+		:_year(year)
+		, _month(month)
+		, _day(day)
+	{}
+	void PrintDate()
+	{
+		cout << _year << "/" << _month << "/" << _day << endl;
+	}
+private:
+	int _year;
+	int _month;
+	int _day;
+	char _size;
+};
+
+
+class Time
+{
+public:
+	Time(int hour=17, int minute=30, int second=80)
+		:_hour(hour)
+		, _minute(minute)
+		, _second(second)
+		, _ra(_hour)
+		, _d1(2018,6,10)
+		, _id(_hour/10)
+	{}
+	void PrintTime()
+	{
+		_d1.PrintDate();
+		cout << _hour << ":" << _minute << ":" << _second << endl;
+	}
+private:
+	const int _id;
+	Date _d1;
+	int& _ra;
+	int _hour;
+	int _minute;
+	int _second;
+};
+
+
+int main()
+{
+	Time t1;
+	size_t DateSize = 0;
+	DateSize = sizeof(Date);
+	cout << "DateSize = " << DateSize << endl;
+	t1.PrintTime();
 	system("pause");
 	return 0;
 }
