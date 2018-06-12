@@ -25,6 +25,23 @@ public:
 	Date operator+(int days);
 	//当前日期x天前是什么日期
 	Date operator-(int days);
+	//两个日期之间相差多少天
+	Date operator-(const Date& d);
+	//比较两个日期大小
+	bool operator>(const Date& d);
+	bool operator<(const Date& d);
+	bool operator==(const Date& d);
+	bool operator!=(const Date& d);
+	//重载赋值
+	Date& operator=(const Date& d);
+	//重载取地址符号
+	Date* operator&();
+	//前置++/--
+	Date& operator++();
+	Date& operator--();
+	//后置++/--
+	Date operator++(int);
+	Date operator--(int);
 	//打印日期
 	void PrintDate();
 	

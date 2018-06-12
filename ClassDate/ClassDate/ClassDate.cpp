@@ -152,6 +152,164 @@ Date& Date::AdjustDate(Date& d)
 	}
 	return d;
 }
+
+//两个日期之间相差多少天
+Date Date::operator-(const Date& d)
+{
+	Date temp(*this);
+	//this大于d
+	if ((*this)>d)
+	{
+		if (this->_day >= d._day)
+			temp._day = this->_day - d._day;
+		else
+		{
+			temp._month =this->_month - 1;
+			if (2 == temp._month)
+			{
+				if (((d._year % 100 == 0) && (d._year % 400 == 0)) || ((d._year % 100 != 0) && (d._year % 4 == 0)))
+				{
+					temp._day =this->_day + 29;
+				}
+				else
+					temp._day =this->_day + 28;
+			}
+			else if ((4 == temp._month) || (6 == temp._month) || (9 == temp._month) || (11 == temp._month))
+			{
+				temp._day =this->_day + 30;
+			}
+			else
+			{
+				temp._day =this->_day + 31;
+			}
+			temp._day = temp._day - d._day;
+		}
+		if (temp._month >= d._month)
+			temp._month = temp._month - d._month;
+		else
+		{
+			temp._year -= 1;
+			temp._month += 12;
+			temp._month -= d._month;
+		}
+		temp._year -= d._year;
+	}
+	else
+	{
+		temp._day = d._day;
+		temp._month = d._month;
+		temp._year = d._year;
+		if (this->_day <= d._day)
+			temp._day = d._day-this->_day;
+		else
+		{
+			temp._month -= 1;
+			if (2 == temp._month)
+			{
+				if (((d._year % 100 == 0) && (d._year % 400 == 0)) || ((d._year % 100 != 0) && (d._year % 4 == 0)))
+				{
+					temp._day += 29;
+				}
+				else
+					temp._day += 28;
+			}
+			else if ((4 == temp._month) || (6 == temp._month) || (9 == temp._month) || (11 == temp._month))
+			{
+				temp._day += 30;
+			}
+			else
+			{
+				temp._day += 31;
+			}
+			temp._day = temp._day - this->_day;
+		}
+		if (temp._month >= this->_month)
+			temp._month -= this->_month;
+		else
+		{
+			temp._year -= 1;
+			temp._month += 12;
+			temp._month = temp._month - this->_month;
+		}
+		temp._year = temp._year - this->_year;
+	}
+	return temp;
+}
+
+//比较两个日期的大小
+bool Date::operator>(const Date& d)
+{
+	if ((this->_year > d._year) || ((this->_year == d._year) && (this->_month > d._month)) || ((this->_year == d._year) && (this->_month == d._month) && (this->_day > d._day)))
+		return true;
+	return false;
+}
+bool Date::operator<(const Date& d)
+{
+	if ((this->_year > d._year) || ((this->_year == d._year) && (this->_month > d._month)) || ((this->_year == d._year) && (this->_month == d._month) && (this->_day > d._day)))
+		return false;
+	return true;
+}
+bool Date::operator==(const Date& d)
+{
+	if ((this->_year == d._year) && (this->_month == d._month) && (this->_day == d._day))
+		return true;
+	return false;
+}
+bool Date::operator!=(const Date& d)
+{
+	if ((this->_year == d._year) && (this->_month == d._month) && (this->_day == d._day))
+		return false;
+	return true;
+}
+
+//重载赋值操作符
+Date& Date::operator=(const Date& d)
+{
+	this->_year = d._year;
+	this->_month = d._month;
+	this->_day = d._day;
+	return (*this);
+}
+
+//重载取地址符号
+Date* Date::operator&()
+{
+	return this;
+}
+
+//前置++/--
+Date& Date::operator++()
+{
+	this->_year += 1;
+	this->_month += 1;
+	this->_day += 1;
+	return (*this);
+}
+Date& Date::operator--()
+{
+	this->_year -= 1;
+	this->_month -= 1;
+	this->_day -= 1;
+	return (*this);
+}
+
+//后置++/--
+Date Date::operator++(int)
+{
+	Date temp(*this);
+	this->_year += 1;
+	this->_month += 1;
+	this->_day += 1;
+	return temp;
+}
+Date Date::operator--(int)
+{
+	Date temp(*this);
+	this->_year -= 1;
+	this->_month -= 1;
+	this->_day -= 1;
+	return temp;
+}
 //打印日期
 void Date::PrintDate()
 {
@@ -163,8 +321,13 @@ void Date::PrintDate()
 void TestDate()
 {
 	Date d1(2018,6,11);
+	Date d2(2019,5,10);
+	Date d3;
+	d3 = d2 - d1;
+	d3.PrintDate();
 	d1.PrintDate();
 	d1 = d1 - 100000;
 	d1.PrintDate();
+	cout << &d1 << ' ' << &d2 << endl;
 	system("pause");
 }
