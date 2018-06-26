@@ -1,11 +1,8 @@
-﻿生成启动时间为 2018/6/12 6:35:14。
+﻿生成启动时间为 2018/6/13 14:38:29。
      1>项目“D:\bit\github_code\ClassDate\ClassDate\ClassDate.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ClassDate.cpp test.cpp
+         D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ClassDate.cpp
          ClassDate.cpp
-         正在生成代码...
-         正在跳过...(未检测到相关更改)
-         test.cpp
        Link:
          D:\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\bit\github_code\ClassDate\Debug\ClassDate.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\bit\github_code\ClassDate\Debug\ClassDate.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\bit\github_code\ClassDate\Debug\ClassDate.lib" /MACHINE:X86 Debug\ClassDate.obj
          Debug\test.obj
@@ -14,4 +11,4 @@
 
 生成成功。
 
-已用时间 00:00:01.10
+已用时间 00:00:01.88

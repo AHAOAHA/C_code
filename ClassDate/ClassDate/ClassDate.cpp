@@ -320,14 +320,14 @@ void Date::PrintDate()
 /////////////////////////////////////////²âÊÔº¯Êý
 void TestDate()
 {
-	Date d1(2018,6,11);
-	Date d2(2019,5,10);
+	Date d1(2018,6,13);
+	/*Date d2(2019,5,10);
 	Date d3;
 	d3 = d2 - d1;
 	d3.PrintDate();
+	d1.PrintDate();*/
+	d1 = d1 + 10;
 	d1.PrintDate();
-	d1 = d1 - 100000;
-	d1.PrintDate();
-	cout << &d1 << ' ' << &d2 << endl;
+	//cout << &d1 << ' ' << &d2 << endl;
 	system("pause");
 }

@@ -117,6 +117,7 @@ private:
 
 };
 */
+/*
 #include<iostream>
 using namespace std;
 
@@ -155,7 +156,7 @@ public:
 	void PrintTime()
 	{
 		_d1.PrintDate();
-		cout << _hour << ":" << _minute << ":" << _second << endl;
+		cout << _hour << ":" << _minute << " :" << _second << endl;
 	}
 private:
 	const int _id;
@@ -175,5 +176,101 @@ int main()
 	cout << "DateSize = " << DateSize << endl;
 	t1.PrintTime();
 	system("pause");
+	return 0;
+}
+*/
+
+#if 0
+
+
+class Date
+{
+	//friend ostream operator<<(ostream cout,const Date d);
+public:
+	Date(int year = 2018, int month = 6, int day = 11)
+		:_year(year)
+		, _month(month)
+		, _day(day)
+	{}
+//private:
+	int _year;
+	int _month;
+	int _day;
+};
+//ostream operator<<(ostream cout, const Date& d)
+//{
+//	//cout << d._year << '/' << d._month << '/' << d._day;
+//	//return cout;
+//}
+
+#include<iostream>
+using namespace std;
+
+
+int main()
+{ 
+	Date d;
+	//cout << d << endl;
+	return 0;
+}
+
+#endif
+
+
+//class A
+//{
+//	void Swap();
+//};
+//void A::Swap()
+//{
+//
+//}
+//int main()
+//{
+//	return 0;
+//}
+//
+//class Date
+//{
+//public:
+//	void Test()
+//	{
+//		_year = 2018;
+//		_month = 7;
+//		_day = 21;
+//	}
+//private:
+//	int _year;
+//	int _month;
+//	int _day;
+//};
+//int main()
+//{
+//	int size = sizeof(Date);
+//	return 0;
+//}
+
+class Date
+{
+public:
+	void SetDate(int year, int month, int day)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+private:
+	int _year;
+	int _month;
+	int _day;
+};
+int main()
+{
+	Date d1;
+	Date d2;
+	Date d3;
+	d1.SetDate(2018, 7, 21);
+	d2.SetDate(2018, 8, 21);
+	d3.SetDate(2018, 9, 21);
 	return 0;
 }
