@@ -202,7 +202,7 @@ public:
 //	//cout << d._year << '/' << d._month << '/' << d._day;
 //	//return cout;
 //}
-
+/*
 #include<iostream>
 using namespace std;
 
@@ -213,7 +213,7 @@ int main()
 	//cout << d << endl;
 	return 0;
 }
-
+*/
 #endif
 
 
@@ -249,7 +249,7 @@ int main()
 //	int size = sizeof(Date);
 //	return 0;
 //}
-
+/*
 class Date
 {
 public:
@@ -272,5 +272,44 @@ int main()
 	d1.SetDate(2018, 7, 21);
 	d2.SetDate(2018, 8, 21);
 	d3.SetDate(2018, 9, 21);
+	return 0;
+}
+*/
+
+
+/*
+class Student
+{
+
+public:
+	Student(int age = 0)
+		:_age(age)
+	{
+		_count++;
+	}
+	static int _count;
+	int _age;
+};
+int Student::_count = 0;
+int main()
+{
+	Student s1;
+	Student s2;
+	Student s3;
+	return 0;
+}
+*/
+class A
+{
+public:
+	static int _count;
+};
+int main()
+{
+	//A a1;
+	sizeof(A);//计算A类所占内存的大小
+	A::_count;
+	A a1;
+	a1._count;
 	return 0;
 }

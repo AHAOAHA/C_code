@@ -340,16 +340,38 @@ int main()
 double fun(int n)
 {
 	int i = 0;//i做循环变量
-	double num_m = 1;//num_m做分母 最开始让他等于1
-	double num_z = 2;//num_z做分子 最开始让他等于2
-	double num_z_next = 0;//num_z_next用来保存下一次分母的数值
-	double sum = 0;//sum用来保存最后得到的结果
+	double sum = 0;//保存最后的结果
+	double first_m = 1;//第一个数字的分母
+	double first_z = 2;//第一个数字的分子
+	double second_m = 2;//第二个数字的分母
+	double second_z = 3;//第二个数字的分子
+	double third_m = 0;//第三个数字的分母
+	double third_z = 0;//第三个数字的分子
 	for (i = 0; i < n; i++)
 	{
-		sum = num_z / num_m + sum;//计算过程
-		num_z_next = num_m + num_z;//计算完一次之后 用num_z_next保存num_m+num_z的值 用来做下一次计算的分子
-		num_m = num_z;//让上一次的分子等于下一次的分子
-		num_z = num_z_next;//下一次的分子等于我们保存好的值
+		if (i == 0)//如果i==0 说明函数第一次循环  这是只用加到第一个数字
+		{
+			sum = first_z / first_m;
+		}
+		else if (i == 1)//日过i==1说明循环第二次  这时就要加到第二个数字
+		{
+			sum = sum + second_z / second_m;
+		}
+		else
+		{
+			third_z = first_z + second_z;//用第一个和第二个数字的分母和分子计算出第三个数字的分母和分子
+			third_m = first_m + second_m;
+
+			first_m = second_m;//让第一个数字的分母和分子向后挪动一位  为下一次计算做好准备
+			first_z = second_z;
+
+			second_m = third_m;//让第二个数字向后挪动一位  为下一次计算做好准备
+			second_z = third_z;
+
+			sum = third_z / third_m + sum;
+		}
+
+		
 	}
 	//跳出循环时 就代表已经计算完成
 	return sum;
@@ -367,6 +389,7 @@ int main()
 	return 0;
 }
 */
+
 
 /*
 
@@ -391,3 +414,9 @@ int main()
 	return 0;
 }
 */
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+
+}
