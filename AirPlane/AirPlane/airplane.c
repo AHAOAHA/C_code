@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 #include <string.h>
 #include<stdlib.h>
@@ -365,6 +364,11 @@ void CheckPersonNoTicket(Plane* p, Person* person_noticket)
 {
 	int i = 0;
 	printf("候补名单：\n\n");
+	if (0 == _personnoticket_size)
+	{
+		printf("候补名单为空！\n\n");
+		return;
+	}
 	for (i = 0; i < _personnoticket_size; i++)
 	{
 		printf("姓名：%s\n", (person_noticket + i)->person_name);

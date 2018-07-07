@@ -299,6 +299,7 @@ int main()
 	return 0;
 }
 */
+/*
 class A
 {
 public:
@@ -311,5 +312,176 @@ int main()
 	A::_count;
 	A a1;
 	a1._count;
+	return 0;
+}
+*/
+
+
+
+//#include<iostream>
+//using namespace std;
+//class Base
+//{
+//public:
+//	void TestFunc1()
+//	{
+//		cout << "Base::TestFunc1()" << endl;
+//	}
+//	int _b;
+//};
+//class Derive1 :public Base
+//{
+//public:
+//	void TestFunc2()
+//	{
+//		cout << "Derive::TestFunc2()" << endl;
+//	}
+//	int _d1;
+//};
+//int main()
+//{
+//	Derive1 d;
+//	cout << sizeof(d) << endl;
+//	d._b = 1;
+//	d._d1 = 2;
+//	return 0;
+//}
+
+//#include<iostream>
+//using namespace std;
+//class Base//定义一个基类
+//{
+//public:
+//	~Base()//显式定义出基类的析构函数
+//	{
+//		cout << "Base::~Base()" << endl;//在基类的析构函数内部让它打印出自己的函数名
+//	}
+//	int _b;//基类的数据成员
+//};
+//class Derive :public Base//定义一个派生类，公有继承自基类
+//{
+//public:
+//	~Derive()//显示定义出派生类的析构函数，在该行下一个断点
+//	{
+//		cout << "Derive::~Derive()" << endl;//在析构函数内部让它打印自己的函数名
+//	}
+//	int _d;//派生类自己的数据成员
+//};
+//int main()
+//{
+//	Derive d;//创建一个派生类
+//	return 0;
+//}
+
+//
+//#include<iostream>
+//using namespace std;
+//class Base//定义一个基类
+//{
+//public:
+//	void Test()//在基类中定义一个名为Test的函数
+//	{
+//		cout << "Base::Test()" << endl;//在函数内部打印该函数的作用域及名称
+//	}
+//};
+//class Derive :public Base//定义一个公有继承自基类Base的派生类Derive
+//{
+//public:
+//	void Test()//在派生类里也同样定义一个名为Test的函数
+//	{
+//		cout << "Derive::Test()" << endl;//在函数内部打印该函数的作用域及名称
+//	}
+//};
+//int main()
+//{
+//	Derive d;//创建派生类的对象
+//	d.Test();//测试默认请情况下通过派生类对象访问同名函数会访问哪个作用域中的函数
+//	d.Derive::Test();//添加派生类作用域访问
+//	d.Base::Test();//添加基类作用域访问
+//	return 0;
+//}
+
+
+//
+//#include<iostream>
+//using namespace std;
+//class Base//定义一个基类
+//{
+//public:
+//	void BaseTest()//在基类中定义一个普通函数
+//	{
+//		cout << "Base::BaseTest()" << endl;//让该函数打印它所在的作用域及函数名
+//	}
+//	int _base;//定义一个属于基类的数据变量
+//};
+//class Derive1 :public Base//定义一个公有继承自基类Base的派生类
+//{
+//public:
+//	void Derive1Test()//定义一个派生类自己的普通函数
+//	{
+//		cout << "Derive1::Derive1Test()" << endl;//让该函数打印它所在的作用域及函数名
+//	}
+//	int _derive1;//定义一个属于派生类自己的数据变量
+//};
+//class Derive2 :public Derive1//定义一个公有继承自派生类Derive1的派生类
+//{
+//public:
+//	void Derive2Test()//定义一个派生类自己的普通函数
+//	{
+//		cout << "Derive2::Derive2Test()" << endl;//让该函数打印它所在的作用域及函数名
+//	}
+//	int _derive2;//定义一个属于派生类自己的数据变量
+//};
+//int main()
+//{
+//	Derive1 d1;//创建Derive1派生类的对象
+//	cout << sizeof(d1) << endl;//查看Derive1派生类对象的大小
+//	d1._base = 1;
+//	d1._derive1 = 2;
+//	Derive2 d2;//创建Derive2派生类的对象
+//	cout << sizeof(d2) << endl;//查看Derive2派生类对象的大小
+//	d2._base = 3;
+//	d2._derive1 = 4;
+//	d2._derive2 = 5;
+//	return 0;
+//}
+
+
+#include<iostream>
+using namespace std;
+class Base1
+{
+public:
+	void Base1Test()
+	{
+		cout << "Base1::Base1Test()" << endl;
+	}
+	int _base1;
+};
+class Base2
+{
+public:
+	void Base2Test()
+	{
+		cout << "Base2::Base2Test()" << endl;
+	}
+	int _base2;
+};
+class Derive :public Base1, public Base2
+{
+public:
+	void DeriveTest()
+	{
+		cout << "Derive::DeriveTest()" << endl;
+	}
+	int _derive;
+};
+int main()
+{
+	Derive d;
+	cout << sizeof(d) << endl;
+	d._base1 = 1;
+	d._base2 = 2;
+	d._derive = 3;
 	return 0;
 }
