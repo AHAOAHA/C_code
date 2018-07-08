@@ -447,41 +447,160 @@ int main()
 //}
 
 
+//#include<iostream>
+//using namespace std;
+////首先定义两个基类
+//class Base1//第一个基类
+//{
+//public:
+//	void Base1Test()//在第一个基类中定义一个函数
+//	{
+//		cout << "Base1::Base1Test()" << endl;//让这个函数打印自己的作用域和函数名
+//	}
+//	int _base1;//定义一个属于第一个基类的数据变量
+//};
+//class Base2//第二个基类
+//{
+//public:
+//	void Base2Test()//在第二个基类中定义一个函数
+//	{
+//		cout << "Base2::Base2Test()" << endl;//让这个函数打印自己的作用域和函数名
+//	}
+//	int _base2;//定义一个属于第二个基类的数据变量
+//};
+//class Derive :public Base1, public Base2//让派生类公有继承自基类1和基类2
+//{
+//public:
+//	void DeriveTest()//定义一个派生类自己的函数
+//	{
+//		cout << "Derive::DeriveTest()" << endl; //让这个函数打印自己的作用域和函数名
+//	}
+//	int _derive;//定义一个派生类自己的数据变量
+//};
+//int main()
+//{
+//	Derive d;//创建派生类对象
+//	cout << sizeof(d) << endl;//打印出派生类所占字节大小
+//	d._base1 = 1;//通过派生类修改基类1的数据成员的值
+//	d._base2 = 2;//通过派生类修改基类2的数据成员的值
+//	d._derive = 3;//通过派生类修改派生类的数据成员的值
+//	return 0;
+//}
+
+
+//#include<iostream>
+//using namespace std;
+//class Base//定义一个基类
+//{
+//public:
+//	void BaseTest()//定义一个函数
+//	{
+//		cout << "Base::BaseTest()" << endl;//让函数打印自己的作用域及函数名
+//	}
+//	int _base;//定义一个基类的数据成员
+//};
+//class C1 :public Base//定义一个派生类C1公有继承自Base类
+//{
+//public:
+//	void C1Test()//定义一个函数
+//	{
+//		cout << "C1::C1Test()" << endl;//让函数打印自己的作用域及函数名
+//	}
+//	int _c1;//定义一个属于C1类的数据成员
+//};
+//class C2 :public Base//定义一个派生类C2公有继承自Base类
+//{
+//public:
+//	void C2Test()//定义一个函数
+//	{
+//		cout << "C2::C2Test()" << endl;//让函数打印自己的作用域及函数名
+//	}
+//	int _c2;//定义一个属于C2类的数据成员
+//};
+//class Derive :public C1, public C2//定义一个派生类Derive公有多继承自C1类和C2类
+//{
+//public:
+//	void DeriveTest()//定义一个函数
+//	{
+//		cout << "Derive::DeriveTest()" << endl;//让函数打印自己的作用域及函数名
+//	}
+//	int _derive;//定义一个属于派生类Derive的数据成员
+//};
+//int main()
+//{
+//	Derive d;//创建派生类d的对象
+//	cout << sizeof(d) << endl;//打印派生类对象d所占字节大小
+//	d.C1::_base = 1;//通过派生类对象改变Base类的数据成员
+//	d._c1 = 2;//通过派生类对象改变C1类的数据成员
+//	d._c2 = 3;//通过派生类对象改变C2类的数据成员
+//	d._derive = 4;//通过派生类对象改变Derive类的数据成员
+//	return 0;
+//}
+
+
+
+
 #include<iostream>
 using namespace std;
-class Base1
+class Base//定义一个基类
 {
 public:
-	void Base1Test()
+	void BaseTest()//在基类中定义一个函数
 	{
-		cout << "Base1::Base1Test()" << endl;
+		cout << "Base::BaseTest()" << endl;//让这个函数打印自己的作用域及函数名
 	}
-	int _base1;
+	int _base;//在基类中定义一个数据成员
 };
-class Base2
+class C1 :virtual public Base//定义一个类让他公有虚拟继承自Base类
 {
 public:
-	void Base2Test()
+	void C1Test()//在类中定义一个函数
 	{
-		cout << "Base2::Base2Test()" << endl;
+		cout << "C1::C1Test()" << endl;//让这个函数打印自己的作用域及函数名
 	}
-	int _base2;
+	int _c1;//在类中定义一个数据成员
 };
-class Derive :public Base1, public Base2
+class Derive :virtual public C1//定义一个类Derive让它公有虚拟继承自C1类
 {
 public:
-	void DeriveTest()
+	void DeriveTest()//在类中定义一个函数
 	{
-		cout << "Derive::DeriveTest()" << endl;
+		cout << "DeriveTest()" << endl;////让这个函数打印自己的作用域及函数名
 	}
-	int _derive;
+	int _derive;//在类中定义一个数据成员
 };
+
+
 int main()
 {
-	Derive d;
-	cout << sizeof(d) << endl;
-	d._base1 = 1;
-	d._base2 = 2;
-	d._derive = 3;
+	Derive d;//创建派生类对象
+	cout << sizeof(d) << endl;//打印派生类的大小
+	d._base = 1;//通过派生类对象改变继承自Base的数据成员
+	d._c1 = 2;//通过派生类对象该变继承自C1类的数据成员
+	d._derive = 3;//通过派生类对象改编它自己的数据成员
 	return 0;
 }
+
+
+
+
+
+
+//class C1 :virtual public Base
+//{
+//public:
+//	void C1::C1Test()
+//	{
+//		cout << "C1::C1Test()" << endl;
+//	}
+//	int _c1;
+//};
+//class C2 :virtual public Base
+//{
+//public:
+//	void C2::C2Test()
+//	{
+//		cout << "C2::C2Test()" << endl;
+//	}
+//	int _c2;
+//};
