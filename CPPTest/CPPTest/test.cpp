@@ -539,47 +539,47 @@ int main()
 
 
 
-
-#include<iostream>
-using namespace std;
-class Base//定义一个基类
-{
-public:
-	void BaseTest()//在基类中定义一个函数
-	{
-		cout << "Base::BaseTest()" << endl;//让这个函数打印自己的作用域及函数名
-	}
-	int _base;//在基类中定义一个数据成员
-};
-class C1 :virtual public Base//定义一个类让他公有虚拟继承自Base类
-{
-public:
-	void C1Test()//在类中定义一个函数
-	{
-		cout << "C1::C1Test()" << endl;//让这个函数打印自己的作用域及函数名
-	}
-	int _c1;//在类中定义一个数据成员
-};
-class Derive :virtual public C1//定义一个类Derive让它公有虚拟继承自C1类
-{
-public:
-	void DeriveTest()//在类中定义一个函数
-	{
-		cout << "DeriveTest()" << endl;////让这个函数打印自己的作用域及函数名
-	}
-	int _derive;//在类中定义一个数据成员
-};
-
-
-int main()
-{
-	Derive d;//创建派生类对象
-	cout << sizeof(d) << endl;//打印派生类的大小
-	d._base = 1;//通过派生类对象改变继承自Base的数据成员
-	d._c1 = 2;//通过派生类对象该变继承自C1类的数据成员
-	d._derive = 3;//通过派生类对象改编它自己的数据成员
-	return 0;
-}
+//
+//#include<iostream>
+//using namespace std;
+//class Base//定义一个基类
+//{
+//public:
+//	void BaseTest()//在基类中定义一个函数
+//	{
+//		cout << "Base::BaseTest()" << endl;//让这个函数打印自己的作用域及函数名
+//	}
+//	int _base;//在基类中定义一个数据成员
+//};
+//class C1 :virtual public Base//定义一个类让他公有虚拟继承自Base类
+//{
+//public:
+//	void C1Test()//在类中定义一个函数
+//	{
+//		cout << "C1::C1Test()" << endl;//让这个函数打印自己的作用域及函数名
+//	}
+//	int _c1;//在类中定义一个数据成员
+//};
+//class Derive :virtual public C1//定义一个类Derive让它公有虚拟继承自C1类
+//{
+//public:
+//	void DeriveTest()//在类中定义一个函数
+//	{
+//		cout << "DeriveTest()" << endl;////让这个函数打印自己的作用域及函数名
+//	}
+//	int _derive;//在类中定义一个数据成员
+//};
+//
+//
+//int main()
+//{
+//	Derive d;//创建派生类对象
+//	cout << sizeof(d) << endl;//打印派生类的大小
+//	d._base = 1;//通过派生类对象改变继承自Base的数据成员
+//	d._c1 = 2;//通过派生类对象该变继承自C1类的数据成员
+//	d._derive = 3;//通过派生类对象改编它自己的数据成员
+//	return 0;
+//}
 
 
 
@@ -604,3 +604,71 @@ int main()
 //	}
 //	int _c2;
 //};
+
+
+
+//
+//#include<iostream>
+//using namespace std;
+//class Base1//定义Base1类
+//{
+//public:
+//	int _base1;//定义一个数据成员
+//};
+//class Base2//定义Base2类
+//{
+//public:
+//	int _base2;//定义一个数据成员
+//};
+////定义Derive类；让Derive类公有虚拟继承自Base1类和Base2类
+//class Derive :virtual public Base1, virtual public Base2
+//{
+//public:
+//	int _derive;//定义一个数据成员
+//};
+//int main()
+//{
+//	Derive d;//创建Derive类的对象
+//	cout << sizeof(d) << endl;//打印Derive类对象的大小
+//	d._base1 = 1;//通过派生类对象改变继承自Base1类数据成员的值
+//	d._base2 = 2;//通过派生类对象改变继承自Base2类数据成员的值
+//	d._derive = 3;//通过派生类对象改变他自己的数据成员
+//	return 0;
+//}
+
+
+
+#include<iostream>
+using namespace std;
+class Base//定义一个base类
+{
+public:
+	int _base;//定义一个数据成员
+};
+class C1:virtual public Base//定义C1类虚拟继承自Base类
+{
+public:
+	int _c1;//定义一个数据成员
+
+};
+class C2 : virtual public Base//定义C2类虚拟继承自Base类
+{
+public:
+	int _c2;//定义一个数据成员
+};
+//定义Derive类公有虚拟多继承自C1类和C2类
+class Derive : virtual public C1, virtual public C2
+{
+public:
+	int _derive;//定义一个数据变量
+};
+int main()
+{
+	Derive d;//创建Derive类对象
+	cout << sizeof(d) << endl;//打印Derive类对象的大小
+	d._base = 1;//通过Derive类对象改变Base类的数据成员
+	d._c1 = 2;//通过Derive类对象改变C1类对象的数据成员
+	d._c2 = 3;//通过Derive类对象改变C2类对象的数据成员
+	d._derive = 4;//通过Derive类对象改变它自己的数据成员
+	return 0;
+}
