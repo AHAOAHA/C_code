@@ -638,37 +638,459 @@ int main()
 
 
 
+//#include<iostream>
+//using namespace std;
+//class Base//定义一个base类
+//{
+//public:
+//	int _base;//定义一个数据成员
+//};
+//class C1:virtual public Base//定义C1类虚拟继承自Base类
+//{
+//public:
+//	int _c1;//定义一个数据成员
+//
+//};
+//class C2 : virtual public Base//定义C2类虚拟继承自Base类
+//{
+//public:
+//	int _c2;//定义一个数据成员
+//};
+////定义Derive类公有虚拟多继承自C1类和C2类
+//class Derive : virtual public C1, virtual public C2
+//{
+//public:
+//	int _derive;//定义一个数据变量
+//};
+//int main()
+//{
+//	Derive d;//创建Derive类对象
+//	cout << sizeof(d) << endl;//打印Derive类对象的大小
+//	d._base = 1;//通过Derive类对象改变Base类的数据成员
+//	d._c1 = 2;//通过Derive类对象改变C1类对象的数据成员
+//	d._c2 = 3;//通过Derive类对象改变C2类对象的数据成员
+//	d._derive = 4;//通过Derive类对象改变它自己的数据成员
+//	return 0;
+//}
+
+
+
+//#include<iostream>
+//using namespace std;
+//template<typename T,typename T2>
+//T2 Add(T first, T2 second)
+//{
+//	return (T2)first + second;
+//}
+//int main()
+//{
+//	cout << Add(2, 3.1) << endl;
+//	return 0;
+//}
+
+
+//#include<iostream>
+//using namespace std;
+//class Base
+//{
+//public:
+//	virtual void BaseTest()
+//	{
+//		cout << "BaseTest()" << endl;
+//	}
+//};
+//class Derive :public Base
+//{
+//public:
+//	virtual void BaseTest()
+//	{
+//		cout << "DeriveTest()" << endl;
+//	}
+//};
+//int main()
+//{
+//	Derive d;
+//	Base b;
+//	b.BaseTest();
+//	d.BaseTest();
+//	b.BaseTest();
+//	return 0;
+//}
+
+/*
 #include<iostream>
 using namespace std;
-class Base//定义一个base类
+class WashRoom//定义一个卫生间的类模型
 {
 public:
-	int _base;//定义一个数据成员
+	void GoToManWashRoom()//代表男士卫生间的函数
+	{
+		cout << "Turn Left" << endl;//打印向左
+	}
+	void GoToWomanWashRoom()//代表女士卫生间的函数
+	{
+		cout << "Turn Right" << endl;//代表向右
+	}
 };
-class C1:virtual public Base//定义C1类虚拟继承自Base类
+class Person//定义一个基类
 {
 public:
-	int _c1;//定义一个数据成员
+	virtual void GoToWashRoom(WashRoom& wc) = 0;
+};
+class Man :public Person
+{
+public:
+	virtual void GoToWashRoom(WashRoom& wc)
+	{
+		wc.GoToManWashRoom();
+	}
+};
+class Woman :public Person
+{
+public:
+	virtual void GoToWashRoom(WashRoom& wc)
+	{
+		wc.GoToWomanWashRoom();
+	}
+};
+int main()
+{
+	WashRoom wc;
+	Person* p;
+	p = new Man;
+	p->GoToWashRoom(wc);
+	return 0;
+}
+*/
 
-};
-class C2 : virtual public Base//定义C2类虚拟继承自Base类
+/*
+#include<iostream>
+using namespace std;
+class Base
 {
 public:
-	int _c2;//定义一个数据成员
+	virtual void BaseTest1()
+	{
+		cout << "BaseTest1()" << endl;
+	}
+	virtual void BaseTest2()
+	{
+		cout << "BaseTest2()" << endl;
+	}
+	int _base;
 };
-//定义Derive类公有虚拟多继承自C1类和C2类
-class Derive : virtual public C1, virtual public C2
+class 
+int main()
+{
+	return 0;
+}
+*/
+
+
+
+////创建一个抽象类
+//class Base
+//{
+//public:
+//	virtual void BaseTest() = 0;//纯虚函数
+//};
+//int main()
+//{
+//	Base b;//尝试用抽象类实例化对象
+//	return 0;
+//}
+
+
+
+/*
+#include<iostream>
+using namespace std;
+
+class YouSay//定义称呼的类模型
 {
 public:
-	int _derive;//定义一个数据变量
+	void IsAMan()//如果是男
+	{
+		cout << "hi 帅哥" << endl;//打印hi 帅哥
+	}
+	void IsAWoman()//如果是女
+	{
+		cout << "hi 美女" << endl;//打印hi 美女
+	}
+	void IsAChild()//如果是小朋友
+	{
+		cout << "hi 小朋友" << endl;//打印hi 小朋友
+	}
 };
+class Person//定义用来指向人的抽象类
+{
+public:
+	virtual void YouWillSay(YouSay& y) = 0;//定义称呼的函数
+};
+class Man :public Person//定义男士类让它公有继承自person类
+{
+public:
+	virtual void YouWillSay(YouSay& y)//重写继承自person类的纯虚函数
+	{
+		y.IsAMan();//调用遇到男士的称呼函数
+	}
+};
+class Woman :public Person//定义女士类让它公有继承自person类
+{
+public:
+	virtual void YouWillSay(YouSay& y)//重写继承自person类的纯虚函数
+	{
+		y.IsAWoman();//调用遇到女士的称呼函数
+	}
+};
+class Child :public Person//定义小孩子类让它公有继承自person类
+{
+public:
+	virtual void YouWillSay(YouSay& y)//重写继承自person类的纯虚函数
+	{
+		y.IsAChild();//调用遇到小孩子的称呼函数
+	}
+};
+int main()
+{
+	YouSay y;//创建称呼的实例化对象
+	Person* p;//创建一个可以指向人的类类型的指针
+	p = new Man;//让p先指向一个男士
+	p->YouWillSay(y);//通过男士的对象调用要称呼的函数
+	p = new Woman;//让p指向一个女士
+	p->YouWillSay(y);//通过女士的对象调用要称呼的函数
+	p = new Child;//让p指向一个小孩子
+	p->YouWillSay(y);//通过小孩子的对象调用要称呼的函数
+	return 0;
+}
+*/
+
+
+/*
+#include<iostream>
+using namespace std;
+class Base//定义一个Base类
+{
+public:
+	virtual void BaseTest1()//Base类中定义虚函数BaseTest1()
+	{
+		cout << "Base::BaseTest1()" << endl;//函数打印它的作用域和函数名
+	}
+	virtual void BaseTest2()//Base类中定义虚函数BaseTest2（）
+	{
+		cout << "Base::BaseTest2()" << endl;//函数打印它的作用域和函数名
+	}
+	int _base;//Base类内定义一个数据成员
+};
+class Derive :virtual public Base//定义Derive类公有普通继承自Base类
+{
+public:
+	virtual void BaseTest1()//对Base类的BaseTest1()函数进行重写
+	{
+		cout << "Derive::BaseTest1()" << endl;
+	}
+	virtual void DeriveTest1()//Derive类中定义函数DeriveTest1()
+	{
+		cout << "Derive::DeriveTest1()" << endl;//函数打印它的作用域和函数名
+	}
+	virtual void DeriveTest2()//Derive类中定义函数DeriveTest2（）
+	{
+		cout << "Derive::DervieTest2()" << endl;//函数打印它的作用域和函数名
+	}
+	int _derive;//Derive类定义一个数据成员
+};
+
+typedef void(*PF)();//将函数指针的名字进行重命名
+void FunTest(Derive& d)//定义一个函数测试函数
+{
+	PF* PFTV = NULL;//定义一个指向函数指针的指针
+	PFTV = (PF*)(*((int*)&d + 3));//将Derive类对象的前四个字节的指针强制类型转换为一个指向函数指针的指针
+	while (*PFTV)//设置一个循环，当函数指针保存的值为0时退出
+	{
+		(*PFTV)();//用指针来执行函数指针指向的函数
+		PFTV = (PF*)((int*)PFTV + 1);//执行下一个函数
+	}
+}
 int main()
 {
 	Derive d;//创建Derive类对象
 	cout << sizeof(d) << endl;//打印Derive类对象的大小
-	d._base = 1;//通过Derive类对象改变Base类的数据成员
-	d._c1 = 2;//通过Derive类对象改变C1类对象的数据成员
-	d._c2 = 3;//通过Derive类对象改变C2类对象的数据成员
-	d._derive = 4;//通过Derive类对象改变它自己的数据成员
+	d._base = 1;//通过Dervie类对象改变继承自Base类对象的数据成员
+	d._derive = 2;//通过Derive类对象改变它自己的数据成员
+	FunTest(d);
+	return 0;
+}
+*/
+
+
+/*
+#include<iostream>
+using namespace std;
+class Base1//定义一个Base1类
+{
+public:
+	virtual void Base1Test1()//在Base1类中定义第一个虚函数
+	{
+		cout << "Base1::Base1Test1()" << endl;//函数打印它的作用域及函数名
+	}
+	virtual void Base1Test2()//在Base2类中定义第二个虚函数
+	{
+		cout << "Base1::Base1Test2()" << endl;//函数打印它的作用域及函数名
+	}
+	int _base1;//在Base1类中定义一个数据成员
+};
+class Base2//定义Base2类
+{
+public:
+	virtual void Base2Test1()//在Base2类中定义第一个虚函数
+	{
+		cout << "Base2::Base2Test1()" << endl;//函数打印自己的作用域及函数名
+	}
+	virtual void Base2Test2()//在Base2类中定义第二个虚函数
+	{
+		cout << "Base2::Base2Test2()" << endl;//函数打印自己的作用域和函数名
+	}
+	int _base2;//在Base2类中定义一个数据成员
+};
+class Derive :virtual public Base1,virtual public Base2//定义Derive类公有普通继承自Base1和Base2类
+{
+public:
+	virtual void Base1Test1()//在Derive类中对Base1类的第一个虚函数进行重写
+	{
+		cout << "Derive::Base1Test1()" << endl;//函数打印它的作用域和函数名
+	}
+	virtual void Base2Test1()//在Derive类中对Base2类的第一个虚函数进行重写
+	{
+		cout << "Derive::Base2Test1()" << endl;//函数打印它的作用域和函数名
+	}
+	virtual void DeriveTest1()//在Derive类中定义它特有的第一个虚函数
+	{
+		cout << "Derive::DeriveTest1()" << endl;//函数打印它的作用域和函数名
+	}
+	virtual void DeriveTest2()//在Derive类中定义它特有的第二个虚函数
+	{
+		cout << "Derive::DervieTest2()" << endl;//函数打印它的作用域和函数名
+	}
+	int _derive;//在Derive类中定义一个数据成员
+};
+typedef void(*PF)();//将函数指针的名字进行重命名
+void FunTest(Derive& d)//定义一个函数测试函数
+{
+	PF* PFTV = NULL;//定义一个指向函数指针的指针
+	PFTV = (PF*)(*((int*)&d + 5));//将Derive类对象的前四个字节的指针强制类型转换为一个指向函数指针的指针
+	while (*PFTV)//设置一个循环，当函数指针保存的值为0时退出
+	{
+		(*PFTV)();//用指针来执行函数指针指向的函数
+		PFTV = (PF*)((int*)PFTV + 1);//执行下一个函数
+	}
+}
+int main()
+{
+	Derive d;//创建Derive类对象
+	//cout << sizeof(d) << endl;//打印派生类Derive类的大小
+	d._base1 = 1;//通过Derive类对象改变继承自Base1类的数据成员
+	d._base2 = 2;//通过Derive类对象改变继承自Base2类的数据成员
+	d._derive = 3;//通过Derive类对象改变它自己的数据成员
+	FunTest(d);
+	return 0;
+}
+*/
+
+
+/*
+
+#include<iostream>
+using namespace std;
+class Base//定义Base类
+{
+public:
+	virtual void BaseTest1()//在Base类内定义第一个虚函数
+	{
+		cout << "Base::BaseTest1()" << endl;//函数打印自己的作用域和函数名
+	}
+	virtual void BaseTest2()//在Base类内打印第二个虚函数
+	{
+		cout << "Base::BaseTest2()" << endl;//函数打印自己的作用域和函数名
+	}
+	int _base;//定义Base类的数据成员
+};
+class C1 :virtual public Base//定义C1类公有普通继承自Base类
+{
+public:
+	virtual void C1Test1()//在C1类内定义第一个虚函数
+	{
+		cout << "C1::C1Test1()" << endl;//函数打印自己的作用域和函数名
+	}
+	virtual void C1Test2()//在C2类内定义第二个虚函数
+	{
+		cout << "C1::C1Test2()" << endl;//函数打印自己的作用域和函数名
+	}
+	int _c1;//定义C1类的数据成员
+};
+class C2 :virtual public Base//定义C2类公有普通继承自Base类
+{
+public:
+	virtual void C2Test1()//在C2类内定义第一个虚函数
+	{
+		cout << "C2::C2Test1()" << endl;//函数打印自己的作用域和函数名
+	}
+	virtual void C2Test2()//在C2类内定义第二个虚函数
+	{
+		cout << "C2::C2Test2()" << endl;//函数打印自己的作用域和函数名
+	}
+	int _c2;//定义C2类的数据成员
+};
+class Derive :virtual public C1,virtual public C2//定义Deive类公有普通继承自C1和C2类
+{
+public:
+	virtual void BaseTest1()//在Derive类中重写Base类的第一个虚函数
+	{
+		cout << "Derive::BaseTest1()" << endl;//函数打印它的作用域和函数名
+	}
+	virtual void C1Test1()//在Derive类中重写C1类的第一个虚函数
+	{
+		cout << "Derive::C1Test1()" << endl;//函数打印它的作用域和函数名
+	}
+	virtual void C2Test1()//在Derive类中重写C2类的第一个虚函数
+	{
+		cout << "Derive::C2Test1()" << endl;//函数打印它的作用域和函数名
+	}
+	virtual void DeriveTest1()//在Derive类中定义它的第一个特有的虚函数
+	{
+		cout << "Derive::DeriveTest1()" << endl;//函数打印它的作用域和函数名
+	}
+	virtual void DeriveTest2()//在Derive类中定义它的第二个特有的虚函数
+	{
+		cout << "Derive::DeriveTest2()" << endl;//函数打印它的作用域和函数名
+	}
+	int _derive;//定义Derive类的数据成员
+};
+typedef void(*PF)();//将函数指针的名字进行重命名
+void FunTest(Derive& d)//定义一个函数测试函数
+{
+	PF* PFTV = NULL;//定义一个指向函数指针的指针
+	PFTV = (PF*)(*((int*)&d + 8));//将Derive类对象的前四个字节的指针强制类型转换为一个指向函数指针的指针
+	while (*PFTV)//设置一个循环，当函数指针保存的值为0时退出
+	{
+		(*PFTV)();//用指针来执行函数指针指向的函数
+		PFTV = (PF*)((int*)PFTV + 1);//执行下一个函数
+	}
+}
+
+int main()
+{
+	Derive d;//创建Derive类对象
+	//cout << sizeof(d) << endl;//打印Derive类对象的大小
+	d._base = 1;//通过Derive类对象改变继承自Base类的数据成员的值
+	d._c1 = 3;//通过Derive类对象改变继承自C1类的数据成员的值
+	d._c2 = 4;//通过Derive类对象改变继承自C2类的数据成员的值
+	d._derive = 5;//通过Derive类对象改变Derive类特有的数据成员的值
+	FunTest(d);
+	return 0;
+}
+*/
+
+int main()
+{
 	return 0;
 }
