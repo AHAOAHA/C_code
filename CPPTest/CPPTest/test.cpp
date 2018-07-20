@@ -1090,6 +1090,38 @@ int main()
 }
 */
 
+
+/*
+void TestFunc1()
+{
+	throw 1;
+}
+void TestFunc2()
+{
+	try
+	{
+		TestFunc1();
+	}
+	catch (...)
+	{
+
+	}
+}       
+int main()
+{
+	TestFunc2();
+	return 0;
+}
+*/
+
+typedef void(*PF)();
+template<class T>
+class Test
+{
+public:
+
+};
+
 int main()
 {
 	return 0;
