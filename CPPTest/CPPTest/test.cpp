@@ -1114,6 +1114,7 @@ int main()
 }
 */
 
+/*
 typedef void(*PF)();
 template<class T>
 class Test
@@ -1124,5 +1125,29 @@ public:
 
 int main()
 {
+	return 0;
+}
+*/
+
+#include<iostream>
+using namespace std;
+template<class T>
+class A
+{
+public:
+	A();
+private:
+	T* ptr;
+};
+template<class T>
+A<T>::A()
+{
+	cout << "hahah" << endl;
+}
+
+
+int main()
+{
+	A<int> a;
 	return 0;
 }
