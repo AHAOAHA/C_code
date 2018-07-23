@@ -20,7 +20,7 @@ public:
 	T* End();//获取容器尾位置地址
 	size_t Size();//获取存储元素个数
 	size_t Capacity();//获取当前容量大小
-	T* ReCapacity();//更改容量大小
+	void ReCapacity();//更改容量大小
 	bool Empty();//判断容器是否为空
 	bool operator==(T& data);
 	bool operator!=(T& data);
@@ -63,6 +63,8 @@ Vector<T>::Vector(Vector<T>& v)
 template<class T>
 void Vector<T>::Push_Back(T data)
 {
+	if (_size >= _capacity)
+		ReCapacity();
 	*(_ptr + _size) = data;
 	_size++;
 }
@@ -79,6 +81,8 @@ template<class T>
 void Vector<T>::Insert(T data, size_t pos)
 {
 	int i = 0;
+	if(_size >= _capacity)
+		ReCapacity();
 	for (i = _size; i > 0; i--)
 	{
 		*(_ptr + i) = *(_ptr + i - 1);
@@ -142,12 +146,6 @@ T& Vector<T>::At(size_t pos)
 	return *(_ptr + pos - 1);
 }
 
-//获取容器起始位置地址
-template<class T>
-T* Vector<T>::Begin()
-{
-	return _ptr;
-}
 
 //获取容器元素末尾地址
 template<class T>
@@ -174,7 +172,15 @@ size_t Vector<T>::Capacity()
 template<class T>
 void Vector<T>::ReCapacity()
 {
-
+	int i = 0;
+	T* New_ptr = new T[_capacity + 3];
+	for (i = 0; i < _size; i++)
+	{
+		*(New_ptr + i) = *(_ptr + i);
+	}
+	delete[] _ptr;
+	_ptr = New_ptr;
+	_capacity += 3;
 }
 
 //判空
@@ -183,6 +189,8 @@ bool Vector<T>::Empty()
 {
 	return _size == 0;
 }
+
+
 //析构函数
 template<class T>
 Vector<T>::~Vector()
@@ -194,8 +202,10 @@ Vector<T>::~Vector()
 //主函数
 int main()
 {
-	Vector<int> v1;
-	Vector<int> v2(10);
-	Vector<int> v3(v2);
+	Vector<int> v1(3);
+	v1.Push_Back(1);
+	v1.Push_Back(2);
+	v1.Push_Back(3);
+	v1.Push_Back(4);
 	return 0;
 }

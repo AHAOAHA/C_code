@@ -1,14 +1,19 @@
-﻿生成启动时间为 2018/7/23 16:50:40。
-     1>项目“D:\bit\github_code\Vector\Vector\Vector.vcxproj”在节点 2 上(ClCompile 个目标)。
+﻿生成启动时间为 2018/7/23 21:30:48。
+     1>项目“D:\bit\github_code\Vector\Vector\Vector.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          D:\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Vector.cpp
          Vector.cpp
-     1>d:\bit\github_code\vector\vector\vector.cpp(58): warning C4018: “<”: 有符号/无符号不匹配
-                 d:\bit\github_code\vector\vector\vector.cpp(50): 编译类 模板 成员函数“Vector<int>::Vector(Vector<int> &)”时
-                 d:\bit\github_code\vector\vector\vector.cpp(136): 参见对正在编译的函数 模板 实例化“Vector<int>::Vector(Vector<int> &)”的引用
-                 d:\bit\github_code\vector\vector\vector.cpp(134): 参见对正在编译的类 模板 实例化“Vector<int>”的引用
-     1>已完成生成项目“D:\bit\github_code\Vector\Vector\Vector.vcxproj”(ClCompile 个目标)的操作。
+     1>d:\bit\github_code\vector\vector\vector.cpp(177): warning C4018: “<”: 有符号/无符号不匹配
+                 d:\bit\github_code\vector\vector\vector.cpp(174): 编译类 模板 成员函数“void Vector<int>::ReCapacity(void)”时
+                 d:\bit\github_code\vector\vector\vector.cpp(67): 参见对正在编译的函数 模板 实例化“void Vector<int>::ReCapacity(void)”的引用
+                 d:\bit\github_code\vector\vector\vector.cpp(40): 编译类 模板 成员函数“Vector<int>::Vector(size_t)”时
+                 d:\bit\github_code\vector\vector\vector.cpp(205): 参见对正在编译的函数 模板 实例化“Vector<int>::Vector(size_t)”的引用
+                 d:\bit\github_code\vector\vector\vector.cpp(205): 参见对正在编译的类 模板 实例化“Vector<int>”的引用
+       Link:
+         D:\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\bit\github_code\Vector\Debug\Vector.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\bit\github_code\Vector\Debug\Vector.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\bit\github_code\Vector\Debug\Vector.lib" /MACHINE:X86 Debug\Vector.obj
+         Vector.vcxproj -> D:\bit\github_code\Vector\Debug\Vector.exe
+     1>已完成生成项目“D:\bit\github_code\Vector\Vector\Vector.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:00.25
+已用时间 00:00:00.61

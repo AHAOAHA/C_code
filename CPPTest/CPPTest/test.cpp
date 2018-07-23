@@ -1128,7 +1128,7 @@ int main()
 	return 0;
 }
 */
-
+/*
 #include<iostream>
 using namespace std;
 template<class T>
@@ -1149,5 +1149,19 @@ A<T>::A()
 int main()
 {
 	A<int> a;
+	return 0;
+}
+*/
+
+
+
+#include<vector>
+using namespace std;
+int main()
+{
+	vector<int> v1(1);
+	v1.push_back(1);
+	v1.push_back(2);
+	v1.push_back(3);
 	return 0;
 }
