@@ -98,7 +98,7 @@ void Vector<T>::Earse(size_t pos)
 	_size--;
 }
 
-//删除所有元素
+//删除所有元素    
 template<class T>
 void Vector<T>::Clear()
 {
