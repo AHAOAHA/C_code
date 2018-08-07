@@ -565,12 +565,22 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 //	return 0;
 //}
 
+//#include<stdlib.h>
+//int QuickSort(int array[], int size/*数组的大小*/)
+//{
+//	int left = 0;
+//	int right = size - 1;
+//	int max = INT_MIN;
+//	int min = INT_MAX;
+//	
+//}
+
+
+
 #include<stdlib.h>
-int QuickSort(int array[], int size/*数组的大小*/)
+int main()
 {
-	int left = 0;
-	int right = size - 1;
-	int max = INT_MIN;
-	int min = INT_MAX;
-	
+	char* p = "a";
+	free(p);
+	return 0;
 }

@@ -1,12 +1,12 @@
  CTest
 
- Timestamp is 5b3e1648 (Thu Jul 05 20:59:52 2018)
+ Timestamp is 5b669fcd (Sun Aug 05 14:57:17 2018)
 
  Preferred load address is 00400000
 
  Start         Length     Name                   Class
  0001:00000000 00010000H .textbss                DATA
- 0002:00000000 00003ea7H .text$mn                CODE
+ 0002:00000000 00003b59H .text$mn                CODE
  0003:00000000 00000104H .CRT$XCA                DATA
  0003:00000104 00000104H .CRT$XCAA               DATA
  0003:00000208 00000104H .CRT$XCZ                DATA
@@ -15,236 +15,229 @@
  0003:00000514 00000104H .CRT$XIC                DATA
  0003:00000618 00000104H .CRT$XIY                DATA
  0003:0000071c 00000104H .CRT$XIZ                DATA
- 0003:00000820 00000ef3H .rdata                  DATA
- 0003:00001714 00000169H .rdata$debug            DATA
- 0003:00001880 00000104H .rtc$IAA                DATA
- 0003:00001984 00000104H .rtc$IMZ                DATA
- 0003:00001a88 00000104H .rtc$IZZ                DATA
- 0003:00001b8c 00000104H .rtc$TAA                DATA
- 0003:00001c90 00000104H .rtc$TMZ                DATA
- 0003:00001d94 00000104H .rtc$TZZ                DATA
- 0003:00001e98 000001b1H .xdata$x                DATA
- 0003:00002049 00000000H .edata                  DATA
+ 0003:00000820 00000eeaH .rdata                  DATA
+ 0003:0000170c 00000169H .rdata$debug            DATA
+ 0003:00001878 00000104H .rtc$IAA                DATA
+ 0003:0000197c 00000104H .rtc$IMZ                DATA
+ 0003:00001a80 00000104H .rtc$IZZ                DATA
+ 0003:00001b84 00000104H .rtc$TAA                DATA
+ 0003:00001c88 00000104H .rtc$TMZ                DATA
+ 0003:00001d8c 00000104H .rtc$TZZ                DATA
+ 0003:00001e90 000001b1H .xdata$x                DATA
+ 0003:00002041 00000000H .edata                  DATA
  0004:00000000 00000130H .data                   DATA
- 0004:00000130 00000449H .bss                    DATA
- 0005:00000000 00000168H .idata$5                DATA
- 0005:00000168 00000028H .idata$2                DATA
- 0005:00000190 00000014H .idata$3                DATA
- 0005:000001a4 00000168H .idata$4                DATA
- 0005:0000030c 00000545H .idata$6                DATA
+ 0004:00000130 0000044dH .bss                    DATA
+ 0005:00000000 0000015cH .idata$5                DATA
+ 0005:0000015c 00000028H .idata$2                DATA
+ 0005:00000184 00000014H .idata$3                DATA
+ 0005:00000198 0000015cH .idata$4                DATA
+ 0005:000002f4 0000052fH .idata$6                DATA
  0006:00000000 00000169H .rsrc$01                DATA
  0006:00000170 000002ccH .rsrc$02                DATA
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
  0000:00000000       ___safe_se_handler_count   00000000     <absolute>
- 0000:00000000       ___guard_flags             00000000     <absolute>
  0000:00000000       ___safe_se_handler_table   00000000     <absolute>
- 0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
+ 0000:00000000       ___guard_flags             00000000     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00000000       __enc$textbss$begin        00401000     <linker-defined>
  0001:00010000       __enc$textbss$end          00411000     <linker-defined>
- 0002:000003f0       _Quicksort                 004113f0 f   add.obj
- 0002:00000540       _main                      00411540 f   add.obj
- 0002:00000720       _printf                    00411720 f   MSVCRTD:MSVCR120D.dll
- 0002:00000726       _scanf                     00411726 f   MSVCRTD:MSVCR120D.dll
- 0002:0000072c       _system                    0041172c f   MSVCRTD:MSVCR120D.dll
- 0002:00000740       @_RTC_AllocaHelper@12      00411740 f   MSVCRTD:stack.obj
- 0002:00000780       @_RTC_CheckStackVars2@12   00411780 f   MSVCRTD:stack.obj
- 0002:00000890       @_RTC_CheckStackVars@8     00411890 f   MSVCRTD:stack.obj
- 0002:00000900       __RTC_CheckEsp             00411900 f   MSVCRTD:stack.obj
- 0002:00000930       @__security_check_cookie@4 00411930 f   MSVCRTD:secchk.obj
- 0002:00000950       __RTC_InitBase             00411950 f   MSVCRTD:init.obj
- 0002:00000990       __RTC_Shutdown             00411990 f   MSVCRTD:init.obj
- 0002:000009b0       __chkstk                   004119b0 f   MSVCRTD:chkstk.obj
- 0002:000009b0       __alloca_probe             004119b0 f   MSVCRTD:chkstk.obj
- 0002:00000b10       _NtCurrentTeb              00411b10 f i MSVCRTD:crtexe.obj
- 0002:00000ea0       _mainCRTStartup            00411ea0 f   MSVCRTD:crtexe.obj
- 0002:00001060       ?_RTC_AllocaFailure@@YAXPAXPAU_RTC_ALLOCA_NODE@@H@Z 00412060 f   MSVCRTD:error.obj
- 0002:00001240       ?_RTC_Failure@@YAXPAXH@Z   00412240 f   MSVCRTD:error.obj
- 0002:000012b0       ?_RTC_StackFailure@@YAXPAXPBD@Z 004122b0 f   MSVCRTD:error.obj
- 0002:00001710       __RTC_UninitUse            00412710 f   MSVCRTD:error.obj
- 0002:00001840       ___raise_securityfailure   00412840 f   MSVCRTD:gs_report.obj
- 0002:000018a0       ___report_gsfailure        004128a0 f   MSVCRTD:gs_report.obj
- 0002:000019f0       ___report_rangecheckfailure 004129f0 f   MSVCRTD:gs_report.obj
- 0002:00001a00       ___report_securityfailure  00412a00 f   MSVCRTD:gs_report.obj
- 0002:00001b10       ___report_securityfailureEx 00412b10 f   MSVCRTD:gs_report.obj
- 0002:00001c80       ?_RTC_GetErrorFunc@@YAP6AHHPBDH00ZZPBX@Z 00412c80 f   MSVCRTD:userapi.obj
- 0002:00001c90       ?_RTC_GetErrorFuncW@@YAP6AHHPB_WH00ZZPBX@Z 00412c90 f   MSVCRTD:userapi.obj
- 0002:00001ca0       __RTC_GetErrDesc           00412ca0 f   MSVCRTD:userapi.obj
- 0002:00001cc0       __RTC_NumErrors            00412cc0 f   MSVCRTD:userapi.obj
- 0002:00001cd0       __RTC_SetErrorFunc         00412cd0 f   MSVCRTD:userapi.obj
- 0002:00001d00       __RTC_SetErrorFuncW        00412d00 f   MSVCRTD:userapi.obj
- 0002:00001d30       __RTC_SetErrorType         00412d30 f   MSVCRTD:userapi.obj
- 0002:00001d5c       __CRT_RTC_INITW            00412d5c f   MSVCRTD:MSVCR120D.dll
- 0002:00001d70       ?__CxxUnhandledExceptionFilter@@YGJPAU_EXCEPTION_POINTERS@@@Z 00412d70 f   MSVCRTD:unhandld.obj
- 0002:00001df0       ___CxxSetUnhandledExceptionFilter 00412df0 f   MSVCRTD:unhandld.obj
- 0002:00001e0a       __XcptFilter               00412e0a f   MSVCRTD:MSVCR120D.dll
- 0002:00001e10       __amsg_exit                00412e10 f   MSVCRTD:MSVCR120D.dll
- 0002:00001e20       __setargv                  00412e20 f   MSVCRTD:dllargv.obj
- 0002:00001e28       ___getmainargs             00412e28 f   MSVCRTD:MSVCR120D.dll
- 0002:00001e2e       ___set_app_type            00412e2e f   MSVCRTD:MSVCR120D.dll
- 0002:00001e34       __CrtDbgReportW            00412e34 f   MSVCRTD:MSVCR120D.dll
- 0002:00001e3a       __CrtSetCheckCount         00412e3a f   MSVCRTD:MSVCR120D.dll
- 0002:00001e40       __FindPESection            00412e40 f   MSVCRTD:pesect.obj
- 0002:00001ed0       __IsNonwritableInCurrentImage 00412ed0 f   MSVCRTD:pesect.obj
- 0002:00002050       __ValidateImageBase        00413050 f   MSVCRTD:pesect.obj
- 0002:000020c4       _exit                      004130c4 f   MSVCRTD:MSVCR120D.dll
- 0002:000020ca       __exit                     004130ca f   MSVCRTD:MSVCR120D.dll
- 0002:000020d0       __cexit                    004130d0 f   MSVCRTD:MSVCR120D.dll
- 0002:000020e0       ___security_init_cookie    004130e0 f   MSVCRTD:gs_support.obj
- 0002:00002200       __matherr                  00413200 f   MSVCRTD:merr.obj
- 0002:00002210       ___atonexitinit            00413210 f   MSVCRTD:atonexit.obj
- 0002:000022f0       __onexit                   004132f0 f   MSVCRTD:atonexit.obj
- 0002:00002430       _atexit                    00413430 f   MSVCRTD:atonexit.obj
- 0002:00002470       __RTC_Initialize           00413470 f   MSVCRTD:initsect.obj
- 0002:000024a0       __RTC_Terminate            004134a0 f   MSVCRTD:initsect.obj
- 0002:000024ce       __configthreadlocale       004134ce f   MSVCRTD:MSVCR120D.dll
- 0002:000024e0       __invoke_watson_if_error   004134e0 f i MSVCRTD:fp8.obj
- 0002:00002510       __setdefaultprecision      00413510 f   MSVCRTD:fp8.obj
- 0002:00002552       ___setusermatherr          00413552 f   MSVCRTD:MSVCR120D.dll
- 0002:00002558       __initterm_e               00413558 f   MSVCRTD:MSVCR120D.dll
- 0002:0000255e       __initterm                 0041355e f   MSVCRTD:MSVCR120D.dll
- 0002:00002570       __except_handler4          00413570 f   MSVCRTD:chandler4gs.obj
- 0002:00002b00       ?_RTC_GetSrcLine@@YAHPAEPA_WKPAH1K@Z 00413b00 f   MSVCRTD:pdblkup.obj
- 0002:00002e5a       __crt_debugger_hook        00413e5a f   MSVCRTD:MSVCR120D.dll
- 0002:00002e60       ___crtUnhandledException   00413e60 f   MSVCRTD:MSVCR120D.dll
- 0002:00002e66       ___crtTerminateProcess     00413e66 f   MSVCRTD:MSVCR120D.dll
- 0002:00002e6c       ?terminate@@YAXXZ          00413e6c f   MSVCRTD:MSVCR120D.dll
- 0002:00002e72       ___crtSetUnhandledExceptionFilter 00413e72 f   MSVCRTD:MSVCR120D.dll
- 0002:00002e78       __lock                     00413e78 f   MSVCRTD:MSVCR120D.dll
- 0002:00002e7e       __unlock                   00413e7e f   MSVCRTD:MSVCR120D.dll
- 0002:00002e84       __calloc_dbg               00413e84 f   MSVCRTD:MSVCR120D.dll
- 0002:00002e8a       ___dllonexit               00413e8a f   MSVCRTD:MSVCR120D.dll
- 0002:00002e90       __invoke_watson            00413e90 f   MSVCRTD:MSVCR120D.dll
- 0002:00002e96       __controlfp_s              00413e96 f   MSVCRTD:MSVCR120D.dll
- 0002:00002e9c       __except_handler4_common   00413e9c f   MSVCRTD:MSVCR120D.dll
- 0002:00002ea2       _wcscpy_s                  00413ea2 f   MSVCRTD:MSVCR120D.dll
- 0002:00002ea8       __wmakepath_s              00413ea8 f   MSVCRTD:MSVCR120D.dll
- 0002:00002eae       __wsplitpath_s             00413eae f   MSVCRTD:MSVCR120D.dll
- 0002:00002eb4       _EncodePointer@4           00413eb4 f   kernel32:KERNEL32.dll
- 0002:00002eba       _IsDebuggerPresent@0       00413eba f   kernel32:KERNEL32.dll
- 0002:00002ec0       _RaiseException@16         00413ec0 f   kernel32:KERNEL32.dll
- 0002:00002ec6       _GetLastError@0            00413ec6 f   kernel32:KERNEL32.dll
- 0002:00002ecc       _GetProcAddress@8          00413ecc f   kernel32:KERNEL32.dll
- 0002:00002ed2       _LoadLibraryExW@12         00413ed2 f   kernel32:KERNEL32.dll
- 0002:00002ed8       _MultiByteToWideChar@24    00413ed8 f   kernel32:KERNEL32.dll
- 0002:00002ede       _WideCharToMultiByte@32    00413ede f   kernel32:KERNEL32.dll
- 0002:00002ee4       _IsProcessorFeaturePresent@4 00413ee4 f   kernel32:KERNEL32.dll
- 0002:00002eea       _QueryPerformanceCounter@4 00413eea f   kernel32:KERNEL32.dll
- 0002:00002ef0       _GetCurrentProcessId@0     00413ef0 f   kernel32:KERNEL32.dll
- 0002:00002ef6       _GetCurrentThreadId@0      00413ef6 f   kernel32:KERNEL32.dll
- 0002:00002efc       _GetSystemTimeAsFileTime@4 00413efc f   kernel32:KERNEL32.dll
- 0002:00002f02       _DecodePointer@4           00413f02 f   kernel32:KERNEL32.dll
- 0002:00002f08       _HeapAlloc@12              00413f08 f   kernel32:KERNEL32.dll
- 0002:00002f0e       _HeapFree@12               00413f0e f   kernel32:KERNEL32.dll
- 0002:00002f14       _GetProcessHeap@0          00413f14 f   kernel32:KERNEL32.dll
- 0002:00002f1a       _VirtualQuery@12           00413f1a f   kernel32:KERNEL32.dll
- 0002:00002f20       _FreeLibrary@4             00413f20 f   kernel32:KERNEL32.dll
- 0002:00002f26       _GetModuleFileNameW@12     00413f26 f   kernel32:KERNEL32.dll
- 0002:00002f2c       _GetModuleHandleW@4        00413f2c f   kernel32:KERNEL32.dll
+ 0002:000003c0       _main                      004113c0 f   add.obj
+ 0002:00000426       _free                      00411426 f   MSVCRTD:MSVCR120D.dll
+ 0002:00000430       @_RTC_AllocaHelper@12      00411430 f   MSVCRTD:stack.obj
+ 0002:00000470       @_RTC_CheckStackVars2@12   00411470 f   MSVCRTD:stack.obj
+ 0002:00000580       @_RTC_CheckStackVars@8     00411580 f   MSVCRTD:stack.obj
+ 0002:000005f0       __RTC_CheckEsp             004115f0 f   MSVCRTD:stack.obj
+ 0002:00000620       __RTC_InitBase             00411620 f   MSVCRTD:init.obj
+ 0002:00000660       __RTC_Shutdown             00411660 f   MSVCRTD:init.obj
+ 0002:000007a0       _NtCurrentTeb              004117a0 f i MSVCRTD:crtexe.obj
+ 0002:00000b30       _mainCRTStartup            00411b30 f   MSVCRTD:crtexe.obj
+ 0002:00000cf0       ?_RTC_AllocaFailure@@YAXPAXPAU_RTC_ALLOCA_NODE@@H@Z 00411cf0 f   MSVCRTD:error.obj
+ 0002:00000ed0       ?_RTC_Failure@@YAXPAXH@Z   00411ed0 f   MSVCRTD:error.obj
+ 0002:00000f40       ?_RTC_StackFailure@@YAXPAXPBD@Z 00411f40 f   MSVCRTD:error.obj
+ 0002:000013a0       __RTC_UninitUse            004123a0 f   MSVCRTD:error.obj
+ 0002:000014d0       ?_RTC_GetErrorFunc@@YAP6AHHPBDH00ZZPBX@Z 004124d0 f   MSVCRTD:userapi.obj
+ 0002:000014e0       ?_RTC_GetErrorFuncW@@YAP6AHHPB_WH00ZZPBX@Z 004124e0 f   MSVCRTD:userapi.obj
+ 0002:000014f0       __RTC_GetErrDesc           004124f0 f   MSVCRTD:userapi.obj
+ 0002:00001510       __RTC_NumErrors            00412510 f   MSVCRTD:userapi.obj
+ 0002:00001520       __RTC_SetErrorFunc         00412520 f   MSVCRTD:userapi.obj
+ 0002:00001550       __RTC_SetErrorFuncW        00412550 f   MSVCRTD:userapi.obj
+ 0002:00001580       __RTC_SetErrorType         00412580 f   MSVCRTD:userapi.obj
+ 0002:000015ac       __CRT_RTC_INITW            004125ac f   MSVCRTD:MSVCR120D.dll
+ 0002:000015c0       ?__CxxUnhandledExceptionFilter@@YGJPAU_EXCEPTION_POINTERS@@@Z 004125c0 f   MSVCRTD:unhandld.obj
+ 0002:00001640       ___CxxSetUnhandledExceptionFilter 00412640 f   MSVCRTD:unhandld.obj
+ 0002:0000165a       __XcptFilter               0041265a f   MSVCRTD:MSVCR120D.dll
+ 0002:00001660       __amsg_exit                00412660 f   MSVCRTD:MSVCR120D.dll
+ 0002:00001670       __setargv                  00412670 f   MSVCRTD:dllargv.obj
+ 0002:00001678       ___getmainargs             00412678 f   MSVCRTD:MSVCR120D.dll
+ 0002:0000167e       ___set_app_type            0041267e f   MSVCRTD:MSVCR120D.dll
+ 0002:00001684       __CrtDbgReportW            00412684 f   MSVCRTD:MSVCR120D.dll
+ 0002:0000168a       __CrtSetCheckCount         0041268a f   MSVCRTD:MSVCR120D.dll
+ 0002:00001690       __FindPESection            00412690 f   MSVCRTD:pesect.obj
+ 0002:00001720       __IsNonwritableInCurrentImage 00412720 f   MSVCRTD:pesect.obj
+ 0002:000018a0       __ValidateImageBase        004128a0 f   MSVCRTD:pesect.obj
+ 0002:00001914       _exit                      00412914 f   MSVCRTD:MSVCR120D.dll
+ 0002:0000191a       __exit                     0041291a f   MSVCRTD:MSVCR120D.dll
+ 0002:00001920       __cexit                    00412920 f   MSVCRTD:MSVCR120D.dll
+ 0002:00001930       ___security_init_cookie    00412930 f   MSVCRTD:gs_support.obj
+ 0002:00001a50       __matherr                  00412a50 f   MSVCRTD:merr.obj
+ 0002:00001a60       ___atonexitinit            00412a60 f   MSVCRTD:atonexit.obj
+ 0002:00001b40       __onexit                   00412b40 f   MSVCRTD:atonexit.obj
+ 0002:00001c80       _atexit                    00412c80 f   MSVCRTD:atonexit.obj
+ 0002:00001cc0       __RTC_Initialize           00412cc0 f   MSVCRTD:initsect.obj
+ 0002:00001cf0       __RTC_Terminate            00412cf0 f   MSVCRTD:initsect.obj
+ 0002:00001d1e       __configthreadlocale       00412d1e f   MSVCRTD:MSVCR120D.dll
+ 0002:00001d30       __invoke_watson_if_error   00412d30 f i MSVCRTD:fp8.obj
+ 0002:00001d60       __setdefaultprecision      00412d60 f   MSVCRTD:fp8.obj
+ 0002:00001da2       ___setusermatherr          00412da2 f   MSVCRTD:MSVCR120D.dll
+ 0002:00001da8       __initterm_e               00412da8 f   MSVCRTD:MSVCR120D.dll
+ 0002:00001dae       __initterm                 00412dae f   MSVCRTD:MSVCR120D.dll
+ 0002:00001dc0       __except_handler4          00412dc0 f   MSVCRTD:chandler4gs.obj
+ 0002:00002350       ?_RTC_GetSrcLine@@YAHPAEPA_WKPAH1K@Z 00413350 f   MSVCRTD:pdblkup.obj
+ 0002:000026b0       @__security_check_cookie@4 004136b0 f   MSVCRTD:secchk.obj
+ 0002:000026c2       ?terminate@@YAXXZ          004136c2 f   MSVCRTD:MSVCR120D.dll
+ 0002:000026c8       ___crtSetUnhandledExceptionFilter 004136c8 f   MSVCRTD:MSVCR120D.dll
+ 0002:000026ce       __lock                     004136ce f   MSVCRTD:MSVCR120D.dll
+ 0002:000026d4       __unlock                   004136d4 f   MSVCRTD:MSVCR120D.dll
+ 0002:000026da       __calloc_dbg               004136da f   MSVCRTD:MSVCR120D.dll
+ 0002:000026e0       ___dllonexit               004136e0 f   MSVCRTD:MSVCR120D.dll
+ 0002:000026e6       __invoke_watson            004136e6 f   MSVCRTD:MSVCR120D.dll
+ 0002:000026ec       __controlfp_s              004136ec f   MSVCRTD:MSVCR120D.dll
+ 0002:000026f2       __except_handler4_common   004136f2 f   MSVCRTD:MSVCR120D.dll
+ 0002:000026f8       _wcscpy_s                  004136f8 f   MSVCRTD:MSVCR120D.dll
+ 0002:000026fe       __wmakepath_s              004136fe f   MSVCRTD:MSVCR120D.dll
+ 0002:00002704       __wsplitpath_s             00413704 f   MSVCRTD:MSVCR120D.dll
+ 0002:00002710       ___raise_securityfailure   00413710 f   MSVCRTD:gs_report.obj
+ 0002:00002770       ___report_gsfailure        00413770 f   MSVCRTD:gs_report.obj
+ 0002:000028c0       ___report_rangecheckfailure 004138c0 f   MSVCRTD:gs_report.obj
+ 0002:000028d0       ___report_securityfailure  004138d0 f   MSVCRTD:gs_report.obj
+ 0002:000029e0       ___report_securityfailureEx 004139e0 f   MSVCRTD:gs_report.obj
+ 0002:00002b4e       __crt_debugger_hook        00413b4e f   MSVCRTD:MSVCR120D.dll
+ 0002:00002b54       ___crtUnhandledException   00413b54 f   MSVCRTD:MSVCR120D.dll
+ 0002:00002b5a       ___crtTerminateProcess     00413b5a f   MSVCRTD:MSVCR120D.dll
+ 0002:00002b60       _EncodePointer@4           00413b60 f   kernel32:KERNEL32.dll
+ 0002:00002b66       _IsDebuggerPresent@0       00413b66 f   kernel32:KERNEL32.dll
+ 0002:00002b6c       _RaiseException@16         00413b6c f   kernel32:KERNEL32.dll
+ 0002:00002b72       _GetLastError@0            00413b72 f   kernel32:KERNEL32.dll
+ 0002:00002b78       _GetProcAddress@8          00413b78 f   kernel32:KERNEL32.dll
+ 0002:00002b7e       _LoadLibraryExW@12         00413b7e f   kernel32:KERNEL32.dll
+ 0002:00002b84       _MultiByteToWideChar@24    00413b84 f   kernel32:KERNEL32.dll
+ 0002:00002b8a       _WideCharToMultiByte@32    00413b8a f   kernel32:KERNEL32.dll
+ 0002:00002b90       _QueryPerformanceCounter@4 00413b90 f   kernel32:KERNEL32.dll
+ 0002:00002b96       _GetCurrentProcessId@0     00413b96 f   kernel32:KERNEL32.dll
+ 0002:00002b9c       _GetCurrentThreadId@0      00413b9c f   kernel32:KERNEL32.dll
+ 0002:00002ba2       _GetSystemTimeAsFileTime@4 00413ba2 f   kernel32:KERNEL32.dll
+ 0002:00002ba8       _DecodePointer@4           00413ba8 f   kernel32:KERNEL32.dll
+ 0002:00002bae       _HeapAlloc@12              00413bae f   kernel32:KERNEL32.dll
+ 0002:00002bb4       _HeapFree@12               00413bb4 f   kernel32:KERNEL32.dll
+ 0002:00002bba       _GetProcessHeap@0          00413bba f   kernel32:KERNEL32.dll
+ 0002:00002bc0       _VirtualQuery@12           00413bc0 f   kernel32:KERNEL32.dll
+ 0002:00002bc6       _FreeLibrary@4             00413bc6 f   kernel32:KERNEL32.dll
+ 0002:00002bcc       _GetModuleFileNameW@12     00413bcc f   kernel32:KERNEL32.dll
+ 0002:00002bd2       _GetModuleHandleW@4        00413bd2 f   kernel32:KERNEL32.dll
+ 0002:00002bd8       _IsProcessorFeaturePresent@4 00413bd8 f   kernel32:KERNEL32.dll
  0003:00000000       ___xc_a                    00415000     MSVCRTD:cinitexe.obj
  0003:00000208       ___xc_z                    00415208     MSVCRTD:cinitexe.obj
  0003:0000030c       ___xi_a                    0041530c     MSVCRTD:cinitexe.obj
  0003:0000071c       ___xi_z                    0041571c     MSVCRTD:cinitexe.obj
- 0003:00000858       ??_C@_02DPKJAMEF@?$CFd?$AA@ 00415858     add.obj
- 0003:0000085c       ??_C@_03JDANDILB@?$CFd?5?$AA@ 0041585c     add.obj
- 0003:00000860       ??_C@_01EEMJAFIK@?6?$AA@   00415860     add.obj
- 0003:00000864       ??_C@_05PDJBBECF@pause?$AA@ 00415864     add.obj
- 0003:00000870       ??_C@_1FA@DALEHHGL@?$AA_?$AA_?$AAn?$AAa?$AAt?$AAi?$AAv?$AAe?$AA_?$AAs?$AAt?$AAa?$AAr?$AAt?$AAu?$AAp?$AA_?$AAs?$AAt?$AAa?$AAt?$AAe?$AA?5?$AA?$DN?$AA?$DN?$AA?5?$AA_?$AA_?$AAi?$AAn?$AAi?$AAt@ 00415870     MSVCRTD:crtexe.obj
- 0003:000008d0       ??_C@_15GANGMFKL@?$AA?$CF?$AAs?$AA?$AA@ 004158d0     MSVCRTD:crtexe.obj
- 0003:000008d8       ??_C@_1FG@DKNDLLJO@?$AAf?$AA?3?$AA?2?$AAd?$AAd?$AA?2?$AAv?$AAc?$AAt?$AAo?$AAo?$AAl?$AAs?$AA?2?$AAc?$AAr?$AAt?$AA?2?$AAc?$AAr?$AAt?$AAw?$AA3?$AA2?$AA?2?$AAd?$AAl?$AAl?$AAs?$AAt?$AAu?$AAf@ 004158d8     MSVCRTD:crtexe.obj
- 0003:00000a00       ??_C@_0NN@NGPKDKPD@The?5value?5of?5ESP?5was?5not?5properl@ 00415a00     MSVCRTD:error.obj
- 0003:00000b10       ??_C@_0BBN@GPMLNJCF@A?5cast?5to?5a?5smaller?5data?5type?5ha@ 00415b10     MSVCRTD:error.obj
- 0003:00000c68       ??_C@_0BN@FFOINMNJ@Stack?5memory?5was?5corrupted?6?$AN?$AA@ 00415c68     MSVCRTD:error.obj
- 0003:00000c8c       ??_C@_0DG@HKJMLLLP@A?5local?5variable?5was?5used?5before@ 00415c8c     MSVCRTD:error.obj
- 0003:00000ccc       ??_C@_0CM@NGINOKPC@Stack?5memory?5around?5_alloca?5was?5@ 00415ccc     MSVCRTD:error.obj
- 0003:00000d00       ??_C@_0BO@GNIAFIKK@Unknown?5Runtime?5Check?5Error?6?$AN?$AA@ 00415d00     MSVCRTD:error.obj
- 0003:00000d28       ??_C@_1GM@OLMCBDMB@?$AAR?$AAu?$AAn?$AAt?$AAi?$AAm?$AAe?$AA?5?$AAC?$AAh?$AAe?$AAc?$AAk?$AA?5?$AAE?$AAr?$AAr?$AAo?$AAr?$AA?4?$AA?6?$AA?$AN?$AA?5?$AAU?$AAn?$AAa?$AAb?$AAl?$AAe?$AA?5?$AAt?$AAo@ 00415d28     MSVCRTD:error.obj
- 0003:00000db0       ??_C@_1EA@NFKNIFJP@?$AAR?$AAu?$AAn?$AA?9?$AAT?$AAi?$AAm?$AAe?$AA?5?$AAC?$AAh?$AAe?$AAc?$AAk?$AA?5?$AAF?$AAa?$AAi?$AAl?$AAu?$AAr?$AAe?$AA?5?$AA?$CD?$AA?$CF?$AAd?$AA?5?$AA?9?$AA?5?$AA?$CF?$AAs?$AA?$AA@ 00415db0     MSVCRTD:error.obj
- 0003:00000dfc       ??_C@_0BB@PFFGGCJP@Unknown?5Filename?$AA@ 00415dfc     MSVCRTD:error.obj
- 0003:00000e10       ??_C@_0BE@GNBOBNCK@Unknown?5Module?5Name?$AA@ 00415e10     MSVCRTD:error.obj
- 0003:00000e28       ??_C@_0CA@IODNCDPG@Run?9Time?5Check?5Failure?5?$CD?$CFd?5?9?5?$CFs?$AA@ 00415e28     MSVCRTD:error.obj
- 0003:00000e50       ??_C@_0CG@IAFNJNEE@Stack?5corrupted?5near?5unknown?5var@ 00415e50     MSVCRTD:error.obj
- 0003:00000e80       ??_C@_05MKKEDADM@?$CF?42X?5?$AA@ 00415e80     MSVCRTD:error.obj
- 0003:00000e88       ??_C@_1BG@OILDLIOJ@?$AAu?$AAs?$AAe?$AAr?$AA3?$AA2?$AA?4?$AAd?$AAl?$AAl?$AA?$AA@ 00415e88     MSVCRTD:error.obj
- 0003:00000ea4       ??_C@_09FOPFMPEJ@wsprintfA?$AA@ 00415ea4     MSVCRTD:error.obj
- 0003:00000eb0       ??_C@_0EJ@LJKNEOLN@Stack?5area?5around?5_alloca?5memory@ 00415eb0     MSVCRTD:error.obj
- 0003:00000f08       ??_C@_08OMAHNMHJ@?6Data?3?5?$DM?$AA@ 00415f08     MSVCRTD:error.obj
- 0003:00000f14       ??_C@_0CK@DKGBICFE@?6Allocation?5number?5within?5this?5f@ 00415f14     MSVCRTD:error.obj
- 0003:00000f48       ??_C@_07DFDJCKFN@?6Size?3?5?$AA@ 00415f48     MSVCRTD:error.obj
- 0003:00000f54       ??_C@_0N@MHFFIMFG@?6Address?3?50x?$AA@ 00415f54     MSVCRTD:error.obj
- 0003:00000f68       ??_C@_0EI@CLEPFNGI@Stack?5area?5around?5_alloca?5memory@ 00415f68     MSVCRTD:error.obj
- 0003:00000fc0       ??_C@_0BC@KIBAILCI@?$CFs?$CFs?$CFp?$CFs?$CFld?$CFs?$CFd?$CFs?$AA@ 00415fc0     MSVCRTD:error.obj
- 0003:00000fd8       ??_C@_02LLMPMKNF@?$DO?5?$AA@ 00415fd8     MSVCRTD:error.obj
- 0003:00000fdc       ??_C@_08KJEDNCKC@?$CFs?$CFs?$CFs?$CFs?$AA@ 00415fdc     MSVCRTD:error.obj
- 0003:00000fe8       ??_C@_0DE@OHJBPMBP@A?5variable?5is?5being?5used?5without@ 00415fe8     MSVCRTD:error.obj
- 0003:0000104c       ??_C@_0BJ@HEGAHDFO@Stack?5pointer?5corruption?$AA@ 0041604c     MSVCRTD:userapi.obj
- 0003:0000106c       ??_C@_0CK@FEGOIOPB@Cast?5to?5smaller?5type?5causing?5los@ 0041606c     MSVCRTD:userapi.obj
- 0003:000010a0       ??_C@_0BI@CIGMDCBH@Stack?5memory?5corruption?$AA@ 004160a0     MSVCRTD:userapi.obj
- 0003:000010bc       ??_C@_0CK@CNLNOEPB@Local?5variable?5used?5before?5initi@ 004160bc     MSVCRTD:userapi.obj
- 0003:000010f0       ??_C@_0BP@OGBCLIBO@Stack?5around?5_alloca?5corrupted?$AA@ 004160f0     MSVCRTD:userapi.obj
- 0003:00001118       ?ProcessDetach@NativeDll@<CrtImplementationDetails>@@0IB 00416118     MSVCRTD:unhandld.obj
- 0003:0000111c       ?ProcessAttach@NativeDll@<CrtImplementationDetails>@@0IB 0041611c     MSVCRTD:unhandld.obj
- 0003:00001120       ?ThreadAttach@NativeDll@<CrtImplementationDetails>@@0IB 00416120     MSVCRTD:unhandld.obj
- 0003:00001124       ?ThreadDetach@NativeDll@<CrtImplementationDetails>@@0IB 00416124     MSVCRTD:unhandld.obj
- 0003:00001128       ?ProcessVerifier@NativeDll@<CrtImplementationDetails>@@0IB 00416128     MSVCRTD:unhandld.obj
- 0003:00001130       ??_C@_1MC@KPMPFEII@?$AA?$CI?$AA_?$AA_?$AAo?$AAn?$AAe?$AAx?$AAi?$AAt?$AAb?$AAe?$AAg?$AAi?$AAn?$AA?5?$AA?$CB?$AA?$DN?$AA?5?$AAN?$AAU?$AAL?$AAL?$AA?5?$AA?$CG?$AA?$CG?$AA?5?$AA_?$AA_?$AAo?$AAn?$AAe?$AAx@ 00416130     MSVCRTD:atonexit.obj
- 0003:00001218       ??_C@_1FK@IGIDCAPD@?$AAf?$AA?3?$AA?2?$AAd?$AAd?$AA?2?$AAv?$AAc?$AAt?$AAo?$AAo?$AAl?$AAs?$AA?2?$AAc?$AAr?$AAt?$AA?2?$AAc?$AAr?$AAt?$AAw?$AA3?$AA2?$AA?2?$AAd?$AAl?$AAl?$AAs?$AAt?$AAu?$AAf@ 00416218     MSVCRTD:atonexit.obj
- 0003:00001284       ??_C@_0CN@LMJJPMEG@f?3?2dd?2vctools?2crt?2crtw32?2dllstuf@ 00416284     MSVCRTD:atonexit.obj
- 0003:000012c0       ??_C@_1FI@JJOJLGLE@?$AAf?$AA?3?$AA?2?$AAd?$AAd?$AA?2?$AAv?$AAc?$AAt?$AAo?$AAo?$AAl?$AAs?$AA?2?$AAc?$AAr?$AAt?$AA?2?$AAc?$AAr?$AAt?$AAw?$AA3?$AA2?$AA?2?$AAs?$AAt?$AAa?$AAr?$AAt?$AAu?$AAp@ 004162c0     MSVCRTD:fp8.obj
- 0003:0000132c       ??_C@_1CK@JMKHCBEI@?$AA_?$AAs?$AAe?$AAt?$AAd?$AAe?$AAf?$AAa?$AAu?$AAl?$AAt?$AAp?$AAr?$AAe?$AAc?$AAi?$AAs?$AAi?$AAo?$AAn?$AA?$AA@ 0041632c     MSVCRTD:fp8.obj
- 0003:00001360       ??_C@_1GE@KOCFNGPB@?$AA_?$AAc?$AAo?$AAn?$AAt?$AAr?$AAo?$AAl?$AAf?$AAp?$AA_?$AAs?$AA?$CI?$AA?$CI?$AA?$CI?$AAv?$AAo?$AAi?$AAd?$AA?5?$AA?$CK?$AA?$CJ?$AA0?$AA?$CJ?$AA?0?$AA?5?$AA0?$AAx?$AA0?$AA0?$AA0?$AA1@ 00416360     MSVCRTD:fp8.obj
- 0003:000013d8       ?LocalIdBitWidth@CrossScopeId@CodeViewInfo@@2IB 004163d8     MSVCRTD:pdblkup.obj
- 0003:000013dc       ?IdScopeBitWidth@CrossScopeId@CodeViewInfo@@2IB 004163dc     MSVCRTD:pdblkup.obj
- 0003:000013e0       ?StartCrossScopeId@CrossScopeId@CodeViewInfo@@2IB 004163e0     MSVCRTD:pdblkup.obj
- 0003:000013e4       ?LocalIdMask@CrossScopeId@CodeViewInfo@@2IB 004163e4     MSVCRTD:pdblkup.obj
- 0003:000013e8       ?ScopeIdMask@CrossScopeId@CodeViewInfo@@2IB 004163e8     MSVCRTD:pdblkup.obj
- 0003:000013ec       ?MaxLocalId@CrossScopeId@CodeViewInfo@@2IB 004163ec     MSVCRTD:pdblkup.obj
- 0003:000013f0       ?MaxScopeId@CrossScopeId@CodeViewInfo@@2IB 004163f0     MSVCRTD:pdblkup.obj
- 0003:00001440       ??_C@_1BK@GAEMIDIL@?$AAA?$AAD?$AAV?$AAA?$AAP?$AAI?$AA3?$AA2?$AA?4?$AAD?$AAL?$AAL?$AA?$AA@ 00416440     MSVCRTD:pdblkup.obj
- 0003:00001460       ??_C@_0O@COHOBMLB@RegOpenKeyExW?$AA@ 00416460     MSVCRTD:pdblkup.obj
- 0003:00001470       ??_C@_0BB@GLNAEDBD@RegQueryValueExW?$AA@ 00416470     MSVCRTD:pdblkup.obj
- 0003:00001484       ??_C@_0M@HLOHPNFA@RegCloseKey?$AA@ 00416484     MSVCRTD:pdblkup.obj
- 0003:00001498       ??_C@_1FM@EGIBBNPP@?$AAS?$AAO?$AAF?$AAT?$AAW?$AAA?$AAR?$AAE?$AA?2?$AAM?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?2?$AAV?$AAi?$AAs?$AAu?$AAa?$AAl?$AAS?$AAt?$AAu?$AAd?$AAi?$AAo?$AA?2@ 00416498     MSVCRTD:pdblkup.obj
- 0003:00001508       ??_C@_1BG@EABPBLLF@?$AAP?$AAr?$AAo?$AAd?$AAu?$AAc?$AAt?$AAD?$AAi?$AAr?$AA?$AA@ 00416508     MSVCRTD:pdblkup.obj
- 0003:00001548       ??_C@_1BC@EOIMGOME@?$AAM?$AAS?$AAP?$AAD?$AAB?$AA1?$AA2?$AA0?$AA?$AA@ 00416548     MSVCRTD:pdblkup.obj
- 0003:00001560       ??_C@_0BB@KCIACLNC@PDBOpenValidate5?$AA@ 00416560     MSVCRTD:pdblkup.obj
- 0003:00001574       ??_C@_01KDCPPGHE@r?$AA@    00416574     MSVCRTD:pdblkup.obj
- 0003:00001578       __load_config_used         00416578     MSVCRTD:loadcfg.obj
- 0003:00001880       ___rtc_iaa                 00416880     MSVCRTD:initsect.obj
- 0003:00001a88       ___rtc_izz                 00416a88     MSVCRTD:initsect.obj
- 0003:00001b8c       ___rtc_taa                 00416b8c     MSVCRTD:initsect.obj
- 0003:00001d94       ___rtc_tzz                 00416d94     MSVCRTD:initsect.obj
- 0004:00000000       ___security_cookie         00418000     MSVCRTD:gs_cookie.obj
- 0004:00000004       ___security_cookie_complement 00418004     MSVCRTD:gs_cookie.obj
- 0004:00000008       ?_RTC_ErrorLevels@@3PAHA   00418008     MSVCRTD:error.obj
- 0004:00000020       ___defaultmatherr          00418020     MSVCRTD:merr.obj
- 0004:00000024       ___globallocalestatus      00418024     MSVCRTD:xthdloc.obj
- 0004:00000028       ___native_dllmain_reason   00418028     MSVCRTD:natstart.obj
+ 0003:00000858       ??_C@_01MCMALHOG@a?$AA@    00415858     add.obj
+ 0003:00000860       ??_C@_1FA@DALEHHGL@?$AA_?$AA_?$AAn?$AAa?$AAt?$AAi?$AAv?$AAe?$AA_?$AAs?$AAt?$AAa?$AAr?$AAt?$AAu?$AAp?$AA_?$AAs?$AAt?$AAa?$AAt?$AAe?$AA?5?$AA?$DN?$AA?$DN?$AA?5?$AA_?$AA_?$AAi?$AAn?$AAi?$AAt@ 00415860     MSVCRTD:crtexe.obj
+ 0003:000008c0       ??_C@_15GANGMFKL@?$AA?$CF?$AAs?$AA?$AA@ 004158c0     MSVCRTD:crtexe.obj
+ 0003:000008c8       ??_C@_1FG@DKNDLLJO@?$AAf?$AA?3?$AA?2?$AAd?$AAd?$AA?2?$AAv?$AAc?$AAt?$AAo?$AAo?$AAl?$AAs?$AA?2?$AAc?$AAr?$AAt?$AA?2?$AAc?$AAr?$AAt?$AAw?$AA3?$AA2?$AA?2?$AAd?$AAl?$AAl?$AAs?$AAt?$AAu?$AAf@ 004158c8     MSVCRTD:crtexe.obj
+ 0003:000009f0       ??_C@_0NN@NGPKDKPD@The?5value?5of?5ESP?5was?5not?5properl@ 004159f0     MSVCRTD:error.obj
+ 0003:00000b00       ??_C@_0BBN@GPMLNJCF@A?5cast?5to?5a?5smaller?5data?5type?5ha@ 00415b00     MSVCRTD:error.obj
+ 0003:00000c58       ??_C@_0BN@FFOINMNJ@Stack?5memory?5was?5corrupted?6?$AN?$AA@ 00415c58     MSVCRTD:error.obj
+ 0003:00000c7c       ??_C@_0DG@HKJMLLLP@A?5local?5variable?5was?5used?5before@ 00415c7c     MSVCRTD:error.obj
+ 0003:00000cbc       ??_C@_0CM@NGINOKPC@Stack?5memory?5around?5_alloca?5was?5@ 00415cbc     MSVCRTD:error.obj
+ 0003:00000cf0       ??_C@_0BO@GNIAFIKK@Unknown?5Runtime?5Check?5Error?6?$AN?$AA@ 00415cf0     MSVCRTD:error.obj
+ 0003:00000d18       ??_C@_1GM@OLMCBDMB@?$AAR?$AAu?$AAn?$AAt?$AAi?$AAm?$AAe?$AA?5?$AAC?$AAh?$AAe?$AAc?$AAk?$AA?5?$AAE?$AAr?$AAr?$AAo?$AAr?$AA?4?$AA?6?$AA?$AN?$AA?5?$AAU?$AAn?$AAa?$AAb?$AAl?$AAe?$AA?5?$AAt?$AAo@ 00415d18     MSVCRTD:error.obj
+ 0003:00000da0       ??_C@_1EA@NFKNIFJP@?$AAR?$AAu?$AAn?$AA?9?$AAT?$AAi?$AAm?$AAe?$AA?5?$AAC?$AAh?$AAe?$AAc?$AAk?$AA?5?$AAF?$AAa?$AAi?$AAl?$AAu?$AAr?$AAe?$AA?5?$AA?$CD?$AA?$CF?$AAd?$AA?5?$AA?9?$AA?5?$AA?$CF?$AAs?$AA?$AA@ 00415da0     MSVCRTD:error.obj
+ 0003:00000dec       ??_C@_0BB@PFFGGCJP@Unknown?5Filename?$AA@ 00415dec     MSVCRTD:error.obj
+ 0003:00000e00       ??_C@_0BE@GNBOBNCK@Unknown?5Module?5Name?$AA@ 00415e00     MSVCRTD:error.obj
+ 0003:00000e18       ??_C@_0CA@IODNCDPG@Run?9Time?5Check?5Failure?5?$CD?$CFd?5?9?5?$CFs?$AA@ 00415e18     MSVCRTD:error.obj
+ 0003:00000e40       ??_C@_0CG@IAFNJNEE@Stack?5corrupted?5near?5unknown?5var@ 00415e40     MSVCRTD:error.obj
+ 0003:00000e70       ??_C@_05MKKEDADM@?$CF?42X?5?$AA@ 00415e70     MSVCRTD:error.obj
+ 0003:00000e78       ??_C@_1BG@OILDLIOJ@?$AAu?$AAs?$AAe?$AAr?$AA3?$AA2?$AA?4?$AAd?$AAl?$AAl?$AA?$AA@ 00415e78     MSVCRTD:error.obj
+ 0003:00000e94       ??_C@_09FOPFMPEJ@wsprintfA?$AA@ 00415e94     MSVCRTD:error.obj
+ 0003:00000ea0       ??_C@_0EJ@LJKNEOLN@Stack?5area?5around?5_alloca?5memory@ 00415ea0     MSVCRTD:error.obj
+ 0003:00000ef8       ??_C@_08OMAHNMHJ@?6Data?3?5?$DM?$AA@ 00415ef8     MSVCRTD:error.obj
+ 0003:00000f04       ??_C@_0CK@DKGBICFE@?6Allocation?5number?5within?5this?5f@ 00415f04     MSVCRTD:error.obj
+ 0003:00000f38       ??_C@_07DFDJCKFN@?6Size?3?5?$AA@ 00415f38     MSVCRTD:error.obj
+ 0003:00000f44       ??_C@_0N@MHFFIMFG@?6Address?3?50x?$AA@ 00415f44     MSVCRTD:error.obj
+ 0003:00000f58       ??_C@_0EI@CLEPFNGI@Stack?5area?5around?5_alloca?5memory@ 00415f58     MSVCRTD:error.obj
+ 0003:00000fb0       ??_C@_0BC@KIBAILCI@?$CFs?$CFs?$CFp?$CFs?$CFld?$CFs?$CFd?$CFs?$AA@ 00415fb0     MSVCRTD:error.obj
+ 0003:00000fc8       ??_C@_01EEMJAFIK@?6?$AA@   00415fc8     MSVCRTD:error.obj
+ 0003:00000fcc       ??_C@_02LLMPMKNF@?$DO?5?$AA@ 00415fcc     MSVCRTD:error.obj
+ 0003:00000fd0       ??_C@_08KJEDNCKC@?$CFs?$CFs?$CFs?$CFs?$AA@ 00415fd0     MSVCRTD:error.obj
+ 0003:00000fdc       ??_C@_0DE@OHJBPMBP@A?5variable?5is?5being?5used?5without@ 00415fdc     MSVCRTD:error.obj
+ 0003:00001034       ??_C@_0BJ@HEGAHDFO@Stack?5pointer?5corruption?$AA@ 00416034     MSVCRTD:userapi.obj
+ 0003:00001054       ??_C@_0CK@FEGOIOPB@Cast?5to?5smaller?5type?5causing?5los@ 00416054     MSVCRTD:userapi.obj
+ 0003:00001088       ??_C@_0BI@CIGMDCBH@Stack?5memory?5corruption?$AA@ 00416088     MSVCRTD:userapi.obj
+ 0003:000010a4       ??_C@_0CK@CNLNOEPB@Local?5variable?5used?5before?5initi@ 004160a4     MSVCRTD:userapi.obj
+ 0003:000010d8       ??_C@_0BP@OGBCLIBO@Stack?5around?5_alloca?5corrupted?$AA@ 004160d8     MSVCRTD:userapi.obj
+ 0003:00001100       ?ProcessDetach@NativeDll@<CrtImplementationDetails>@@0IB 00416100     MSVCRTD:unhandld.obj
+ 0003:00001104       ?ProcessAttach@NativeDll@<CrtImplementationDetails>@@0IB 00416104     MSVCRTD:unhandld.obj
+ 0003:00001108       ?ThreadAttach@NativeDll@<CrtImplementationDetails>@@0IB 00416108     MSVCRTD:unhandld.obj
+ 0003:0000110c       ?ThreadDetach@NativeDll@<CrtImplementationDetails>@@0IB 0041610c     MSVCRTD:unhandld.obj
+ 0003:00001110       ?ProcessVerifier@NativeDll@<CrtImplementationDetails>@@0IB 00416110     MSVCRTD:unhandld.obj
+ 0003:00001118       ??_C@_1MC@KPMPFEII@?$AA?$CI?$AA_?$AA_?$AAo?$AAn?$AAe?$AAx?$AAi?$AAt?$AAb?$AAe?$AAg?$AAi?$AAn?$AA?5?$AA?$CB?$AA?$DN?$AA?5?$AAN?$AAU?$AAL?$AAL?$AA?5?$AA?$CG?$AA?$CG?$AA?5?$AA_?$AA_?$AAo?$AAn?$AAe?$AAx@ 00416118     MSVCRTD:atonexit.obj
+ 0003:00001200       ??_C@_1FK@IGIDCAPD@?$AAf?$AA?3?$AA?2?$AAd?$AAd?$AA?2?$AAv?$AAc?$AAt?$AAo?$AAo?$AAl?$AAs?$AA?2?$AAc?$AAr?$AAt?$AA?2?$AAc?$AAr?$AAt?$AAw?$AA3?$AA2?$AA?2?$AAd?$AAl?$AAl?$AAs?$AAt?$AAu?$AAf@ 00416200     MSVCRTD:atonexit.obj
+ 0003:0000126c       ??_C@_0CN@LMJJPMEG@f?3?2dd?2vctools?2crt?2crtw32?2dllstuf@ 0041626c     MSVCRTD:atonexit.obj
+ 0003:000012a8       ??_C@_1FI@JJOJLGLE@?$AAf?$AA?3?$AA?2?$AAd?$AAd?$AA?2?$AAv?$AAc?$AAt?$AAo?$AAo?$AAl?$AAs?$AA?2?$AAc?$AAr?$AAt?$AA?2?$AAc?$AAr?$AAt?$AAw?$AA3?$AA2?$AA?2?$AAs?$AAt?$AAa?$AAr?$AAt?$AAu?$AAp@ 004162a8     MSVCRTD:fp8.obj
+ 0003:00001314       ??_C@_1CK@JMKHCBEI@?$AA_?$AAs?$AAe?$AAt?$AAd?$AAe?$AAf?$AAa?$AAu?$AAl?$AAt?$AAp?$AAr?$AAe?$AAc?$AAi?$AAs?$AAi?$AAo?$AAn?$AA?$AA@ 00416314     MSVCRTD:fp8.obj
+ 0003:00001348       ??_C@_1GE@KOCFNGPB@?$AA_?$AAc?$AAo?$AAn?$AAt?$AAr?$AAo?$AAl?$AAf?$AAp?$AA_?$AAs?$AA?$CI?$AA?$CI?$AA?$CI?$AAv?$AAo?$AAi?$AAd?$AA?5?$AA?$CK?$AA?$CJ?$AA0?$AA?$CJ?$AA?0?$AA?5?$AA0?$AAx?$AA0?$AA0?$AA0?$AA1@ 00416348     MSVCRTD:fp8.obj
+ 0003:000013c0       ?LocalIdBitWidth@CrossScopeId@CodeViewInfo@@2IB 004163c0     MSVCRTD:pdblkup.obj
+ 0003:000013c4       ?IdScopeBitWidth@CrossScopeId@CodeViewInfo@@2IB 004163c4     MSVCRTD:pdblkup.obj
+ 0003:000013c8       ?StartCrossScopeId@CrossScopeId@CodeViewInfo@@2IB 004163c8     MSVCRTD:pdblkup.obj
+ 0003:000013cc       ?LocalIdMask@CrossScopeId@CodeViewInfo@@2IB 004163cc     MSVCRTD:pdblkup.obj
+ 0003:000013d0       ?ScopeIdMask@CrossScopeId@CodeViewInfo@@2IB 004163d0     MSVCRTD:pdblkup.obj
+ 0003:000013d4       ?MaxLocalId@CrossScopeId@CodeViewInfo@@2IB 004163d4     MSVCRTD:pdblkup.obj
+ 0003:000013d8       ?MaxScopeId@CrossScopeId@CodeViewInfo@@2IB 004163d8     MSVCRTD:pdblkup.obj
+ 0003:00001428       ??_C@_1BK@GAEMIDIL@?$AAA?$AAD?$AAV?$AAA?$AAP?$AAI?$AA3?$AA2?$AA?4?$AAD?$AAL?$AAL?$AA?$AA@ 00416428     MSVCRTD:pdblkup.obj
+ 0003:00001448       ??_C@_0O@COHOBMLB@RegOpenKeyExW?$AA@ 00416448     MSVCRTD:pdblkup.obj
+ 0003:00001458       ??_C@_0BB@GLNAEDBD@RegQueryValueExW?$AA@ 00416458     MSVCRTD:pdblkup.obj
+ 0003:0000146c       ??_C@_0M@HLOHPNFA@RegCloseKey?$AA@ 0041646c     MSVCRTD:pdblkup.obj
+ 0003:00001480       ??_C@_1FM@EGIBBNPP@?$AAS?$AAO?$AAF?$AAT?$AAW?$AAA?$AAR?$AAE?$AA?2?$AAM?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt?$AA?2?$AAV?$AAi?$AAs?$AAu?$AAa?$AAl?$AAS?$AAt?$AAu?$AAd?$AAi?$AAo?$AA?2@ 00416480     MSVCRTD:pdblkup.obj
+ 0003:000014f0       ??_C@_1BG@EABPBLLF@?$AAP?$AAr?$AAo?$AAd?$AAu?$AAc?$AAt?$AAD?$AAi?$AAr?$AA?$AA@ 004164f0     MSVCRTD:pdblkup.obj
+ 0003:00001530       ??_C@_1BC@EOIMGOME@?$AAM?$AAS?$AAP?$AAD?$AAB?$AA1?$AA2?$AA0?$AA?$AA@ 00416530     MSVCRTD:pdblkup.obj
+ 0003:00001548       ??_C@_0BB@KCIACLNC@PDBOpenValidate5?$AA@ 00416548     MSVCRTD:pdblkup.obj
+ 0003:0000155c       ??_C@_01KDCPPGHE@r?$AA@    0041655c     MSVCRTD:pdblkup.obj
+ 0003:00001570       __load_config_used         00416570     MSVCRTD:loadcfg.obj
+ 0003:00001878       ___rtc_iaa                 00416878     MSVCRTD:initsect.obj
+ 0003:00001a80       ___rtc_izz                 00416a80     MSVCRTD:initsect.obj
+ 0003:00001b84       ___rtc_taa                 00416b84     MSVCRTD:initsect.obj
+ 0003:00001d8c       ___rtc_tzz                 00416d8c     MSVCRTD:initsect.obj
+ 0004:00000000       ?_RTC_ErrorLevels@@3PAHA   00418000     MSVCRTD:error.obj
+ 0004:00000018       ___defaultmatherr          00418018     MSVCRTD:merr.obj
+ 0004:0000001c       ___globallocalestatus      0041801c     MSVCRTD:xthdloc.obj
+ 0004:00000020       ___native_dllmain_reason   00418020     MSVCRTD:natstart.obj
+ 0004:00000024       ___security_cookie         00418024     MSVCRTD:gs_cookie.obj
+ 0004:00000028       ___security_cookie_complement 00418028     MSVCRTD:gs_cookie.obj
  0004:0000015c       ?wsprintffp@@3P6AHPADPBDZZA 0041815c     MSVCRTD:error.obj
- 0004:0000052c       __commode                  0041852c     MSVCRTD:xncommod.obj
- 0004:00000530       __dowildcard               00418530     MSVCRTD:wildcard.obj
- 0004:00000534       __newmode                  00418534     MSVCRTD:_newmode.obj
- 0004:00000538       __fmode                    00418538     MSVCRTD:xtxtmode.obj
- 0004:00000544       ___native_startup_lock     00418544     <common>
- 0004:00000554       ___native_startup_state    00418554     <common>
- 0004:00000558       ___onexitend               00418558     <common>
- 0004:00000568       ___onexitbegin             00418568     <common>
- 0004:0000056c       ___dyn_tls_init_callback   0041856c     <common>
- 0005:00000000       __imp__GetModuleFileNameW@12 00419000     kernel32:KERNEL32.dll
- 0005:00000004       __imp__FreeLibrary@4       00419004     kernel32:KERNEL32.dll
- 0005:00000008       __imp__VirtualQuery@12     00419008     kernel32:KERNEL32.dll
- 0005:0000000c       __imp__GetProcessHeap@0    0041900c     kernel32:KERNEL32.dll
- 0005:00000010       __imp__HeapFree@12         00419010     kernel32:KERNEL32.dll
- 0005:00000014       __imp__HeapAlloc@12        00419014     kernel32:KERNEL32.dll
- 0005:00000018       __imp__DecodePointer@4     00419018     kernel32:KERNEL32.dll
- 0005:0000001c       __imp__GetSystemTimeAsFileTime@4 0041901c     kernel32:KERNEL32.dll
- 0005:00000020       __imp__GetCurrentThreadId@0 00419020     kernel32:KERNEL32.dll
- 0005:00000024       __imp__GetCurrentProcessId@0 00419024     kernel32:KERNEL32.dll
- 0005:00000028       __imp__QueryPerformanceCounter@4 00419028     kernel32:KERNEL32.dll
- 0005:0000002c       __imp__IsProcessorFeaturePresent@4 0041902c     kernel32:KERNEL32.dll
+ 0004:0000016c       __commode                  0041816c     MSVCRTD:xncommod.obj
+ 0004:00000170       __dowildcard               00418170     MSVCRTD:wildcard.obj
+ 0004:00000174       __newmode                  00418174     MSVCRTD:_newmode.obj
+ 0004:00000178       __fmode                    00418178     MSVCRTD:xtxtmode.obj
+ 0004:00000548       ___native_startup_lock     00418548     <common>
+ 0004:00000558       ___native_startup_state    00418558     <common>
+ 0004:0000055c       ___onexitend               0041855c     <common>
+ 0004:0000056c       ___onexitbegin             0041856c     <common>
+ 0004:00000570       ___dyn_tls_init_callback   00418570     <common>
+ 0005:00000000       __imp__GetModuleHandleW@4  00419000     kernel32:KERNEL32.dll
+ 0005:00000004       __imp__GetModuleFileNameW@12 00419004     kernel32:KERNEL32.dll
+ 0005:00000008       __imp__FreeLibrary@4       00419008     kernel32:KERNEL32.dll
+ 0005:0000000c       __imp__VirtualQuery@12     0041900c     kernel32:KERNEL32.dll
+ 0005:00000010       __imp__GetProcessHeap@0    00419010     kernel32:KERNEL32.dll
+ 0005:00000014       __imp__HeapFree@12         00419014     kernel32:KERNEL32.dll
+ 0005:00000018       __imp__HeapAlloc@12        00419018     kernel32:KERNEL32.dll
+ 0005:0000001c       __imp__DecodePointer@4     0041901c     kernel32:KERNEL32.dll
+ 0005:00000020       __imp__GetSystemTimeAsFileTime@4 00419020     kernel32:KERNEL32.dll
+ 0005:00000024       __imp__GetCurrentThreadId@0 00419024     kernel32:KERNEL32.dll
+ 0005:00000028       __imp__GetCurrentProcessId@0 00419028     kernel32:KERNEL32.dll
+ 0005:0000002c       __imp__QueryPerformanceCounter@4 0041902c     kernel32:KERNEL32.dll
  0005:00000030       __imp__WideCharToMultiByte@32 00419030     kernel32:KERNEL32.dll
  0005:00000034       __imp__MultiByteToWideChar@24 00419034     kernel32:KERNEL32.dll
  0005:00000038       __imp__LoadLibraryExW@12   00419038     kernel32:KERNEL32.dll
@@ -253,23 +246,23 @@
  0005:00000044       __imp__RaiseException@16   00419044     kernel32:KERNEL32.dll
  0005:00000048       __imp__IsDebuggerPresent@0 00419048     kernel32:KERNEL32.dll
  0005:0000004c       __imp__EncodePointer@4     0041904c     kernel32:KERNEL32.dll
- 0005:00000050       __imp__GetModuleHandleW@4  00419050     kernel32:KERNEL32.dll
+ 0005:00000050       __imp__IsProcessorFeaturePresent@4 00419050     kernel32:KERNEL32.dll
  0005:00000054       \177KERNEL32_NULL_THUNK_DATA 00419054     kernel32:KERNEL32.dll
- 0005:00000090       __imp____crtUnhandledException 00419090     MSVCRTD:MSVCR120D.dll
- 0005:00000094       __imp____crtTerminateProcess 00419094     MSVCRTD:MSVCR120D.dll
- 0005:00000098       __imp_?terminate@@YAXXZ    00419098     MSVCRTD:MSVCR120D.dll
- 0005:0000009c       __imp____crtSetUnhandledExceptionFilter 0041909c     MSVCRTD:MSVCR120D.dll
- 0005:000000a0       __imp___lock               004190a0     MSVCRTD:MSVCR120D.dll
- 0005:000000a4       __imp___unlock             004190a4     MSVCRTD:MSVCR120D.dll
- 0005:000000a8       __imp___calloc_dbg         004190a8     MSVCRTD:MSVCR120D.dll
- 0005:000000ac       __imp___crt_debugger_hook  004190ac     MSVCRTD:MSVCR120D.dll
- 0005:000000b0       __imp___onexit             004190b0     MSVCRTD:MSVCR120D.dll
- 0005:000000b4       __imp___invoke_watson      004190b4     MSVCRTD:MSVCR120D.dll
- 0005:000000b8       __imp___controlfp_s        004190b8     MSVCRTD:MSVCR120D.dll
- 0005:000000bc       __imp___except_handler4_common 004190bc     MSVCRTD:MSVCR120D.dll
- 0005:000000c0       __imp__wcscpy_s            004190c0     MSVCRTD:MSVCR120D.dll
- 0005:000000c4       __imp___wmakepath_s        004190c4     MSVCRTD:MSVCR120D.dll
- 0005:000000c8       __imp___wsplitpath_s       004190c8     MSVCRTD:MSVCR120D.dll
+ 0005:00000090       __imp___unlock             00419090     MSVCRTD:MSVCR120D.dll
+ 0005:00000094       __imp___calloc_dbg         00419094     MSVCRTD:MSVCR120D.dll
+ 0005:00000098       __imp____dllonexit         00419098     MSVCRTD:MSVCR120D.dll
+ 0005:0000009c       __imp___onexit             0041909c     MSVCRTD:MSVCR120D.dll
+ 0005:000000a0       __imp___invoke_watson      004190a0     MSVCRTD:MSVCR120D.dll
+ 0005:000000a4       __imp___controlfp_s        004190a4     MSVCRTD:MSVCR120D.dll
+ 0005:000000a8       __imp___lock               004190a8     MSVCRTD:MSVCR120D.dll
+ 0005:000000ac       __imp__wcscpy_s            004190ac     MSVCRTD:MSVCR120D.dll
+ 0005:000000b0       __imp___wmakepath_s        004190b0     MSVCRTD:MSVCR120D.dll
+ 0005:000000b4       __imp___wsplitpath_s       004190b4     MSVCRTD:MSVCR120D.dll
+ 0005:000000b8       __imp___crt_debugger_hook  004190b8     MSVCRTD:MSVCR120D.dll
+ 0005:000000bc       __imp____crtUnhandledException 004190bc     MSVCRTD:MSVCR120D.dll
+ 0005:000000c0       __imp____crtTerminateProcess 004190c0     MSVCRTD:MSVCR120D.dll
+ 0005:000000c4       __imp____crtSetUnhandledExceptionFilter 004190c4     MSVCRTD:MSVCR120D.dll
+ 0005:000000c8       __imp_?terminate@@YAXXZ    004190c8     MSVCRTD:MSVCR120D.dll
  0005:000000cc       __imp___commode            004190cc     MSVCRTD:MSVCR120D.dll
  0005:000000d0       __imp___fmode              004190d0     MSVCRTD:MSVCR120D.dll
  0005:000000d4       __imp____initenv           004190d4     MSVCRTD:MSVCR120D.dll
@@ -287,14 +280,12 @@
  0005:00000104       __imp___amsg_exit          00419104     MSVCRTD:MSVCR120D.dll
  0005:00000108       __imp___XcptFilter         00419108     MSVCRTD:MSVCR120D.dll
  0005:0000010c       __imp___CRT_RTC_INITW      0041910c     MSVCRTD:MSVCR120D.dll
- 0005:00000110       __imp__system              00419110     MSVCRTD:MSVCR120D.dll
- 0005:00000114       __imp__scanf               00419114     MSVCRTD:MSVCR120D.dll
- 0005:00000118       __imp____dllonexit         00419118     MSVCRTD:MSVCR120D.dll
- 0005:0000011c       __imp__printf              0041911c     MSVCRTD:MSVCR120D.dll
- 0005:00000120       \177MSVCR120D_NULL_THUNK_DATA 00419120     MSVCRTD:MSVCR120D.dll
- 0005:00000168       __IMPORT_DESCRIPTOR_MSVCR120D 00419168     MSVCRTD:MSVCR120D.dll
- 0005:0000017c       __IMPORT_DESCRIPTOR_KERNEL32 0041917c     kernel32:KERNEL32.dll
- 0005:00000190       __NULL_IMPORT_DESCRIPTOR   00419190     MSVCRTD:MSVCR120D.dll
+ 0005:00000110       __imp___except_handler4_common 00419110     MSVCRTD:MSVCR120D.dll
+ 0005:00000114       __imp__free                00419114     MSVCRTD:MSVCR120D.dll
+ 0005:00000118       \177MSVCR120D_NULL_THUNK_DATA 00419118     MSVCRTD:MSVCR120D.dll
+ 0005:0000015c       __IMPORT_DESCRIPTOR_MSVCR120D 0041915c     MSVCRTD:MSVCR120D.dll
+ 0005:00000170       __IMPORT_DESCRIPTOR_KERNEL32 00419170     kernel32:KERNEL32.dll
+ 0005:00000184       __NULL_IMPORT_DESCRIPTOR   00419184     MSVCRTD:MSVCR120D.dll
 
- entry point at        0002:00000118
+ entry point at        0002:00000109
 

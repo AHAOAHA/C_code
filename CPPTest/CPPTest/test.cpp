@@ -1153,15 +1153,136 @@ int main()
 }
 */
 
-
-
+/*
+#include<iostream>
 #include<vector>
 using namespace std;
 int main()
 {
-	vector<int> v1(1);
-	v1.push_back(1);
-	v1.push_back(2);
-	v1.push_back(3);
+	vector<int> v1;
+	vector<int> v2(10, 5);
+
+	int array[] = { 1, 2, 3, 4, 5, 6, 7 };
+	vector<int> v3(array, array + sizeof(array) / sizeof(array[0]));
+
+	vector<int> v4(v3);
+	vector<int>::iterator it = v4.begin();
+	while (it != v4.end())
+	{
+		cout << *it++ << " ";
+	}
 	return 0;
 }
+*/
+
+/*
+#include<vector>
+#include<iostream>
+using namespace std;
+
+void VectorTest()
+{
+	vector<int> v1(10);
+	vector<int> v2(v1);
+	vector<int> v3(2);
+	cout << &v1 << endl;
+	cout << &v2 << endl;
+	v1 = v2;
+	cout << &v1 << endl;
+	cout << &v2 << endl;
+	v1 = v3;
+	cout << &v1 << endl;
+	cout << &v3 << endl;
+	cout << v1.front() << endl;
+}
+int main()
+{
+	VectorTest();
+}
+*/
+
+/*
+#include<string.h>
+#include<string>
+#include<iostream>
+using namespace std;
+class A
+{
+	A(string name= "NONE", string sex= "SECERT", int age = 0)
+	:_age(age)
+	, _name(name)
+	, _sex(sex)
+	{}
+private:
+	string _name;
+	string _sex;
+	int _age;
+};
+int main()
+{
+	string s1 = "hello world!";
+	string s2;
+	cout << s1 << s2 << endl;
+	cout << s1.data() <<endl;
+	return 0;
+}
+*/
+
+/*
+void TestMemory()
+{
+	int* p1 = (int*)malloc(sizeof(int));
+	int* p2 = (int*)malloc(sizeof(int));
+	int* p3 = new int;
+	int* p4 = new int;
+	int* p5 = new int[10];
+	int* p6 = new int[10];
+	delete p1;
+	delete[] p2;
+	free(p3);
+	delete[] p4;
+	free(p5);
+	delete p6;
+}
+#include<iostream>
+using namespace std;
+int main()
+{
+	TestMemory();
+	return 0;
+}
+*/
+#if 0
+#include<iostream>
+using namespace std;
+int main()
+{
+	int array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+	for (auto e : array)
+		cout << e << " ";
+	cout << endl;
+	return 0;
+}
+#endif
+#if 0
+class Base
+{
+public:
+	void virtual Test()
+	{}
+	int _a;
+
+};
+class Derive :public Base
+{
+public:
+	void Test()
+	{}
+	int _w;
+};
+int main()
+{
+	return 0;
+}
+#endif
+
