@@ -1,7 +1,6 @@
 #include"AddressList.h"
-int main()
+int main()//主函数
 {
-	TestAddressList();
-	system("pause");
+	TestAddressList();//通讯录执行函数
 	return 0;
 }

@@ -1,3 +1,4 @@
+/*C语言实现简单的航班管理系统（单个文件）*/
 #include <stdio.h>
 #include <string.h>
 #include<stdlib.h>
@@ -9,6 +10,8 @@
 int _size = 0;
 int _person_size = 0;
 int _personnoticket_size = 0;
+
+//定义航班信息结构体
 typedef struct plane
 {
 	char ID[10];
@@ -20,6 +23,7 @@ typedef struct plane
 	char time[20];
 }Plane;
 
+//定义乘客信息结构体
 typedef struct Person
 {
 	int AirPlane_Num;
@@ -30,23 +34,23 @@ typedef struct Person
 
 
 
-void home(Plane* p,Person* person, Person* person_noticket);
-void InitAirPlane(Plane** p);
-void InputAirPlane(Plane* p);
-void CheckAirPlane(Plane* p);
-void DelAirPlane(Plane* p);
-void CheckAirPlaneOrder(Plane* p,Person* person);
+void home(Plane* p,Person* person, Person* person_noticket);//初始页面
+void InitAirPlane(Plane** p);//初始化航班信息内存
+void InputAirPlane(Plane* p);//输入航班信息
+void CheckAirPlane(Plane* p);//查看航班信息
+void DelAirPlane(Plane* p);//删除航班信息
+void CheckAirPlaneOrder(Plane* p,Person* person);//查看航班订单
+void PrintPerson(Plane* p, Person* person, int i);//打印航班乘客
+
+void InitPerson(Person** person);//初始化乘客信息内存
+void BookAirPlane(Plane* p, Person* person,Person* person_noticket);//预定航班
+int CheckPerson(Plane* p, Person* person);//查看乘客订单信息
+void ChangeAirPlane(Plane* p, Person* person);//改签
+void ReturnTicket(Plane* p, Person* person);//退票
+
+
 void PrintPerson(Plane* p, Person* person, int i);
-
-void InitPerson(Person** person);
-void BookAirPlane(Plane* p, Person* person,Person* person_noticket);
-int CheckPerson(Plane* p, Person* person);
-void ChangeAirPlane(Plane* p, Person* person);
-void ReturnTicket(Plane* p, Person* person);
-
-
-void PrintPerson(Plane* p, Person* person, int i);
-void CheckPersonNoTicket(Plane* p, Person* person_noticket);
+void CheckPersonNoTicket(Plane* p, Person* person_noticket);//查看候补名单
 ///////////////////////////////////////
 
 void home(Plane* p, Person* person, Person* person_noticket)
@@ -56,56 +60,60 @@ void home(Plane* p, Person* person, Person* person_noticket)
 	printf("\n*************您好，现在要确认您的身份！票务人员请按 1 ，旅客请按 0 ***********\n");
 	printf("请选择：");
 	scanf("%d", &a);
+	//航班管理人员操作
 	if (a == 1)
-	do{
-		printf("\n****************** 1.输入航班信息 *******************\n");
-		printf("\n****************** 2.删除航班信息 *******************\n");
-		printf("\n****************** 3.浏览航班信息 *******************\n");
-		printf("\n****************** 4.浏览目前已订票信息 *************\n");
-		printf("\n****************** 5.查看候补名单 *******************\n");
-		printf("\n****************** 0.退出        ********************\n");
-		printf("请选择：");
-		scanf("%d", &i);
-		switch (i)
-		{
-			case 0: break;
-			case 1:InputAirPlane(p);break;
-			case 2:DelAirPlane(p);break;
-			case 3:CheckAirPlane(p);break;
-			case 4:CheckAirPlaneOrder(p, person); break;
-			case 5:CheckPersonNoTicket(p, person_noticket); break;
-			default:
-				printf("输入错误！\n");
-				break;
-		}
-	} while (i != 0);
+		do{
+			printf("\n****************** 1.输入航班信息 *******************\n");
+			printf("\n****************** 2.删除航班信息 *******************\n");
+			printf("\n****************** 3.浏览航班信息 *******************\n");
+			printf("\n****************** 4.浏览目前已订票信息 *************\n");
+			printf("\n****************** 5.查看候补名单 *******************\n");
+			printf("\n****************** 0.退出        ********************\n");
+			printf("请选择：");
+			scanf("%d", &i);
+			switch (i)
+			{
+				case 0: break;
+				case 1:InputAirPlane(p);break;
+				case 2:DelAirPlane(p);break;
+				case 3:CheckAirPlane(p);break;
+				case 4:CheckAirPlaneOrder(p, person); break;
+				case 5:CheckPersonNoTicket(p, person_noticket); break;
+				default:
+					printf("输入错误！\n");
+					break;
+			}
+		} while (i != 0);
+	//乘客操作
 	if (a == 0)
-	do{
+		do{
 
-		printf("\n*********************** 1.订票 **********************\n");
-		printf("\n*********************** 2.改签 **********************\n");
-		printf("\n*********************** 3.退票 **********************\n");
-		printf("\n*********************** 4.浏览航班信息 **************\n");
-		printf("\n*********************** 5.查询个人订票信息 **********\n");
-		printf("\n*********************** 0.退出 **********************\n");
-		printf("请选择：");
-		scanf("%d", &j);
-		switch (j)
-		{
-			case 0:break;
-			case 1:BookAirPlane(p, person,person_noticket);break;
-			case 2:ChangeAirPlane(p, person);break;
-			case 3:ReturnTicket(p, person);break;
-			case 4:CheckAirPlane(p);break;
-			case 5:CheckPerson(p, person); break;
-		}
-	} while (j != 0);
+			printf("\n*********************** 1.订票 **********************\n");
+			printf("\n*********************** 2.改签 **********************\n");
+			printf("\n*********************** 3.退票 **********************\n");
+			printf("\n*********************** 4.浏览航班信息 **************\n");
+			printf("\n*********************** 5.查询个人订票信息 **********\n");
+			printf("\n*********************** 0.退出 **********************\n");
+			printf("请选择：");
+			scanf("%d", &j);
+			switch (j)
+			{
+				case 0:break;
+				case 1:BookAirPlane(p, person,person_noticket);break;
+				case 2:ChangeAirPlane(p, person);break;
+				case 3:ReturnTicket(p, person);break;
+				case 4:CheckAirPlane(p);break;
+				case 5:CheckPerson(p, person); break;
+			}
+		} while (j != 0);
 }
 
 //初始化
 void InitAirPlane(Plane** p)
 {
 	assert(p);
+
+	//申请空间
 	*p = (Plane*)malloc(sizeof(Plane)*MAX_SIZE);
 	if (NULL == *p)
 	{

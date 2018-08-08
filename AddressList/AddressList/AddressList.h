@@ -1,21 +1,20 @@
 #ifndef __ADDRESS_LIST__
 #define __ADDRESS_LIST__
 #define _CRT_SECURE_NO_WARNINGS 1
-#define MAXSIZE 1000
-//int Size = 1000;
-typedef struct LinkMan
+#define MAXSIZE 1000//定义通讯录最大存储人数为1000
+typedef struct LinkMan//定义存储的结构体
 {
-	char _name[20];
-	int _age;
-	enum Sex
+	char _name[20];//姓名
+	int _age;//年龄
+	enum Sex//性别
 	{
 		MAN,
 		WOMAN,
 		SECERT
 	}Sex;
-	long long int _Tel;
-	char _address[50];
-	int _order;
+	long long int _Tel;//电话
+	char _address[50];//地址
+	int _order;//序号
 }LinkManNode,*PLinkManNode;
 #include<stdio.h>
 #include<stdlib.h>

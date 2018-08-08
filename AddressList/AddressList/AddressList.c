@@ -5,14 +5,18 @@ void AddressListInit(PLinkManNode* PAddressList)
 {
 	PLinkManNode PList = NULL;
 	assert(PAddressList);
+
+	//为通讯录申请空间
 	PList = (PLinkManNode)malloc(sizeof(LinkManNode)* MAXSIZE);
 	if (NULL == PList)
 	{
 		assert(0);
 		return;
 	}
+
 	*PAddressList = PList;
 }
+//输入联系人信息并保存
 void InputLinkMan(PLinkManNode AddressList)
 {
 	printf("NAME:");
@@ -30,20 +34,31 @@ void InputLinkMan(PLinkManNode AddressList)
 void AddressListPush(PLinkManNode* PAddressList)
 {
 	assert(PAddressList);
+
+	//判断是否有空间来存储联系人
 	if (NULL == *PAddressList)
 		return;
+	
+	//判断剩余空间大小
 	if (Size <= 0)
 	{
 		printf("存储空间不足\n");
 		return;
 	}
+	//输入联系人信息并保存
 	InputLinkMan(*PAddressList);
+
+	//给输入的联系人编号
 	((*PAddressList) + (MAXSIZE - Size))->_order = MAXSIZE - Size + 1;
+
+	//使剩余容量减1
 	Size--;
 }
+
 //删除联系人
 void CoverLinkMan(PLinkManNode AddressList, int order)
 {
+	//让要删除的联系人后面的联系人都向前挪动一次，覆盖掉要删除的联系人
 	while (order <= (MAXSIZE - Size - 1))
 	{
 		strcpy((AddressList + order - 1)->_name, (AddressList + order)->_name);
@@ -54,20 +69,29 @@ void CoverLinkMan(PLinkManNode AddressList, int order)
 		order++;
 	}
 }
+//删除联系人（通过联系人序号）
 void DeleteLinkMan(PLinkManNode* PAddressList,int order)
 {
 	assert(PAddressList);
+
+	//判断通讯录中是否存在联系人
 	if (Size == 1000)
 	{
 		printf("ENPTY\n");
 		return;
 	}
+
+	//判断序号合法性
 	if (order > (MAXSIZE - Size))
 	{
 		printf("HAVE NO THIS LINKMAN!\n");
 		return;
 	}
+
+	//删除联系人
 	CoverLinkMan(*PAddressList, order);
+
+	//容量加1
 	Size++;
 }
 //通过序号打印联系人信息
@@ -95,6 +119,8 @@ void PrintLinkManByOrder(PLinkManNode PAddressList, int order)
 void FindLinkManByName(PLinkManNode PAddressList, char name[20])
 {
 	int i = 1;
+
+	//遍历联系人列表，通过姓名查找联系人
 	for (i = 1; i <= MAXSIZE - Size; i++)
 	{
 		if (0 == strcmp(name, (PAddressList + i - 1)->_name))
@@ -104,11 +130,13 @@ void FindLinkManByName(PLinkManNode PAddressList, char name[20])
 			return;
 		}
 	}
+
 	printf("No contact was found.\n");
 }
 //序号查找
 void FindLinkManByOrder(PLinkManNode PAddressList, int order)
 {
+	//判断联系人序号合法性
 	if (order > MAXSIZE - Size)
 	{
 		printf("HAVE NO THIS LINKMAN!\n");
@@ -120,11 +148,14 @@ void FindLinkManByOrder(PLinkManNode PAddressList, int order)
 //通过序号修改
 void AmendLinkManByOrder(PLinkManNode PAddressList, int order)
 {
+	//判断通讯录中是否有联系人
 	if (1000 == Size)
 	{
 		printf("LinkMan enmty!\n");
 		return;
 	}
+
+	//修改联系人信息
 	printf("Old value:\n");
 	PrintLinkManByOrder(PAddressList, order);
 	printf("amend:\n");
@@ -143,10 +174,12 @@ void AmendLinkManByOrder(PLinkManNode PAddressList, int order)
 void AmendLinkManByName(PLinkManNode PAddressList, char name[20])
 {
 	int i = 1;
+	//通过姓名查找联系人
 	for (i = 1; i <= MAXSIZE - Size; i++)
 	{
 		if (0 == strcmp(name, (PAddressList + i - 1)->_name))
 		{
+			//修改信息
 			AmendLinkManByOrder(PAddressList, i);
 			return;
 		}
@@ -172,7 +205,7 @@ void PrintAllLinkMan(PLinkManNode PAddressList)
 		PrintLinkManByOrder(PAddressList, i);
 	}
 }
-//以名字排序
+//交换两个联系人结点信息
 void SwapLinkMan(PLinkManNode pLinkMan_1, PLinkManNode pLinkMan_2)
 {
 	long long int tel_tmp = 0;
@@ -196,6 +229,7 @@ void SwapLinkMan(PLinkManNode pLinkMan_1, PLinkManNode pLinkMan_2)
 	pLinkMan_1->_Tel = pLinkMan_2->_Tel;
 	pLinkMan_2->_Tel = tel_tmp;
 }
+//以姓名排序联系人列表
 void SortByName(PLinkManNode *PAddressList)
 {
 	int i = 1;
@@ -238,7 +272,7 @@ void Menu()
 	printf("++++++++++++++++++++++++++++++++++++\n");
 	printf("++++++++++++++++++++++++++++++++++++\n");
 }
-//////////////////////////////////////测试函数
+//////////////////////////////////////
 void TestAddressList()
 {
 	int num = 0;
@@ -246,8 +280,9 @@ void TestAddressList()
 	int amendorder = 0;
 	char amendname[20] = { '0' };
 	int del = 0;
-	PLinkManNode AddressList;
-	AddressListInit(&AddressList);
+	PLinkManNode AddressList;//创建通讯录
+	AddressListInit(&AddressList);//初始化
+
 	while (1)
 	{
 		Menu();
