@@ -1285,4 +1285,15 @@ int main()
 	return 0;
 }
 #endif
-
+#include<iostream>
+using namespace std;
+template<class T>
+T Add(T x, T y)
+{
+	return x + y;
+}
+int main()
+{
+	cout << Add(3, 5) << endl;
+	return 0;
+}
