@@ -99,10 +99,51 @@ struct POS
 };
 
 
+//向上运算函数W
+void CountFuncW(int array[ROW][COL])
+{
+	int flag_1 = 0;
+	int flag = 0;
+	struct POS pos;
+	struct POS first;
+	struct POS second;
+	//列遍历二位数组 从上向下
+	for (pos.col = 0; pos.col < COL; ++pos.col)
+	{
+		for (pos.row = 0; pos.row < ROW; ++pos.row)
+		{
+			if (0 != array[pos.row][pos.col] && 0 == flag)
+			{
+				first.col = pos.col;
+				first.row = pos.row;
+				flag = 1;
+			}
+			else if (0 != array[pos.row][pos.col] && 1 == flag)
+			{
+				second.row = pos.row;
+				second.col = pos.col;
+				flag_1 = 1;
+				flag = 0;
+			}
+			if (1 == flag_1)
+			{
+				if (array[first.row][first.col] == array[second.row][second.col])
+				{
+					array[first.row][first.col] *= 2;
+					array[second.row][second.col] = 0;
+				}
+
+				flag_1 = 0;
+			}
+		}
+	}
+}
 void MovePointW(int array[ROW][COL])
 {
 	struct POS pos;
 	struct POS start;
+	//运算函数
+	CountFuncW(array);
 
 	//列遍历二维数组 从上向下
 	for (start.col = 0; start.col < COL; ++start.col)
@@ -132,6 +173,7 @@ void MovePointS(int array[ROW][COL])
 {
 	struct POS pos;
 	struct POS start;
+
 
 	//列遍历二维数组 从下向上
 	for (start.col = COL - 1; start.col >= 0; --start.col)
@@ -212,11 +254,13 @@ void MovePointD(int array[ROW][COL])
 //////////////////////////游戏主体函数
 int Game(int array[ROW][COL])
 {
+	PrintMap(array);
+	printf("游戏开始！\n");
 	while (!IsDown(array))
 	{
 		Seed(array);
-		PrintMap(array);
 		MoveMap(array);
+		PrintMap(array);
 	}
 	return 0;
 }

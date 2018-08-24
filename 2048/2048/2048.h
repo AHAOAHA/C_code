@@ -14,3 +14,7 @@ void MovePointW(int array[ROW][COL]);
 void MovePointS(int array[ROW][COL]);
 void MovePointA(int array[ROW][COL]);
 void MovePointD(int array[ROW][COL]);
+void CountFuncW(int array[ROW][COL]);
+void CountFuncA(int array[ROW][COL]);
+void CountFuncS(int array[ROW][COL]);
+void CountFuncD(int array[ROW][COL]);
