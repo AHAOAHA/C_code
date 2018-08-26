@@ -98,7 +98,11 @@ struct POS
 	int col;
 };
 
-
+/*
+使用两个位置分别标记行不是0的第一位和第二位
+若第一位和第二位相等 就让他们相加 结果赋给第一位的位置 并把标记清空 继续向后寻找
+若不相等 让把第二位的位置赋给第一位 清楚寻找第二位的标记 继续向后寻找第二位
+*/
 //向上运算函数W
 void CountFuncW(int array[ROW][COL])
 {
@@ -110,6 +114,7 @@ void CountFuncW(int array[ROW][COL])
 	//列遍历二位数组 从上向下
 	for (pos.col = 0; pos.col < COL; ++pos.col)
 	{
+		flag = 0;
 		for (pos.row = 0; pos.row < ROW; ++pos.row)
 		{
 			if (0 != array[pos.row][pos.col] && 0 == flag)
@@ -123,7 +128,6 @@ void CountFuncW(int array[ROW][COL])
 				second.row = pos.row;
 				second.col = pos.col;
 				flag_1 = 1;
-				flag = 0;
 			}
 			if (1 == flag_1)
 			{
@@ -131,6 +135,13 @@ void CountFuncW(int array[ROW][COL])
 				{
 					array[first.row][first.col] *= 2;
 					array[second.row][second.col] = 0;
+					flag = 0;
+				}
+
+				else
+				{
+					first.col = second.col;
+					first.row = second.row;
 				}
 
 				flag_1 = 0;
@@ -169,12 +180,14 @@ void MovePointW(int array[ROW][COL])
 		}
 	}
 }
+
+
 void MovePointS(int array[ROW][COL])
 {
 	struct POS pos;
 	struct POS start;
 
-
+	CountFuncW(array);
 	//列遍历二维数组 从下向上
 	for (start.col = COL - 1; start.col >= 0; --start.col)
 	{
@@ -196,11 +209,58 @@ void MovePointS(int array[ROW][COL])
 		}
 	}
 }
+
+void CountFuncA(int array[ROW][COL])
+{
+	int flag_1 = 0;
+	int flag = 0;
+	struct POS pos;
+	struct POS first;
+	struct POS second;
+	//列遍历二位数组 从上向下
+	for (pos.row = 0; pos.row < ROW; ++pos.row)
+	{
+		flag = 0;
+		for (pos.col = 0; pos.col < COL; ++pos.col)
+		{
+			if (0 != array[pos.row][pos.col] && 0 == flag)
+			{
+				first.col = pos.col;
+				first.row = pos.row;
+				flag = 1;
+			}
+			else if (0 != array[pos.row][pos.col] && 1 == flag)
+			{
+				second.row = pos.row;
+				second.col = pos.col;
+				flag_1 = 1;
+			}
+			if (1 == flag_1)
+			{
+				if (array[first.row][first.col] == array[second.row][second.col])
+				{
+					array[first.row][first.col] *= 2;
+					array[second.row][second.col] = 0;
+					flag = 0;
+				}
+
+				else
+				{
+					first.col = second.col;
+					first.row = second.row;
+				}
+
+				flag_1 = 0;
+			}
+		}
+	}
+}
 void MovePointA(int array[ROW][COL])
 {
 	struct POS pos;
 	struct POS start;
 
+	CountFuncA(array);
 	//行遍历二维数组 从左向右
 	for (start.row = 0; start.row < ROW; ++start.row)
 	{
@@ -230,6 +290,7 @@ void MovePointD(int array[ROW][COL])
 	struct POS pos;
 	struct POS start;
 
+	CountFuncA(array);
 	//行遍历二维数组 从右向左
 	for (start.row = ROW - 1; start.row >= 0; --start.row)
 	{
@@ -259,8 +320,8 @@ int Game(int array[ROW][COL])
 	while (!IsDown(array))
 	{
 		Seed(array);
-		MoveMap(array);
 		PrintMap(array);
+		MoveMap(array);
 	}
 	return 0;
 }
