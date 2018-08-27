@@ -7,17 +7,26 @@ void PrintMap(int array[ROW][COL])
 	printf("\n");
 	for (i = 0; i < ROW; ++i)
 	{
-		printf("-----------------\n");
+		printf("---------------------\n");
 		for (j = 0; j < COL; ++j)
 		{
 			if (0 != array[i][j])
-				printf("| %d ", array[i][j]);
+			{
+				if (10 > array[i][j])
+					printf("|   %d", array[i][j]);
+				else if (10 <= array[i][j] && 100>array[i][j])
+					printf("|  %d", array[i][j]);
+				else if (100 <= array[i][j] && 1000 > array[i][j])
+					printf("| %d", array[i][j]);
+				else
+					printf("|%d", array[i][j]);
+			}
 			else
-				printf("|   ");
+				printf("|    ");
 		}
 		printf("|\n");
 	}
-	printf("-----------------\n");
+	printf("---------------------\n");
 }
 
 //判断是否失败 返回0表示未失败 返回1表示失败
@@ -79,13 +88,17 @@ void MoveMap(int array[ROW][COL])
 	point = _getch();
 	switch(point)
 	{
-	case 'w':MovePointW(array);
+	case 'w':IsSeedW(array);
+		MovePointW(array);
 		break;
-	case 's':MovePointS(array);
+	case 's':IsSeedS(array);
+		MovePointS(array);
 		break;
-	case 'a':MovePointA(array);
+	case 'a':IsSeedA(array);
+		MovePointA(array);
 		break;
-	case 'd':MovePointD(array);
+	case 'd':IsSeedD(array);
+		MovePointD(array);
 		break;
 	default:printf("非法输入！\n");
 		break;
@@ -136,6 +149,7 @@ void CountFuncW(int array[ROW][COL])
 					array[first.row][first.col] *= 2;
 					array[second.row][second.col] = 0;
 					flag = 0;
+					Flag_Seed = 1;
 				}
 
 				else
@@ -181,13 +195,58 @@ void MovePointW(int array[ROW][COL])
 	}
 }
 
+void CountFuncS(int array[ROW][COL])
+{
+	int flag_1 = 0;
+	int flag = 0;
+	struct POS pos;
+	struct POS first;
+	struct POS second;
+	//列遍历二位数组 从上向下
+	for (pos.col = COL - 1; pos.col >= 0; --pos.col)
+	{
+		flag = 0;
+		for (pos.row = ROW - 1; pos.row >= 0; --pos.row)
+		{
+			if (0 != array[pos.row][pos.col] && 0 == flag)
+			{
+				first.col = pos.col;
+				first.row = pos.row;
+				flag = 1;
+			}
+			else if (0 != array[pos.row][pos.col] && 1 == flag)
+			{
+				second.row = pos.row;
+				second.col = pos.col;
+				flag_1 = 1;
+			}
+			if (1 == flag_1)
+			{
+				if (array[first.row][first.col] == array[second.row][second.col])
+				{
+					array[first.row][first.col] *= 2;
+					array[second.row][second.col] = 0;
+					flag = 0;
+					Flag_Seed = 1;
+				}
 
+				else
+				{
+					first.col = second.col;
+					first.row = second.row;
+				}
+
+				flag_1 = 0;
+			}
+		}
+	}
+}
 void MovePointS(int array[ROW][COL])
 {
 	struct POS pos;
 	struct POS start;
 
-	CountFuncW(array);
+	CountFuncS(array);
 	//列遍历二维数组 从下向上
 	for (start.col = COL - 1; start.col >= 0; --start.col)
 	{
@@ -242,6 +301,7 @@ void CountFuncA(int array[ROW][COL])
 					array[first.row][first.col] *= 2;
 					array[second.row][second.col] = 0;
 					flag = 0;
+					Flag_Seed = 1;
 				}
 
 				else
@@ -285,12 +345,59 @@ void MovePointA(int array[ROW][COL])
 		}
 	}
 }
+
+void CountFuncD(int array[ROW][COL])
+{
+	int flag_1 = 0;
+	int flag = 0;
+	struct POS pos;
+	struct POS first;
+	struct POS second;
+	//列遍历二位数组 从上向下
+	for (pos.row = ROW - 1; pos.row >= 0; --pos.row)
+	{
+		flag = 0;
+		for (pos.col = COL - 1; pos.col >= 0; --pos.col)
+		{
+			if (0 != array[pos.row][pos.col] && 0 == flag)
+			{
+				first.col = pos.col;
+				first.row = pos.row;
+				flag = 1;
+			}
+			else if (0 != array[pos.row][pos.col] && 1 == flag)
+			{
+				second.row = pos.row;
+				second.col = pos.col;
+				flag_1 = 1;
+			}
+			if (1 == flag_1)
+			{
+				if (array[first.row][first.col] == array[second.row][second.col])
+				{
+					array[first.row][first.col] *= 2;
+					array[second.row][second.col] = 0;
+					flag = 0;
+					Flag_Seed = 1;
+				}
+
+				else
+				{
+					first.col = second.col;
+					first.row = second.row;
+				}
+
+				flag_1 = 0;
+			}
+		}
+	}
+}
 void MovePointD(int array[ROW][COL])
 {
 	struct POS pos;
 	struct POS start;
 
-	CountFuncA(array);
+	CountFuncD(array);
 	//行遍历二维数组 从右向左
 	for (start.row = ROW - 1; start.row >= 0; --start.row)
 	{
@@ -312,14 +419,112 @@ void MovePointD(int array[ROW][COL])
 		}
 	}
 }
+
+//判断是否需要生成种子
+int Flag_Seed = 1;//设置全局变量作为是否生成种子的标记
+void IsSeedW(int array[ROW][COL])
+{
+	int flag_first_0 = 0;//标记是否找到第一个0
+	struct POS start;
+
+	//列遍历二维数组 从上向下
+	for (start.col = 0; start.col < COL; ++start.col)
+	{
+		flag_first_0 = 0;//当完成一列的对比时 将flag_first_0该为0
+		for (start.row = 0; start.row < ROW; ++start.row)
+		{
+			if (0 == array[start.row][start.col] && 0 == flag_first_0)
+			{
+				flag_first_0 = 1;//表示找到第一个0
+			}
+			else if (0 != array[start.row][start.col] && 1 == flag_first_0)
+			{
+				Flag_Seed = 1;
+				return;
+			}
+		}
+	}
+}
+void IsSeedS(int array[ROW][COL])
+{
+	int flag_first_0 = 0;//标记是否找到第一个0
+	struct POS start;
+
+	//列遍历二维数组 从上向下
+	for (start.col = COL - 1; start.col >= 0; --start.col)
+	{
+		flag_first_0 = 0;//当完成一列的对比时 将flag_first_0该为0
+		for (start.row = ROW - 1; start.row >= 0; --start.row)
+		{
+			if (0 == array[start.row][start.col] && 0 == flag_first_0)
+			{
+				flag_first_0 = 1;//表示找到第一个0
+			}
+			else if (0 != array[start.row][start.col] && 1 == flag_first_0)
+			{
+				Flag_Seed = 1;
+				return;
+			}
+		}
+	}
+}
+void IsSeedA(int array[ROW][COL])
+{
+	int flag_first_0 = 0;//标记是否找到第一个0
+	struct POS start;
+
+	//列遍历二维数组 从上向下
+	for (start.row = 0; start.row < ROW; ++start.row)
+	{
+		flag_first_0 = 0;//当完成一列的对比时 将flag_first_0该为0
+		for (start.col = 0; start.col < COL; ++start.col)
+		{
+			if (0 == array[start.row][start.col] && 0 == flag_first_0)
+			{
+				flag_first_0 = 1;//表示找到第一个0
+			}
+			else if (0 != array[start.row][start.col] && 1 == flag_first_0)
+			{
+				Flag_Seed = 1;
+				return;
+			}
+		}
+	}
+}
+void IsSeedD(int array[ROW][COL])
+{
+	int flag_first_0 = 0;//标记是否找到第一个0
+	struct POS start;
+
+	//列遍历二维数组 从上向下
+	for (start.row = ROW - 1; start.row >= 0; --start.row)
+	{
+		flag_first_0 = 0;//当完成一列的对比时 将flag_first_0该为0
+		for (start.col = COL - 1; start.col >= 0; --start.col)
+		{
+			if (0 == array[start.row][start.col] && 0 == flag_first_0)
+			{
+				flag_first_0 = 1;//表示找到第一个0
+			}
+			else if (0 != array[start.row][start.col] && 1 == flag_first_0)
+			{
+				Flag_Seed = 1;
+				return;
+			}
+		}
+	}
+}
 //////////////////////////游戏主体函数
 int Game(int array[ROW][COL])
 {
-	PrintMap(array);
-	printf("游戏开始！\n");
+	printf("游戏开始！");
 	while (!IsDown(array))
 	{
-		Seed(array);
+		if (1 == Flag_Seed)
+		{
+			Seed(array);
+			Flag_Seed = 0;
+		}
 		PrintMap(array);
 		MoveMap(array);
 	}
