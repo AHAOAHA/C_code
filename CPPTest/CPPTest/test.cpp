@@ -1252,48 +1252,83 @@ int main()
 	return 0;
 }
 */
-#if 0
-#include<iostream>
-using namespace std;
-int main()
-{
-	int array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
-	for (auto e : array)
-		cout << e << " ";
-	cout << endl;
-	return 0;
-}
-#endif
-#if 0
-class Base
-{
-public:
-	void virtual Test()
-	{}
-	int _a;
+//#if 0
+//#include<iostream>
+//using namespace std;
+//int main()
+//{
+//	int array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+//	for (auto e : array)
+//		cout << e << " ";
+//	cout << endl;
+//	return 0;
+//}
+//#endif
+//#if 0
+//class Base
+//{
+//public:
+//	void virtual Test()
+//	{}
+//	int _a;
+//
+//};
+//class Derive :public Base
+//{
+//public:
+//	void Test()
+//	{}
+//	int _w;
+//};
+//int main()
+//{
+//	return 0;
+//}
+//#endif
+//#include<iostream>
+//using namespace std;
+//template<class T>
+//T Add(T x, T y)
+//{
+//	return x + y;
+//}
+//int main()
+//{
+//	cout << Add(3, 5) << endl;
+//	return 0;
+//}
 
-};
-class Derive :public Base
-{
-public:
-	void Test()
-	{}
-	int _w;
-};
-int main()
-{
-	return 0;
-}
-#endif
 #include<iostream>
 using namespace std;
-template<class T>
-T Add(T x, T y)
+class A
 {
-	return x + y;
-}
+public:
+	A()
+	{
+		i = 1;
+	}
+private:
+	friend class B;
+	int i;
+};
+class B
+{
+public:
+	B()
+	{
+		cout << "" << endl;
+	}
+	void ATest()
+	{
+		A a;
+		cout << a.i << endl;
+	}
+private:
+};
 int main()
 {
-	cout << Add(3, 5) << endl;
+	B b;
+	b.ATest();
+	system("pause");
 	return 0;
 }
