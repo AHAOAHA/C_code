@@ -1297,7 +1297,7 @@ int main()
 //	cout << Add(3, 5) << endl;
 //	return 0;
 //}
-
+/*
 #include<iostream>
 using namespace std;
 class A
@@ -1329,6 +1329,58 @@ int main()
 {
 	B b;
 	b.ATest();
+	system("pause");
+	return 0;
+}*/
+/*
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+void Swap(int& a, int& b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
+}
+void Sort(int& a, int& b, int& c)
+{
+	if (a <= b&&a <= c)
+	{
+		if (b > c)
+			Swap(b, c);
+	}
+	else if (b <= a&&b <= c)
+	{
+		Swap(a, b);
+		if (b > c)
+			Swap(b, c);
+		
+	}
+	else if (c <= a&&c <= b)
+	{
+		Swap(a, c);
+		if (b > c)
+			Swap(b, c);
+	}
+}
+int main()
+{
+	int a, b, c;
+	cin >> a >> b >> c;
+	Sort(a, b, c);
+	cout << a << b << c << endl;
+	system("pause");
+	return 0;
+}*/
+#include<iostream>
+#include<string>
+int main()
+{
+	std::string s1("HELLO");
+	auto it = s1.end() - 1;
+	for (it = s1.end() - 1; it != s1.begin(); --it)
+		std::cout << *it;
+	std::cout << *it << std::endl;
 	system("pause");
 	return 0;
 }
