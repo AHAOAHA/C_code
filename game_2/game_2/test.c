@@ -18,7 +18,8 @@ int main()
 		{
 		case 0:printf("退出游戏\n");
 			break;
-		case 1: printf("开始游戏\n");
+		case 1:Proc();
+			printf("开始游戏\n");
 			Game();
 			break;
 		default:printf("选择错误，请重新开始\n");

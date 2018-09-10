@@ -1,5 +1,20 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include"game.h"
+void Proc()
+{
+	int i = 0;
+	char bar[102] = { '\0' };
+	char* buf = "-\\|/";
+	while (i <= 100)
+	{
+		bar[i] = '#';
+		printf("[%-101s]   [%c][%d%%]\r", bar, buf[i % 4], i);
+		fflush(stdout);
+		Sleep(1);
+		++i;
+	}
+	printf("\n");
+}
 void Print(char mine_map[ROWS][COLS])
 {
 	int i = 0;
@@ -180,7 +195,7 @@ void Game()
 	char mine_map_show[ROWS][COLS] = { 0 };
 	Init(mine_map,mine_map_show);
 	Mine(mine_map);
-	Print(mine_map);
+	//Print(mine_map);
 	printf("\n");
 	while (Go_on(mine_map_show))
 	{
