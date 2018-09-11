@@ -1,5 +1,20 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include"game.h"
+void Proc()
+{
+	int i = 0;
+	char bar[102] = { '\0' };
+	char* buf = "-\\|/";
+	while (i <= 100)
+	{
+		bar[i] = '#';
+		printf("[%-101s]   [%c][%d%%]\r", bar, buf[i % 4], i);
+		fflush(stdout);
+		Sleep(1);
+		++i;
+	}
+	printf("\n");
+}
 void Init(char chess[ROW][COL], int row, int col)
 {
 	int i = 0;

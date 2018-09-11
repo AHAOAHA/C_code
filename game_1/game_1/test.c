@@ -20,7 +20,8 @@ int main()
 			system("pause");
 			return 0;
 			break;
-		case 1:printf("开始游戏\n");
+		case 1:Proc();
+			printf("开始游戏\n");
 			Game();
 			break;
 		default:printf("非法选择，请重新开始\n");
