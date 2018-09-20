@@ -1372,6 +1372,7 @@ int main()
 	system("pause");
 	return 0;
 }*/
+/*
 #include<iostream>
 #include<string>
 int main()
@@ -1381,6 +1382,20 @@ int main()
 	for (it = s1.end() - 1; it != s1.begin(); --it)
 		std::cout << *it;
 	std::cout << *it << std::endl;
+	system("pause");
+	return 0;
+}
+*/
+#include<stdio.h>
+#include<iostream>
+#include<vector>
+#include<stdlib.h>
+using namespace std;
+int main()
+{
+	vector<int> v(3,1);
+	vector<int> v1(v);
+	cout << v.data << endl;;
 	system("pause");
 	return 0;
 }
