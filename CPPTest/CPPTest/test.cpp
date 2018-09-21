@@ -1388,14 +1388,12 @@ int main()
 */
 #include<stdio.h>
 #include<iostream>
-#include<vector>
+#include<array>
 #include<stdlib.h>
 using namespace std;
 int main()
 {
-	vector<int> v(3,1);
-	vector<int> v1(v);
-	cout << v.data << endl;;
-	system("pause");
+	array<int, 3> arr = {1,2,3};
+
 	return 0;
 }
