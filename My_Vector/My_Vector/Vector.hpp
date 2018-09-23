@@ -309,6 +309,52 @@ public:
 		temp_end = nullptr;
 
 	}
+	void swap(Vector<value_type>& v);//暂未实现
+	void earse(size_t pos)//删除某一个数据
+	{
+		if (_size <= pos)
+		{
+			printf("%d位置没有数据！\n", pos);
+			return;
+		}
+		while ((pos + 1) != _size)
+		{
+			move(_start + pos + 1, _start + pos);
+			pos += 1;
+		}
+		_size -= 1;
+	}
+	void earse(size_t pos_start, size_t pos_end)//删除某一段数据(前闭后开)
+	{
+		if (pos_start > pos_end)
+			assert(0);
+		else if (pos_start == pos_end)
+		{
+			earse(pos_start);
+			return;
+		}
+
+		if (pos_start >= _size)
+		{
+			printf("所选区域不存在数据！\n");
+			return;
+		}
+
+		if (pos_end >= _size - 1)
+		{
+			_size = _size - (pos_end - pos_start);
+		}
+		else
+		{
+			size_t pos_temp_end = pos_end;
+			while ((_start + pos_temp_end ) != (_start + _size))
+			{
+				move(_start + pos_temp_end , _start + pos_temp_end - (pos_end - pos_start));
+				pos_temp_end += 1;
+			}
+			_size = _size - (pos_end - pos_start);
+		}
+	}
 protected:
 	const bool has_space()const
 	{
