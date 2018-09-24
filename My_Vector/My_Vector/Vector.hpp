@@ -309,7 +309,11 @@ public:
 		temp_end = nullptr;
 
 	}
-	void swap(Vector<value_type>& v);//暂未实现
+	void swap(Vector<value_type>& v)//未完成实现
+	{
+		//交换size与capacity
+		size_t temp = _size;
+	}
 	void earse(size_t pos)//删除某一个数据
 	{
 		if (_size <= pos)
