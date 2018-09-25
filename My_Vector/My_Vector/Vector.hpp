@@ -313,6 +313,25 @@ public:
 	{
 		//交换size与capacity
 		size_t temp = _size;
+		_size = v.size_change();
+		v.size_change() = temp;
+
+		temp = _capacity;
+		_capacity = v.capacity_change();
+		v.capacity_change() = temp;
+
+		//交换指针
+		iterator temp_ptr = _start;
+		_start = v.start_change();
+		v.start_change() = temp_ptr;
+
+		temp_ptr = _end;
+		_end = v.end_change();
+		v.end_change() = temp_ptr;
+
+		temp_ptr = _finish;
+		_finish = v.finish_change();
+		v.finish_change() = _finish;
 	}
 	void earse(size_t pos)//删除某一个数据
 	{
@@ -367,6 +386,26 @@ protected:
 	void move(const iterator pos1, iterator pos2)
 	{
 		*pos2 = *pos1;
+	}
+	size_t& size_change()
+	{
+		return _size;
+	}
+	size_t& capacity_change()
+	{
+		return _capacity;
+	}
+	iterator& start_change()
+	{
+		return _start;
+	}
+	iterator& finish_change()
+	{
+		return _finish;
+	}
+	iterator& end_change()
+	{
+		return _end;
 	}
 
 private:
