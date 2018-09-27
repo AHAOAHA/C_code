@@ -407,6 +407,11 @@ protected:
 	{
 		return _end;
 	}
+	void clear()
+	{
+		_size = 0;
+		_finish = _start;
+	}
 
 private:
 	iterator _start;//表示目前使用空间的头
