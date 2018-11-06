@@ -22,7 +22,7 @@ public:
 			}
 		}
 	};
-	static CGarbo cg;//定义出一个静态内部类的对象
+	
 private:
 	//构造函数私有化
 	Singleton()
@@ -35,12 +35,21 @@ private:
 	//类对象
 	static Singleton* mp_Instance;
 
+	//定义出一个静态内部类的对象，用来析构所创建的单例类对象
+	static CGarbo Garbo;
+
 	//锁子
 	static std::mutex _mux;
 };
 
 //在main主函数指向之前，先将指向类对象的指针初始化为nullptr
 Singleton* Singleton::mp_Instance = nullptr;
+
+//定义出内部类的成员
+Singleton::CGarbo Garbo;
+
+//在main函数执行之前，创建出互斥锁的对象
+std::mutex Singleton::_mux;
 
 /*懒汉模式创建单例类对象时，因为进程在cpu上的运行并不是连续的，当一个进程的运行时间片到达时，
 另一个进程就会加载进内存，这时候上一个进程就会重新排队，等待自己被调度运行，所以就会出现下面这种
@@ -76,5 +85,4 @@ Singleton* Singleton::GetInstance()
 		
 }
 
-//在main函数执行之前，创建出互斥锁的对象
-std::mutex Singleton::_mux;
+

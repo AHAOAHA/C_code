@@ -6,6 +6,11 @@ public:
 		HeapOnly* p = new HeapOnly;
 		return p;
 	}
+
+	~HeapOnly()
+	{
+		delete this;
+	}
 private:
 	HeapOnly(int i = 0)
 		:_i(i)
