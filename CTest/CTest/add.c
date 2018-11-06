@@ -576,11 +576,98 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 //}
 
 
-
+/*
 #include<stdlib.h>
 int main()
 {
 	char* p = "a";
 	free(p);
+	return 0;
+}
+*/
+/*
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char* my_argv[20] = {NULL};
+	char* cmd = "ls -a -b";
+	int i = 0;
+	int j = 0;
+//	scanf("%s", cmd);
+	my_argv[i] = strtok(cmd, ' ');
+	while (my_argv[i])
+	{
+		my_argv[++i] = strtok(NULL, ' ');
+	}
+	for (j = 0; j < i; j++)
+	{
+		printf("%s\n", my_argv[j]);
+	}
+	return 0;
+}
+*/
+/*
+#include<stdio.h>
+#include<string.h>
+#define MAX_ARGV 20
+#define MAX_CMD 1024
+void cut_str(char** argc, char* argv[], char cmd[])
+{
+	char* ptr = cmd;
+	int flag = 0;
+	int i = 0;
+	*argc = cmd;
+	while (*ptr != '\0')
+	{
+		if (*ptr == ' '&&flag == 0)
+		{
+			*ptr = '\0';
+			flag = 1;
+			ptr += 1;
+			argv[i++] = ptr;
+		}
+		else if (*ptr == ' '&&flag == 1)
+		{
+			*ptr = '\0';
+			ptr += 1;
+			argv[i++] = ptr;
+		}
+		ptr += 1;
+	}
+	ptr = argv[i - 1];
+	while (*ptr != '\0')
+	{
+		ptr += 1;
+	}
+	*(ptr - 1) = '\0';
+	argv[i] = NULL;
+}
+int main()
+{
+	int i = 0;
+	char cmd[MAX_CMD] = { '\0' };
+	char* argc;
+	char* argv[MAX_ARGV];
+	printf("[ahao@AHAOAHA ~ ]& ");
+	//scanf("%s", cmd);
+	fgets(cmd, sizeof(cmd), stdin);
+	cut_str(&argc, argv, cmd);
+	return 0;
+}
+*/
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char str[] = "hello world i am a boy! ";
+	char* buf = " ";
+	char* p;
+	printf("%s\n", strtok(str, buf));
+	while (p = strtok(NULL, buf))
+	{
+		printf("%s\n", p);
+	}
 	return 0;
 }

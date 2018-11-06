@@ -1,6 +1,6 @@
  CTest
 
- Timestamp is 5b669fcd (Sun Aug 05 14:57:17 2018)
+ Timestamp is 5bcd9af9 (Mon Oct 22 17:40:09 2018)
 
  Preferred load address is 00400000
 
@@ -37,18 +37,23 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
- 0000:00000000       ___safe_se_handler_count   00000000     <absolute>
- 0000:00000000       ___safe_se_handler_table   00000000     <absolute>
- 0000:00000000       ___guard_fids_table        00000000     <absolute>
- 0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___guard_flags             00000000     <absolute>
+ 0000:00000000       ___safe_se_handler_count   00000000     <absolute>
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___safe_se_handler_table   00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00000000       __enc$textbss$begin        00401000     <linker-defined>
  0001:00010000       __enc$textbss$end          00411000     <linker-defined>
- 0002:000003c0       _main                      004113c0 f   add.obj
  0002:00000426       _free                      00411426 f   MSVCRTD:MSVCR120D.dll
  0002:00000430       @_RTC_AllocaHelper@12      00411430 f   MSVCRTD:stack.obj
+ 0002:00000462       _memset                    00411462 f   MSVCRTD:MSVCR120D.dll
+ 0002:00000468       _strtok                    00411468 f   MSVCRTD:MSVCR120D.dll
  0002:00000470       @_RTC_CheckStackVars2@12   00411470 f   MSVCRTD:stack.obj
+ 0002:00000542       _scanf                     00411542 f   MSVCRTD:MSVCR120D.dll
+ 0002:00000548       _printf                    00411548 f   MSVCRTD:MSVCR120D.dll
+ 0002:0000054e       _fgets                     0041154e f   MSVCRTD:MSVCR120D.dll
+ 0002:00000554       ___iob_func                00411554 f   MSVCRTD:MSVCR120D.dll
  0002:00000580       @_RTC_CheckStackVars@8     00411580 f   MSVCRTD:stack.obj
  0002:000005f0       __RTC_CheckEsp             004115f0 f   MSVCRTD:stack.obj
  0002:00000620       __RTC_InitBase             00411620 f   MSVCRTD:init.obj
@@ -139,14 +144,17 @@
  0002:00002bcc       _GetModuleFileNameW@12     00413bcc f   kernel32:KERNEL32.dll
  0002:00002bd2       _GetModuleHandleW@4        00413bd2 f   kernel32:KERNEL32.dll
  0002:00002bd8       _IsProcessorFeaturePresent@4 00413bd8 f   kernel32:KERNEL32.dll
+ 0002:00002df0       _main                      00413df0 f   add.obj
  0003:00000000       ___xc_a                    00415000     MSVCRTD:cinitexe.obj
  0003:00000208       ___xc_z                    00415208     MSVCRTD:cinitexe.obj
  0003:0000030c       ___xi_a                    0041530c     MSVCRTD:cinitexe.obj
  0003:0000071c       ___xi_z                    0041571c     MSVCRTD:cinitexe.obj
- 0003:00000858       ??_C@_01MCMALHOG@a?$AA@    00415858     add.obj
+ 0003:00000858       ??_C@_01CLKCMJKC@?5?$AA@   00415858     add.obj
+ 0003:0000085c       ??_C@_03OFAPEBGM@?$CFs?6?$AA@ 0041585c     add.obj
  0003:00000860       ??_C@_1FA@DALEHHGL@?$AA_?$AA_?$AAn?$AAa?$AAt?$AAi?$AAv?$AAe?$AA_?$AAs?$AAt?$AAa?$AAr?$AAt?$AAu?$AAp?$AA_?$AAs?$AAt?$AAa?$AAt?$AAe?$AA?5?$AA?$DN?$AA?$DN?$AA?5?$AA_?$AA_?$AAi?$AAn?$AAi?$AAt@ 00415860     MSVCRTD:crtexe.obj
  0003:000008c0       ??_C@_15GANGMFKL@?$AA?$CF?$AAs?$AA?$AA@ 004158c0     MSVCRTD:crtexe.obj
  0003:000008c8       ??_C@_1FG@DKNDLLJO@?$AAf?$AA?3?$AA?2?$AAd?$AAd?$AA?2?$AAv?$AAc?$AAt?$AAo?$AAo?$AAl?$AAs?$AA?2?$AAc?$AAr?$AAt?$AA?2?$AAc?$AAr?$AAt?$AAw?$AA3?$AA2?$AA?2?$AAd?$AAl?$AAl?$AAs?$AAt?$AAu?$AAf@ 004158c8     MSVCRTD:crtexe.obj
+ 0003:000009cc       ??_C@_0BJ@NNKGNGE@hello?5world?5i?5am?5a?5boy?$CB?5?$AA@ 004159cc     add.obj
  0003:000009f0       ??_C@_0NN@NGPKDKPD@The?5value?5of?5ESP?5was?5not?5properl@ 004159f0     MSVCRTD:error.obj
  0003:00000b00       ??_C@_0BBN@GPMLNJCF@A?5cast?5to?5a?5smaller?5data?5type?5ha@ 00415b00     MSVCRTD:error.obj
  0003:00000c58       ??_C@_0BN@FFOINMNJ@Stack?5memory?5was?5corrupted?6?$AN?$AA@ 00415c58     MSVCRTD:error.obj
@@ -282,7 +290,13 @@
  0005:0000010c       __imp___CRT_RTC_INITW      0041910c     MSVCRTD:MSVCR120D.dll
  0005:00000110       __imp___except_handler4_common 00419110     MSVCRTD:MSVCR120D.dll
  0005:00000114       __imp__free                00419114     MSVCRTD:MSVCR120D.dll
- 0005:00000118       \177MSVCR120D_NULL_THUNK_DATA 00419118     MSVCRTD:MSVCR120D.dll
+ 0005:00000118       __imp__memset              00419118     MSVCRTD:MSVCR120D.dll
+ 0005:0000011c       __imp__strtok              0041911c     MSVCRTD:MSVCR120D.dll
+ 0005:00000120       __imp__scanf               00419120     MSVCRTD:MSVCR120D.dll
+ 0005:00000124       __imp__printf              00419124     MSVCRTD:MSVCR120D.dll
+ 0005:00000128       __imp__fgets               00419128     MSVCRTD:MSVCR120D.dll
+ 0005:0000012c       __imp____iob_func          0041912c     MSVCRTD:MSVCR120D.dll
+ 0005:00000130       \177MSVCR120D_NULL_THUNK_DATA 00419130     MSVCRTD:MSVCR120D.dll
  0005:0000015c       __IMPORT_DESCRIPTOR_MSVCR120D 0041915c     MSVCRTD:MSVCR120D.dll
  0005:00000170       __IMPORT_DESCRIPTOR_KERNEL32 00419170     kernel32:KERNEL32.dll
  0005:00000184       __NULL_IMPORT_DESCRIPTOR   00419184     MSVCRTD:MSVCR120D.dll
