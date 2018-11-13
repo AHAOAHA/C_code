@@ -1,42 +1,45 @@
 #pragma once
 # define _CRT_SECURE_NO_WARNINGS 1
 #include<string.h>
+#include<assert.h>
+#include<iostream>
 namespace AHAOAHA
 {
-	template<class T>
-	void swap(T& ptr1, T& ptr2)
-	{
-		T tmp = ptr1;
-		ptr1 = ptr2;
-		ptr2 = tmp;
-	}
-	
+
 	class String
 	{
 	public:
+		friend std::ostream& operator<<(std::ostream& out, const String& s);
+		friend std::istream& operator>>(std::istream& in, const String& s);
+		//为什么不能string s()这样构造字符串？
 		String(const char* str = "")
 		{
-			if (str == nullptr)
+			assert(str);
+			_size = strlen(str);
+			if(_size <= 15)
 			{
-				_str = new char[1];
-				*_str = '\0';
-				_capacity = 0;
-				_size = 0;
+				_capacity = 15;
+				_str = new char[_capacity + 1];
+				strcpy(_str, str);
 			}
 			else
 			{
-				_str = new char[strlen(str) + 1];
+				_capacity = _size;
+				_str = new char[_capacity + 1];
 				strcpy(_str, str);
-				_capacity = strlen(str);
-				_size = strlen(str);
 			}
 		}
 		String(const String& s)
 		{
-			_capacity = s._capacity;
-			_size = s._size;
-			_str = new char[_capacity + 1];
-			strcpy(_str, s._str);
+			String tmp(s._str);
+			Swap(tmp);
+		}
+		String(const char ch)
+		{
+			char str[2] = { '\0' };
+			str[0] = ch;
+			String tmp(str);
+			this->Swap(tmp);
 		}
 		String& operator=(const String& s);
 		String& operator=(const char* pstr);
@@ -70,13 +73,14 @@ namespace AHAOAHA
 		size_t find(const String& s, size_t pos = 0)const;
 		size_t find(const char ch, size_t pos = 0)const;
 		size_t find(const char *s, size_t pos = 0)const;
-		char operator[](size_t pos);
-		const char operator[](size_t pos)const;
+		char& operator[](size_t pos);
+		const char& operator[](size_t pos)const;
 		String& operator+=(const String& s);
 		String& operator+=(const char* pstr);
 		String& operator+=(const char ch);
-
+		void Swap(String& s);
 		
+	
 		static const size_t npos;
 	private:
 
