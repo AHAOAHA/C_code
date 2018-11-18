@@ -80,11 +80,9 @@ namespace AHAOAHA
 		String& operator+=(const char ch);
 		void Swap(String& s);
 		
-	
 		static const size_t npos;
+
 	private:
-
-
 		char* _str;
 		size_t _size;
 		size_t _capacity;

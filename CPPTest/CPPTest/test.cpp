@@ -1,6 +1,7 @@
 #include<string>
 #include<iostream>
 using namespace std;
+#if 0
 int main()
 {
 	string s;
@@ -12,3 +13,4 @@ int main()
 	cout << s << endl;
 	return 0;
 }
+#endif

@@ -69,15 +69,7 @@ AHAOAHA::String& AHAOAHA::String::operator=(const char ch)
 
 AHAOAHA::String& AHAOAHA::String::append(const String& s)
 {
-	AHAOAHA::String tmp(s);
-	size_t tmpsize = _size;
-	_size += s._size;
-	if (_size > _capacity)
-	{
-		this->reserve(_size);
-	}
-
-	strcpy(_str + tmpsize, tmp._str);
+	*this += s;
 
 	return *this;
 }
@@ -182,7 +174,7 @@ size_t AHAOAHA::String::find(const char *s, size_t pos)const
 			size_t start = 0;
 			while (start < strlen(s))
 			{
-				if (_str[start] != s[start])
+				if (_str[begin+start] != s[start])
 					break;
 				start++;
 			}
@@ -196,13 +188,14 @@ size_t AHAOAHA::String::find(const char *s, size_t pos)const
 
 AHAOAHA::String& AHAOAHA::String::operator+=(const AHAOAHA::String& s)
 {
+	size_t tmp_size = _size;
 	_size += s._size;
 	if (_size < _capacity)
 	{
 		this->reserve(_size);
 	}
 
-	strcpy(_str + _size, s._str);
+	strcpy(_str + tmp_size, s._str);
 	return *this;
 }
 AHAOAHA::String& AHAOAHA::String::operator+=(const char* pstr)
