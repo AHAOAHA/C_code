@@ -90,6 +90,7 @@ void AHAOAHA::String::push_back(const char ch)
 
 	_str[_size + 1] = '\0';
 	_str[_size] = ch;
+	_size += 1;
 }
 
 char& AHAOAHA::String::operator[](size_t pos)
@@ -186,6 +187,11 @@ size_t AHAOAHA::String::find(const char *s, size_t pos)const
 	return -1;
 }
 
+size_t AHAOAHA::String::rfind(const String& s, size_t pos)const
+{
+	return 0;
+}
+
 AHAOAHA::String& AHAOAHA::String::operator+=(const AHAOAHA::String& s)
 {
 	size_t tmp_size = _size;
@@ -218,4 +224,22 @@ std::istream& AHAOAHA::operator>>(std::istream& in, const AHAOAHA::String& s)
 {
 	in >> s._str;
 	return in;
+}
+
+AHAOAHA::String AHAOAHA::String::Substr(size_t pos, size_t len)
+{
+	assert(pos < _size);
+	String tmp;
+	size_t lentmp = 0;
+
+	if (len > (_size - pos))
+	{
+		len = _size - pos;
+	}
+	while(lentmp++ != len)
+	{
+		tmp += _str[pos];
+		pos += 1;
+	}
+	return tmp;
 }

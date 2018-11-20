@@ -14,3 +14,8 @@ int main()
 	return 0;
 }
 #endif
+int main()
+{
+	int *p = new int;
+	return 0;
+}

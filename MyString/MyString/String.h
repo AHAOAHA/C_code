@@ -8,6 +8,10 @@ namespace AHAOAHA
 
 	class String
 	{
+		typedef char* iterator;
+		typedef char* reverse_iterator;
+		typedef const char* const_iterator;
+		typedef const char* reverse_const_iterator;
 	public:
 		friend std::ostream& operator<<(std::ostream& out, const String& s);
 		friend std::istream& operator>>(std::istream& in, const String& s);
@@ -30,6 +34,7 @@ namespace AHAOAHA
 			}
 		}
 		String(const String& s)
+			:_str(nullptr)
 		{
 			String tmp(s._str);
 			Swap(tmp);
@@ -73,13 +78,47 @@ namespace AHAOAHA
 		size_t find(const String& s, size_t pos = 0)const;
 		size_t find(const char ch, size_t pos = 0)const;
 		size_t find(const char *s, size_t pos = 0)const;
+		size_t rfind(const String& s, size_t pos = 0)const;
 		char& operator[](size_t pos);
 		const char& operator[](size_t pos)const;
 		String& operator+=(const String& s);
 		String& operator+=(const char* pstr);
 		String& operator+=(const char ch);
+		String Substr(size_t pos = 0, size_t len = npos);
 		void Swap(String& s);
-		
+
+		iterator begin()
+		{
+			return _str;
+		}
+		iterator end()
+		{
+			return _str + _size;
+		}
+		const_iterator cbegin()const
+		{
+			return _str;
+		}
+		const_iterator cend()const
+		{
+			return _str + _size;
+		}
+		reverse_iterator rbegin()
+		{
+			return _str + _size - 1;
+		}
+		reverse_iterator rend()
+		{
+			return _str - 1;
+		}
+		reverse_const_iterator crbegin()const
+		{
+			return _str + _size - 1;
+		}
+		reverse_const_iterator crend()const
+		{
+			return _str - 1;
+		}
 		static const size_t npos;
 
 	private:
