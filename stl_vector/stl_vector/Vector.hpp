@@ -46,6 +46,20 @@ namespace AHAOAHA
 			}
 		}
 
+		explicit Vector(const Vector<T>& v)
+			:_start(nullptr)
+			,_finish(nullptr)
+			,_endOfSpatial(nullptr)
+		{
+			_start = new T[v.capacity()];
+			_endOfSpatial = _start + v.capacity();
+			for (size_t i = 0; i < v.size(); ++i)
+			{
+				_start[i] = v._start[i];
+			}
+			_finish = _start + v.size();
+		}
+
 		~Vector()
 		{
 			delete[] _start;
@@ -87,6 +101,8 @@ namespace AHAOAHA
 		{
 			return _start - 1;
 		}
+		
+		
 		const size_t capacity()const
 		{
 			if (_start == nullptr)
@@ -107,11 +123,30 @@ namespace AHAOAHA
 		void popback();
 		void insert(iterator pos, T data);
 		void earse(size_t pos, size_t len);
-		T& operator[](size_t pos)
+		T* data()
+		{
+			return _start;
+		}
+		T& operator[](const size_t pos)
 		{
 			assert(pos < this->size());
 			return _start[pos];
 		}
+		const T& operator[](const size_t pos)const
+		{
+			assert(pos < this->size());
+			return _start[pos];
+		}
+		const bool empty()const
+		{
+			return capacity() == size();
+		}
+		void swap(Vector<T>& v);
+		
+
+		Vector<T>& operator=(Vector<T>& v);
+		
+
 	private:
 		T* _start;
 		T* _finish;
@@ -165,9 +200,9 @@ template<class T>
 void AHAOAHA::Vector<T>::insert(iterator pos, T data)
 {
 	size_t tmppos = pos - _start;
-	if (this->capacity() == this->size())
+	if (empty())
 	{
-		reserve(capacity() * 2);
+		capacity() == 0 ? reserve(2) : reserve(capacity() * 2);
 	}
 	
 	//此处需要注意vector增容之后的迭代器失效问题
@@ -186,3 +221,40 @@ void AHAOAHA::Vector<T>::pushback(T data)
 {
 	insert(this->begin()+size(), data);
 }
+
+template<class T>
+void AHAOAHA::Vector<T>::popback()
+{
+	if (!empty())
+	{
+		_finish--;
+	}
+}
+
+template<class T>
+void AHAOAHA::Vector<T>::swap(Vector<T>& v)
+{
+	iterator tmpptr = this->_start;
+	this->_start = v._start;
+	v._start = tmpptr;
+
+	tmpptr = this->_finish;
+	this->_finish = v._finish;
+	v._finish = tmpptr;
+
+	tmpptr = this->_endOfSpatial;
+	this->_endOfSpatial = v._endOfSpatial;
+	v._endOfSpatial = tmpptr;
+}
+
+template<class T>
+AHAOAHA::Vector<T>& AHAOAHA::Vector<T>::operator=(AHAOAHA::Vector<T>& v)
+{
+	if (this != &v)
+	{
+		AHAOAHA::Vector<T> tmp(v);
+		this->swap(tmp);
+	}
+	return *this;
+}
+

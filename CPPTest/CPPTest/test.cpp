@@ -14,8 +14,13 @@ int main()
 	return 0;
 }
 #endif
+#include<vector>
+#include<string>
 int main()
 {
-	int *p = new int;
+	std::vector<std::string> v;
+	v.push_back("ahah");
+	v.push_back("w");
+	std::vector<std::string> v2(v.begin(), v.end());
 	return 0;
 }
