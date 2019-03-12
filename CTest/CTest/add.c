@@ -657,6 +657,7 @@ int main()
 }
 */
 
+#if 0
 #include<stdio.h>
 #include<string.h>
 int main()
@@ -671,3 +672,20 @@ int main()
 	}
 	return 0;
 }
+#endif
+
+
+
+#include<stdio.h>
+#include"test.h"
+
+static int sum = 10;
+extern int val = 100;
+int main()
+{
+	printf("%d\n", sum);
+	printf("%d\n", val);
+
+	return 0;
+}
+

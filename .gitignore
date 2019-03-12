@@ -11,4 +11,8 @@
 *.exe
 *.ilk
 *.pdb
-*.vcxproj.user
+*.user
+*.exe
+*.iobj
+*.ipdb
+*.vs
