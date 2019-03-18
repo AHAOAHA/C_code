@@ -218,11 +218,27 @@ int main()
 #endif
 
 #include "Test.h"
+#include <iostream>
 
+class Test
+{
+public:
+	static void func()
+	{
+		std::cout << "func" << std::endl;
+	}
+};
+
+class Derive : public Test
+{
+public:
+
+};
 
 int main()
 {
-	std::vector<int> v;
-	func(v);
+	//std::vector<int> v;
+	//func(v);
+	Derive::func();
 	return 0;
 }

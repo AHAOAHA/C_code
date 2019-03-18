@@ -1,25 +1,7 @@
 #pragma once
-#include <vector>
-#include <iostream>
+#include "Common.h"
 
-struct Greater
-{
-	bool operator()(const int& child, const int& parent)
-	{
-		return child > parent;
-	}
-};
-
-struct Lesser
-{
-	bool operator()(const int& child, const int& parent)
-	{
-		return child < parent;
-	}
-};
-
-
-template<class T, class Com = Greater>
+template<class T, class Com = Greater<T> >
 class HeapSortSelfOpt
 {
 public:
