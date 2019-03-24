@@ -216,7 +216,7 @@ int main()
 	return 0;
 }
 #endif
-
+#if 0
 #include "Test.h"
 #include <iostream>
 
@@ -240,5 +240,37 @@ int main()
 	//std::vector<int> v;
 	//func(v);
 	Derive::func();
+	return 0;
+}
+#endif
+
+#include <iostream>
+using std::endl;
+using std::cout;
+class Test
+{
+public:
+	inline void func()
+	{
+	
+
+
+	}
+};
+
+inline void func1()
+{}
+
+int main()
+{
+	Test t;
+	cout << func1 << endl;
+	//char a2[1048567];
+	//char a3[1048567];
+	//char a4[1048567];
+	//char a5[1048567];
+	//char a6[1048567];
+	//char a7[1048567];
+	//char a8[1048567];
 	return 0;
 }

@@ -8,38 +8,34 @@ class ShellSort
 public:
 	void Sort(std::vector<T>& v)
 	{
-		int gap = v.size() / 2;
-		while (gap > 0)
+		int gap = v.size();
+		while (1)
 		{
-			int group_num =  gap;
-
-			DirInsertSort(v, gap, group_num);
+			gap = gap / 3 + 1;
+			//gap = gap / 2;
+			DirInsertSort(v, v.size(), gap);
 			//对每一组进行直接插入排序
-			gap = gap / 2;
+			if (gap == 1)
+				break;
 		}
 	}
 private:
-	void DirInsertSort(std::vector<T>& v, int gap, int group_num)
+	void DirInsertSort(std::vector<T>& v, const int& size, const int& gap)
 	{
+		//对每个gap进行直接插入排序
 		Com comper;
-		for (int i = 0; i < group_num; ++i)
+		for (int i = gap; i < size; ++i)	//从gap的位置开始，一直到最后一个元为止
 		{
-			for (int j = i; j < static_cast<int>(v.size()); j += gap)
+			T obj = v[i];
+			int j = 0;
+			for (j = i - gap; j >= 0; j -= gap)
 			{
-				int pos = i;
-				T obj = v[j];
-				while (comper(v[j], v[pos]) && pos < j)
-					pos += gap;
-
-				if(pos == j)
-					continue;
-
-				for (int move_pos = j; move_pos > pos; move_pos -= gap)
-				{
-					std::swap(v[move_pos], v[move_pos - gap]);
-				}
-				v[pos] = obj;
+				if (comper(obj, v[j]) || v[j] == obj)
+					break;
+				else
+					v[j + gap] = v[j];
 			}
+			v[j + gap] = obj;
 		}
 	}
 };
