@@ -764,6 +764,7 @@ int main()
 	return 0;
 }
 #endif
+#if 0
 #include <string>
 
 std::string Test()
@@ -776,5 +777,31 @@ int main()
 {
 	std::string&& rs = Test();
 	rs.clear();
+	return 0;
+}
+#endif
+
+#if 0
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+int main()
+{
+	std::vector<int> v = { 3,2,1 };
+	do{
+		for (auto &e : v)
+		{
+			std::cout << e << " ";
+		}
+		std::cout << std::endl;
+	} while (prev_permutation(v.begin(), v.end()));
+	return 0;
+}
+#endif
+#include "Test.h"
+int main()
+{
+	AHAOAHA::test();
 	return 0;
 }
