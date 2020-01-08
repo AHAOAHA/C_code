@@ -1,0 +1,8 @@
+syntax = "proto2";
+
+package msg;
+
+message msg {
+    optional string name = 1;  //使用者姓名
+    optional string word = 2;  //查询的单词
+}

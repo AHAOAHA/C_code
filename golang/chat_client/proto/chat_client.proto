@@ -1,0 +1,67 @@
+syntax = "proto2";
+
+package chat_client;
+
+enum CMD {
+    SIGNUP_CMD                      = 0x1;   //注册信息
+    SIGNIN_CMD                      = 0x2;   //登录信息
+    GETONLINEUSERLIST_CMD           = 0x3;   //获取当前在线用户
+    SENDMSG_CMD                     = 0x4;     //发送消息
+}
+
+message UserInfo {
+    optional uint64 id              = 1;
+    optional string nick            = 2;
+}
+
+//======================================================0x1
+message SignUpReq {
+    optional UserInfo user_info     = 1; //注册的用户信息
+}
+
+message SignUpRsp {
+    optional uint32 result          = 1; //0表示注册成功
+}
+
+
+//======================================================0x2
+message SignInReq {
+    optional UserInfo user_info     = 1;
+}
+
+message SignInRsp {
+    optional uint32 result          = 1;
+}
+//======================================================0x3
+message GetOnlineUserListReq {
+    optional uint32 begin           = 1;
+    optional uint32 count           = 2;
+}
+
+message GetOnlineUserListRsp {
+    repeated UserInfo user_list     = 1;    //UserList
+    optional uint32 curr_pos        = 2;
+    optional uint32 result          = 3; //0表示成功
+}
+
+//======================================================0x4
+message SendMsgReq {
+    optional uint64 id              = 1;
+    optional string msg             = 2;
+}
+
+message SendMsgRsp {
+    optional uint32 result          = 1;    //0表示发送成功
+}
+
+//============================================================>
+message ChatMsgReq {
+    optional uint32 cmd             = 1;    //命令字 表明包任务
+    optional bytes ex               = 2;
+}
+
+message ChatMsgRsp {
+    optional uint32 cmd             = 1;    //根据命令字 判断ex字段解析类型
+    optional bytes ex               = 2;
+    optional uint32 result          = 3;
+}

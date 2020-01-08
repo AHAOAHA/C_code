@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package chatter;
+
+message Request {
+    optional uint32 cmd          = 1;   //命令字
+    optional bytes  ex           = 2;   //自定义协议扩展
+}
+
+message Response {
+    optional bytes ex            = 1;   //自定义协议扩展
+    optional uint32 result       = 2;   //返回结果，0表示成功
+}

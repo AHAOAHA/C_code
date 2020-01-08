@@ -1,0 +1,46 @@
+syntax = "proto2";
+
+package basic_svr;
+
+enum CMD {
+    SIGNUP_CMD                      = 0x1;     //注册信息
+    GETONLINEUSERLIST_CMD           = 0x2;     //获取当前在线用户
+    SENDMSG_CMD                     = 0x3;     //发送消息
+}
+
+//用户信息
+message UserInfo {
+    optional uint64 id              = 1;
+    optional string nick            = 2;
+}
+
+//======================================================0x1 注册
+message SignUpReq {
+    optional UserInfo user_info     = 1; //注册的用户信息
+}
+
+message SignUpRsp {
+    optional uint32 result          = 1; //0表示注册成功
+}
+
+//======================================================0x3 获取在线人员列表
+message GetOnlineUserListReq {
+    optional uint32 begin           = 1;    //开始位置
+    optional uint32 count           = 2;    //获取人数
+}
+
+message GetOnlineUserListRsp {
+    repeated UserInfo user_list     = 1;    //在线用户列表信息
+    optional uint32 is_end          = 2;    //当前返回是否完全
+    optional uint32 result          = 3;    //0表示成功
+}
+
+//======================================================0x3 发送信息请求
+message SendMsgReq {
+    optional uint64 id              = 1;
+    optional string msg             = 2;
+}
+
+message SendMsgRsp {
+    optional uint32 result          = 1;    //0表示发送成功
+}
