@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.demogrpc";
+option java_outer_classname = "DemoGrpcProto";
+option objc_class_prefix = "DGP";
+
+package DemoGrpc;
+
+message DemoReq {
+    string req = 1;
+}
+
+message DemoRsp {
+    string rsp = 1;
+}
+
+service DemoGrpcer {
+    rpc GetDemoRsp(DemoReq) returns (DemoRsp);
+}
