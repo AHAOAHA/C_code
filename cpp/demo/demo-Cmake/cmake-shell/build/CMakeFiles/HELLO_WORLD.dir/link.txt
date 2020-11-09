@@ -1,0 +1,1 @@
+/opt/rh/devtoolset-7/root/usr/bin/c++    -rdynamic CMakeFiles/HELLO_WORLD.dir/src/hello.cpp.o  -o HELLO_WORLD 
